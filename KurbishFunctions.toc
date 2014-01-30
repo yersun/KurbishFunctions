@@ -1,0 +1,12 @@
+KurbishFunctions.xml
+KurbishFunctions.lua
+KurbishFunctions_Debug.lua
+KurbishFunctions_Mage.lua
+KurbishFunctions_Druid.lua
+KurbishFunctions_Protect.lua
+KurbishFunctions_Signature.lua
+KurbishFunctions_Knight.lua
+KurbishFunctions_Rogue.lua
+KurbishFunctions_Priest.lua
+KurbishFunctions_Warden.lua
+KurbishFunctions_Warrior.lua

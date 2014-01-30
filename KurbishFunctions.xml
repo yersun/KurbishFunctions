@@ -1,0 +1,13 @@
+<Ui xmlns="http://www.runewaker.com/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.runewaker.com/UI.xsd">
+	<Script file="KurbishFunctions.lua"></Script>
+	<Frame name="KurbishFrame">
+		<Scripts>
+			<OnLoad>
+				KurbishFunctions_OnLoad(this);
+			</OnLoad>
+			<OnEvent>
+				KurbishFunctions_OnEvent(this, event, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9);
+			</OnEvent>
+		</Scripts>
+	</Frame>
+</Ui>
