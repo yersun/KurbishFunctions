@@ -5,7 +5,7 @@ function ProtectSelfPriest(holyauropercent, wavehealth, regeneratepct, urgentPer
   local useCandy = false
   local usePhirus = false
   local useGlove = false
-  local isMage = (((UnitClass("target") == "Büyücü") or (UnitClass("target") == "Rahip") or (UnitClass("target") == "Doğa Alimi")) and (not (UnitName("target") == UnitName("player"))))
+  local isMage = (((UnitClass("target") == "Mage") or (UnitClass("target") == "Priest") or (UnitClass("target") == "Druid")) and (not (UnitName("target") == UnitName("player"))))
   local unitIsPlayer = UnitIsPlayer("target")
   local tdead = UnitIsDeadOrGhost("target")
   local itemgloveslot = gloveslot + 10;
@@ -52,7 +52,7 @@ function ProtectSelfPriest(holyauropercent, wavehealth, regeneratepct, urgentPer
 	CastSpellByName("Yenileme");
   elseif (phealth <= urgentPercent) then
     if (friendly and not isself) then TargetUnit("player") end
-	CastSpellByName("Anlık İyileştirme");
+	CastSpellByName("Anlık Recover");
   elseif (gloveslot > 0) then
 	UseAction(itemgloveslot);
 	PlaySoundByPath("interface/AddOns/KurbishFunctions/sounds/WindowsError.wav")
@@ -64,7 +64,7 @@ function PriestGroupHeal(useLastPrayer)
 	if(useLastPrayer and CD("Son Duacı")) then
 		CastSpellByName("Son Duacı");
 	else
-		CastSpellByName("Grup İyileştirme");
+		CastSpellByName("Grup Recover");
 	end
 end
 
@@ -90,13 +90,13 @@ local isplayer = UnitIsPlayer("target");
 		CastSpellByName("Yenileme"); 
 	elseif ((phealth <= urgentPercent)) then
 		if(friendly) then TargetUnit("player"); end;
-		CastSpellByName("Anlık İyileştirme");
+		CastSpellByName("Anlık Recover");
 	elseif(useMagicBarrier and (not pbuffs["Büyü Engeli"])) then
 		CastSpellByName("Büyü Engeli"); 
 	elseif(useBlessedWater and (not pbuffs["Yağmurun Kutsaması"])) then
 		CastSpellByName("Yağmurun Kutsaması"); 
-	elseif(useGrace and (not pbuffs["Gelişmiş Yaşama Arzusu"])) then
-		CastSpellByName("Yaşama Arzusu");
+	elseif(useGrace and (not pbuffs["Gelişmiş Savage Blessing"])) then
+		CastSpellByName("Savage Blessing");
 	elseif(useEnchancedArmor and (not pbuffs["Gelişmiş Zırh"])) then
 		CastSpellByName("Geliştirilmiş Zırh"); 
 	elseif(useBoneChill and (not friendly) and (not tdebuffs["Kemik Donduran"])) then
@@ -104,7 +104,7 @@ local isplayer = UnitIsPlayer("target");
 	elseif((not friendly) and useRisingTide) then
 		CastSpellByName("Medcezir");
 	else
-		CastSpellByName("Anlık İyileştirme");
+		CastSpellByName("Anlık Recover");
 	end
 	
 end
@@ -118,8 +118,8 @@ function BuffAllPriest(useMagicBarrier, useBlessedWater, useGrace, useEnchancedA
 		CastSpellByName("Büyü Engeli"); 
 	elseif(useBlessedWater and (not pbuffs["Yağmurun Kutsaması"])) then
 		CastSpellByName("Yağmurun Kutsaması"); 
-	elseif(useGrace and (not pbuffs["Gelişmiş Yaşama Arzusu"])) then
-		CastSpellByName("Yaşama Arzusu");
+	elseif(useGrace and (not pbuffs["Gelişmiş Savage Blessing"])) then
+		CastSpellByName("Savage Blessing");
 	elseif(useEnchancedArmor and (not pbuffs["Gelişmiş Zırh"])) then
 		CastSpellByName("Geliştirilmiş Zırh"); 
 	elseif(useDivine and (not pbuffs["Kutsal Cisimleşme"])) then
@@ -151,7 +151,7 @@ function PriestTimedHeal(targetableSkillSlot, urgenthealth, regenhealth)
 	   local healthtable = GetPartyHealthInfo();
 	   local unitisdead = false;
 	   
-	   -- Do Çiçek Açan Hayat For Party Next
+	   -- Do Blossoming Life For Party Next
 		for i=1,partycount do
 			local id = healthtable[i].id
 			if(id == 0) then 
@@ -165,13 +165,13 @@ function PriestTimedHeal(targetableSkillSlot, urgenthealth, regenhealth)
 				if (id > 0) and UnitIsUnit("target","party"..id) then
 					local tbuffs= ActualBuffList("target")
 					local thealth = PctH("target")
-					-- if((thealth <= blossominghealth) and (not tbuffs["Çiçek Açan Hayat"])) then
+					-- if((thealth <= blossominghealth) and (not tbuffs["Blossoming Life"])) then
 					if((thealth <= urgenthealth) and (thealth > 0)) then 
-						CastSpellByName("Anlık İyileştirme");
+						CastSpellByName("Anlık Recover");
 						return;
 					end;
 				elseif ((id == 0) and (phealth < urgenthealth)) then
-					CastSpellByName("Anlık İyileştirme");
+					CastSpellByName("Anlık Recover");
 					return;
 				end
 			end
@@ -190,7 +190,7 @@ function PriestTimedHeal(targetableSkillSlot, urgenthealth, regenhealth)
 				if (id > 0) and UnitIsUnit("target","party"..id) then
 					local tbuffs= ActualBuffList("target")
 					local thealth = PctH("target")
-					-- if((thealth <= blossominghealth) and (not tbuffs["Çiçek Açan Hayat"])) then
+					-- if((thealth <= blossominghealth) and (not tbuffs["Blossoming Life"])) then
 					if((thealth <= regenhealth) and (thealth > 0) and (not tbuffs["Yenile"])) then 
 						CastSpellByName("Yenileme");
 						return;

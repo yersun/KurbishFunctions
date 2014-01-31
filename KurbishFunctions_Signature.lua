@@ -41,7 +41,7 @@ function PrintKurbishSignatureMage()
 
 	DEFAULT_CHAT_FRAME:AddMessage(" ");	
 		
-	DEFAULT_CHAT_FRAME:AddMessage("BossAttackMageRogueLite(wampirehealth, useAteş Topu, usecursedfang, fangtimeout, fangenergypct, electricbolttimeout, useexplosion, useflame, usemeteor, useplazma, usefangritual, useshadow, useinflux, useenergywell, useelemental, warntbufflist, finalskill)");
+	DEFAULT_CHAT_FRAME:AddMessage("BossAttackMageRogueLite(wampirehealth, useFireball, usecursedfang, fangtimeout, fangenergypct, electricbolttimeout, useexplosion, useflame, usemeteor, useplazma, usefangritual, useshadow, useinflux, useenergywell, useelemental, warntbufflist, finalskill)");
 	
 	DEFAULT_CHAT_FRAME:AddMessage(" ");
 	
@@ -49,23 +49,23 @@ function PrintKurbishSignatureMage()
 	
 	DEFAULT_CHAT_FRAME:AddMessage(" ");
 	
-	DEFAULT_CHAT_FRAME:AddMessage("FullAttack(usefangritual, useshadow, useenergywell, useinflux, useelemental, useYoğunlaştırma, usecatalyst, useplazma, electricbolttimeout, useflame, useexplosion)");
+	DEFAULT_CHAT_FRAME:AddMessage("FullAttack(usefangritual, useshadow, useenergywell, useinflux, useelemental, useIntensification, usecatalyst, useplazma, electricbolttimeout, useflame, useexplosion)");
 	
 	DEFAULT_CHAT_FRAME:AddMessage(" ");
 	
-	DEFAULT_CHAT_FRAME:AddMessage("BossAttackMageDruidLite(İyileştirmehealth, earthhealth, useAteş Topu, usemagma, electricbolttimeout, useexplosion, useflame, usemeteor, useplazma, useAlgı, usemagictarget, useinflux, useenergywell, useelemental, warntbufflist, finalskill, donthealpvp)");
+	DEFAULT_CHAT_FRAME:AddMessage("BossAttackMageDruidLite(Recoverhealth, earthhealth, useFireball, usemagma, electricbolttimeout, useexplosion, useflame, usemeteor, useplazma, usePerception, usemagictarget, useinflux, useenergywell, useelemental, warntbufflist, finalskill, donthealpvp)");
 	
 	DEFAULT_CHAT_FRAME:AddMessage(" ");
 	
-	DEFAULT_CHAT_FRAME:AddMessage("BossAttackMageWardenLite(usebladefirst, usesurge, useblade, useAteş Topu, electricbolttimeout, useexplosion, useflame, usemeteor, useplazma, usescepter, usebriar, useinflux, useenergywell, useelemental, usebriar, usemarking, warntbufflist, finalskill)");
+	DEFAULT_CHAT_FRAME:AddMessage("BossAttackMageWardenLite(usebladefirst, usesurge, useblade, useFireball, electricbolttimeout, useexplosion, useflame, usemeteor, useplazma, usescepter, usebriar, useinflux, useenergywell, useelemental, usebriar, usemarking, warntbufflist, finalskill)");
 	
 	DEFAULT_CHAT_FRAME:AddMessage(" ");
 	
-	DEFAULT_CHAT_FRAME:AddMessage("MageStun(useAteşleme, usephoenix, usepurgatory, rapidpurgatory, Ateşlememessage)");
+	DEFAULT_CHAT_FRAME:AddMessage("MageStun(useDischarge, usephoenix, usepurgatory, rapidpurgatory, Dischargemessage)");
 	
 	DEFAULT_CHAT_FRAME:AddMessage(" ");
 	
-    DEFAULT_CHAT_FRAME:AddMessage("BuffAllMage(useYoğunlaştırma, Yoğunlaştırmafirst, useenergywell, useAlgı, usemagictarget, useenergyinflux, usefireward, usesavageblessing, usefangritual, useshadowprotection, usebriar, usescepter, usemarking)");
+    DEFAULT_CHAT_FRAME:AddMessage("BuffAllMage(useIntensification, Intensificationfirst, useenergywell, usePerception, usemagictarget, useenergyinflux, usefireward, usesavageblessing, usefangritual, useshadowprotection, usebriar, usescepter, usemarking)");
 
 	DEFAULT_CHAT_FRAME:AddMessage(" ");
 	
@@ -77,11 +77,11 @@ function PrintKurbishSignatureMage()
 
 	DEFAULT_CHAT_FRAME:AddMessage(" ");
 	
-    DEFAULT_CHAT_FRAME:AddMessage("BreakSkill(usehumanrules, useYıldırım, usesilence, usesilencefirst, warntbufflist, castifwarning, Yıldırımmessage)");
+    DEFAULT_CHAT_FRAME:AddMessage("BreakSkill(usehumanrules, useLightning, usesilence, usesilencefirst, warntbufflist, castifwarning, Lightningmessage)");
 
 	DEFAULT_CHAT_FRAME:AddMessage(" ");
 	
-    DEFAULT_CHAT_FRAME:AddMessage("ProtectSelf(usedistract, earthProtectionPercent, İyileştirmePercent, crystalCandySlot, crystalCandyPercent, phirusSlot, phirusPercent, glovedebuflist, gloveslot)");
+    DEFAULT_CHAT_FRAME:AddMessage("ProtectSelf(usedistract, earthProtectionPercent, RecoverPercent, crystalCandySlot, crystalCandyPercent, phirusSlot, phirusPercent, glovedebuflist, gloveslot)");
 
     DEFAULT_CHAT_FRAME:AddMessage("-------------------------------------------------------");
 	
@@ -90,7 +90,7 @@ end
 function PrintKurbishSignatureRogue()
 	DEFAULT_CHAT_FRAME:AddMessage("------------------ KURBISH FUNCTIONS ROGUE ------------------");
 	
-	DEFAULT_CHAT_FRAME:AddMessage("BossAttackRogueDruid(attackslot, İyileştirmehealth, usehysteric, useinformer, useshadow, uselowblow,  usewound)");
+	DEFAULT_CHAT_FRAME:AddMessage("BossAttackRogueDruid(attackslot, Recoverhealth, usehysteric, useinformer, useshadow, uselowblow,  usewound)");
 	
 	DEFAULT_CHAT_FRAME:AddMessage(" ");
 	
@@ -102,7 +102,7 @@ function PrintKurbishSignatureRogue()
 	
 	DEFAULT_CHAT_FRAME:AddMessage(" ");
 	
-	DEFAULT_CHAT_FRAME:AddMessage("LookAroundAndAttackRogue(attackslot, turnaround, İyileştirmepct, manapct, manaslot, manabuffname)");
+	DEFAULT_CHAT_FRAME:AddMessage("LookAroundAndAttackRogue(attackslot, turnaround, Recoverpct, manapct, manaslot, manabuffname)");
 	
 	DEFAULT_CHAT_FRAME:AddMessage("-------------------------------------------------------");
 
@@ -122,27 +122,27 @@ function PrintKurbishSignatureDruid()
 
 	DEFAULT_CHAT_FRAME:AddMessage("------------------ KURBISH FUNCTIONS DRUID ------------------");
 
-	DEFAULT_CHAT_FRAME:AddMessage("NatureAttackDruidScout(cameliahealth1, cameliahealth2, cameliahealth3, blossominghealth, earthhealth, İyileştirmehealth, rockhealth, forceİyileştirmefriendlyhealth, userockslide, usebriar, usevampirearrow, useAteş Topu, useearthpulse, useeartharrow)");
+	DEFAULT_CHAT_FRAME:AddMessage("NatureAttackDruidScout(cameliahealth1, cameliahealth2, cameliahealth3, blossominghealth, earthhealth, Recoverhealth, rockhealth, forceRecoverfriendlyhealth, userockslide, usebriar, usevampirearrow, useFireball, useearthpulse, useeartharrow)");
 
 	DEFAULT_CHAT_FRAME:AddMessage(" ");
 	
-    DEFAULT_CHAT_FRAME:AddMessage("NatureAttackDruidRogue(useweakening, usewithering , blossominghealth, earthhealth, İyileştirmehealth, rockhealth, userockslide, usewrath, usebriar, usecorrosive, usewidow, useearthpulse, useeartharrow, donthealpvp)");
+    DEFAULT_CHAT_FRAME:AddMessage("NatureAttackDruidRogue(useweakening, usewithering , blossominghealth, earthhealth, Recoverhealth, rockhealth, userockslide, usewrath, usebriar, usecorrosive, usewidow, useearthpulse, useeartharrow, donthealpvp)");
 
 	DEFAULT_CHAT_FRAME:AddMessage(" ");
 	
-	DEFAULT_CHAT_FRAME:AddMessage("NatureAttackDruidMage(useweakening, usewithering , blossominghealth, earthhealth, İyileştirmehealth, rockhealth, userockslide, useAteş Topu, usewrath, usebriar, useearthpulse, useeartharrow, donthealpvp)");
+	DEFAULT_CHAT_FRAME:AddMessage("NatureAttackDruidMage(useweakening, usewithering , blossominghealth, earthhealth, Recoverhealth, rockhealth, userockslide, useFireball, usewrath, usebriar, useearthpulse, useeartharrow, donthealpvp)");
 	
 	DEFAULT_CHAT_FRAME:AddMessage(" ");
 	
-    DEFAULT_CHAT_FRAME:AddMessage("NatureBossDruidMage(useweakening, usewithering , selfblossominghealth, blossominghealth, earthhealth, İyileştirmehealth, forceİyileştirmeifbuffed, restorehealth, rockhealth, sendsystemmessage, doattack)");
+    DEFAULT_CHAT_FRAME:AddMessage("NatureBossDruidMage(useweakening, usewithering , selfblossominghealth, blossominghealth, earthhealth, Recoverhealth, forceRecoverifbuffed, restorehealth, rockhealth, sendsystemmessage, doattack)");
 		
 	DEFAULT_CHAT_FRAME:AddMessage(" ");
 	
-	DEFAULT_CHAT_FRAME:AddMessage("DruidSelfHeal(useblossoming, İyileştirmehealth, forceİyileştirmeifbuffed, restorehealth, rockhealth, crystalCandySlot, crystalCandyPercent, phirusSlot, phirusPercent, earthhealth, glovedebuflist, gloveslot, sendsystemmessage)");
+	DEFAULT_CHAT_FRAME:AddMessage("DruidSelfHeal(useblossoming, Recoverhealth, forceRecoverifbuffed, restorehealth, rockhealth, crystalCandySlot, crystalCandyPercent, phirusSlot, phirusPercent, earthhealth, glovedebuflist, gloveslot, sendsystemmessage)");
 	
 	DEFAULT_CHAT_FRAME:AddMessage(" ");
 	
-	DEFAULT_CHAT_FRAME:AddMessage("BreakSkillDruidMage(usehumanrules, useYıldırım, usesilence, usebinding, usesilencefirst, warntbufflist, castifwarning, Yıldırımmessage)");
+	DEFAULT_CHAT_FRAME:AddMessage("BreakSkillDruidMage(usehumanrules, useLightning, usesilence, usebinding, usesilencefirst, warntbufflist, castifwarning, Lightningmessage)");
 	
 	DEFAULT_CHAT_FRAME:AddMessage(" ");
 	
@@ -150,7 +150,7 @@ function PrintKurbishSignatureDruid()
 	
 	DEFAULT_CHAT_FRAME:AddMessage(" ");
 	
-	DEFAULT_CHAT_FRAME:AddMessage("DruidPartyHeal2(targetableSkillSlot, criticalhealthpct, blossominghealth, earthhealth, İyileştirmehealth, restorehealth, keeptankİyileştirmeed, keepselfİyileştirmeed, doattack)");
+	DEFAULT_CHAT_FRAME:AddMessage("DruidPartyHeal2(targetableSkillSlot, criticalhealthpct, blossominghealth, earthhealth, Recoverhealth, restorehealth, keeptankRecovered, keepselfRecovered, doattack)");
 	
 	DEFAULT_CHAT_FRAME:AddMessage(" ");
 	
@@ -170,7 +170,7 @@ function PrintKurbishSignatureDruid()
 	
 	DEFAULT_CHAT_FRAME:AddMessage(" ");
 	
-	DEFAULT_CHAT_FRAME:AddMessage("LookAroundAndAttackDruid(attackslot, attackfirst, turnaround, blossomingpct, İyileştirmepct, manapct, manaslot, manabuffname)");
+	DEFAULT_CHAT_FRAME:AddMessage("LookAroundAndAttackDruid(attackslot, attackfirst, turnaround, blossomingpct, Recoverpct, manapct, manaslot, manabuffname)");
 
 	DEFAULT_CHAT_FRAME:AddMessage("-------------------------------------------------------");
 	
@@ -215,7 +215,7 @@ function PrintKurbishSignatureLookAround()
 	
 	DEFAULT_CHAT_FRAME:AddMessage(" ");
 	
-	DEFAULT_CHAT_FRAME:AddMessage("LookAroundAndAttack(attackslot, turnaround, İyileştirmepct, İyileştirmespell, İyileştirmebuffname, forceİyileştirmepct, manapct, manaslot, manabuffname)");
+	DEFAULT_CHAT_FRAME:AddMessage("LookAroundAndAttack(attackslot, turnaround, Recoverpct, Recoverspell, Recoverbuffname, forceRecoverpct, manapct, manaslot, manabuffname)");
 	
 	DEFAULT_CHAT_FRAME:AddMessage(" ");
 	
@@ -228,15 +228,15 @@ end
 
 function PrintKurbishSignatureDiyce()
 
-    DEFAULT_CHAT_FRAME:AddMessage("DirectDPSMage(useYoğunlaştırma, useboltfirst, electricbolttimeout, usemagma, useAteş Topu, useearthpulse, uselighting, useflame, usemeteor, useplasma, earthhealth, İyileştirmehealth)");
+    DEFAULT_CHAT_FRAME:AddMessage("DirectDPSMage(useIntensification, useboltfirst, electricbolttimeout, usemagma, useFireball, useearthpulse, uselighting, useflame, usemeteor, useplasma, earthhealth, Recoverhealth)");
 
 	DEFAULT_CHAT_FRAME:AddMessage(" ");
 	
-	DEFAULT_CHAT_FRAME:AddMessage("DirectDPSMageRogue(useYoğunlaştırma, useboltfirst, wampirehealth, electricbolttimeout, usecursedfangs, forcecursedfangs, useAteş Topu,  uselighting, useflame, usemeteor, useplasma, phirusPercent, phirusSlot)");
+	DEFAULT_CHAT_FRAME:AddMessage("DirectDPSMageRogue(useIntensification, useboltfirst, wampirehealth, electricbolttimeout, usecursedfangs, forcecursedfangs, useFireball,  uselighting, useflame, usemeteor, useplasma, phirusPercent, phirusSlot)");
 	
 	DEFAULT_CHAT_FRAME:AddMessage(" ");
 
-    DEFAULT_CHAT_FRAME:AddMessage("BossAttackMage(shieldon, usefangritual, useshadowprotection, useYoğunlaştırma, useenergywell, useAlgı, usemagictarget, useenergyinflux, dointerrupt, interrupt_list, useweakness , wampirehealth, electricbolttimeout, usecursedfangs, forcecursedfangs, usemagma, useAteş Topu, usemystic, useplasma, useflame, usemeteor, earthhealth, İyileştirmehealth, phirusPercent, phirusSlot)");
+    DEFAULT_CHAT_FRAME:AddMessage("BossAttackMage(shieldon, usefangritual, useshadowprotection, useIntensification, useenergywell, usePerception, usemagictarget, useenergyinflux, dointerrupt, interrupt_list, useweakness , wampirehealth, electricbolttimeout, usecursedfangs, forcecursedfangs, usemagma, useFireball, usemystic, useplasma, useflame, usemeteor, earthhealth, Recoverhealth, phirusPercent, phirusSlot)");
 
 	DEFAULT_CHAT_FRAME:AddMessage(" ");
 

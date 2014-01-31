@@ -13,19 +13,19 @@ g_lastWeakeningSeed = { LastCast = 0 , TargetGUID = -999999999 }
 g_lastWitheringSeed = { LastCast = 0 , TargetGUID = -999999999 }
 g_lastBlossoming = { LastCast = 0 , TargetName = "" }
 g_lastRecover = { LastCast = 0, TargetName = "" }
-g_debugEnabled = false
+g_debugEnabled = true
 g_currentlyCasting = false
 g_turnlookaround = true
 g_tank = ""
 g_blossomingTable = { };
 g_RecoverTable = { };
-g_ignorecastson = {"Elektrik Topu"};
-g_ignorecastby = {"Çiçek Açan Hayat","Elektrik Akımı","Sarılı Dikenli Çalı","Cursed Fangs","Alev Efekti", "Tabiat Ana'nın Gazabı", "Heyelan"};
+g_ignorecastson = {"Electric Bolt"};
+g_ignorecastby = {"Blossoming Life","Electric Current","Briar Entwinement","Cursed Fangs","Flame Efekti", "Mother Nature's Wrath", "Rockslide"};
 g_priestbuffactive = false;
 g_holyskillslot = 8;
-g_bossAttackMageMainWarnBuffs = {'Kutsal Hale','Serenstum','Yumuşak Ormanşarkısı Pastası'};
-g_useGloveDebuffList = {'Yıldırım', 'Gölge Hapsi', 'Stunned','Uyuşturucu Hançer Etkisi'};
-g_mageBreakSkillAvoidBuffs = {'Kutsal Hale','Yumuşak Ormanşarkısı Pastası','Acıyı Önemsememe','Shield of Truth','Serenstum', 'Kaya Koruması'};
+g_bossAttackMageMainWarnBuffs = {'Kutsal Hale','Serenstum','Forestsong Soft Cake'};
+g_useGloveDebuffList = {'Lightning', 'Gölge Hapsi', 'Stunned','Uyuşturucu Hançer Etkisi'};
+g_mageBreakSkillAvoidBuffs = {'Kutsal Hale','Forestsong Soft Cake','Ignore Pain','Shield of Truth','Serenstum', 'Rock Protection'};
 
 function KurbishFunctions_OnEvent(this, event, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9)
 	-- local isself = UnitName("target") == UnitName("player");
@@ -36,8 +36,9 @@ function KurbishFunctions_OnEvent(this, event, arg1, arg2, arg3, arg4, arg5, arg
 		-- Msg("Skill : ".._skill.." || Type : ".._type);
 	if(event == "CHAT_MSG_COMBAT") then
 			local playername = UnitName("player");
-				local skillused, skillwhom = string.match(arg1, playername..", (.*) ile (.*)'nin Hayat")
+				-- local skillused, skillwhom = string.match(arg1, playername..", (.*) ile (.*)'nin Hayat")
 				-- local skillused, skillwhom = string.match(arg1, "(%w+) cast by "..playername)
+				local skillused, skillwhom = string.match(arg1, "(.*) cast by "..playername)
 				-- Case #1 = Player casts xxx on yyy.
 				if(nil ~= skillused) then
 					-- Msg(arg1);
@@ -55,18 +56,19 @@ function KurbishFunctions_OnEvent(this, event, arg1, arg2, arg3, arg4, arg5, arg
 				end	
 				
 			
-			if(string.find(arg1, playername.."(.*) üzerinde Sarılı Dikenli Çalı kullanır")) then
+			--if(string.find(arg1, playername.."(.*) üzerinde Briar Entwinement kullanır")) then
+			if(string.find(arg1, playername.." casts Briar Entwinement on")) then
 				g_lastBriarEntwinement.LastCast = os.time();
 				g_lastBriarEntwinement.TargetGUID = UnitGUID("target");
-				PrintDebugMessage("TABLO KAYIT : Sarılı Dikenli Çalı : " ..g_lastBriarEntwinement.TargetGUID.." @ "..g_lastBriarEntwinement.LastCast )
-			elseif((nil ~= skillused) and string.match(skillused, "Çiçek Açan Hayat")) then
+				PrintDebugMessage("TABLO KAYIT : Briar Entwinement : " ..g_lastBriarEntwinement.TargetGUID.." @ "..g_lastBriarEntwinement.LastCast )
+			elseif((nil ~= skillused) and string.match(skillused, "Blossoming Life")) then
 				g_lastBlossoming.LastCast = os.time();
 				g_lastBlossoming.TargetName = skillwhom;
 				g_blossomingTable[skillwhom] = os.time();
-				PrintDebugMessage("TABLO KAYIT : Çiçek Açan Hayat : " ..g_lastBlossoming.TargetName.." @ "..g_lastBlossoming.LastCast )
-			elseif((nil ~= skillused) and (skillused == "İyileştirme") and (nil ~= skillwhom)) then
+				PrintDebugMessage("TABLO KAYIT : Blossoming Life : " ..g_lastBlossoming.TargetName.." @ "..g_lastBlossoming.LastCast )
+			elseif((nil ~= skillused) and (skillused == "Recover") and (nil ~= skillwhom)) then
 				g_RecoverTable[skillwhom] = os.time();
-				PrintDebugMessage("TABLO KAYIT : İyileştirme : " ..skillwhom.." @ "..os.time() )
+				PrintDebugMessage("TABLO KAYIT : Recover : " ..skillwhom.." @ "..os.time() )
 				
 			end
 	elseif (event == "CASTING_START") then
@@ -78,7 +80,7 @@ function KurbishFunctions_OnEvent(this, event, arg1, arg2, arg3, arg4, arg5, arg
 		PrintDebugMessage("Event -> " .. event .. " , " .. g_lastcast .. " , " .. arg2)
 	elseif (event == "CASTING_FAILED") then
 		g_currentlyCasting = false
-		if(g_lastcast == "Elektrik Topu") then 
+		if(g_lastcast == "Electric Bolt") then 
 			g_lastElectricBolt.LastCast = 0
 		end
 		g_lastcasttime = os.time() -- override here again now that the casting trial finished without success
@@ -86,20 +88,20 @@ function KurbishFunctions_OnEvent(this, event, arg1, arg2, arg3, arg4, arg5, arg
 	elseif (event == "CASTING_STOP") then
 	    g_lastcasttime = os.time() -- override here again now that the casting has completed successfully
 		g_lastcasttarget = UnitGUID("target")
-		if(g_lastcast == "Elektrik Topu") then 
+		if(g_lastcast == "Electric Bolt") then 
 			g_lastElectricBolt.LastCast = os.time()
 			g_lastElectricBolt.TargetGUID = UnitGUID("target")
-		elseif (g_lastcast == "Plazma Oku") then
+		elseif (g_lastcast == "Plasma Arrow") then
 			g_lastPlasmaArrow.LastCast = os.time()
 			g_lastPlasmaArrow.TargetGUID = UnitGUID("target")
-		elseif(g_lastcast == "İyileştirme") then	
+		elseif(g_lastcast == "Recover") then	
 			g_lastRecover.LastCast = os.time()
 			g_lastRecover.TargetName = UnitName("target")
 		end;
 	    g_currentlyCasting = false
 	elseif((event == "CHAT_MSG_PARTY") and g_priestbuffactive) then
 		local mainclass, sideclass = UnitClass("player");
-		if(mainclass == "Şövalye" and sideclass == "Rahip" and nil ~= arg1 and nil ~= arg4) then
+		if(mainclass == "Knight" and sideclass == "Priest" and nil ~= arg1 and nil ~= arg4) then
 			local said = string.lower(arg1);
 			if(said == "buff" or said == "buf") then
 				BuffHolyProtection(g_holyskillslot,arg4);

@@ -121,10 +121,10 @@ function ProtectKnightPriest(hphiruspct, hphirusslot, useyenileme, usekararlilik
 	elseif(usecesaretkalkani and CD("Cesaret Kalkanı") and (not pbuffs["Cesaret Kalkanı"])) then
 		PrintDebugMessage("TANK BUFF : Cesaret Kalkanı!");
 		CastSpellByName("Cesaret Kalkanı");
-	elseif((phealth <= anlikpct) and(not pbuffs["Anlık İyileştirme"])) then
+	elseif((phealth <= anlikpct) and(not pbuffs["Anlık Recover"])) then
 		if (friendly and (not isself)) then TargetUnit("player") end;
-		PrintDebugMessage("TANK BUFF : Anlık İyileştirme!");
-		CastSpellByName("Anlık İyileştirme");	
+		PrintDebugMessage("TANK BUFF : Anlık Recover!");
+		CastSpellByName("Anlık Recover");	
 	elseif(usedisiplinkalkani and CD("Disiplin Kalkanı") and (not pbuffs["Kişisel Disiplin Kalkanı"])) then
 		PrintDebugMessage("TANK BUFF : Disiplin Kalkanı!");
 		CastSpellByName("Disiplin Kalkanı");

@@ -9,7 +9,7 @@ local tbuffs = BuffList("target");
 
 	
 	if (phealth <= recoverhealth) then
-		CastSpellByName("İyileştirme"); 
+		CastSpellByName("Recover"); 
 	elseif(usehysteric and (not pbuffs["Hysteric Vengeance"])) then
 		CastSpellByName("Hysteric Vengeance"); 
 	elseif (useinformer and CD("Informer")) then

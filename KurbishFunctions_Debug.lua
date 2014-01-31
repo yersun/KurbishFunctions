@@ -42,10 +42,10 @@ function TestElectricBolt(electricbolttimeout)
   secselapsed = os.time() - g_lastElectricBolt.LastCast
 
   if((electricBoltCastable == true) and (tbuffs["Electric Flow"])) then
-    DEFAULT_CHAT_FRAME:AddMessage("Elektrik Topu Timeout expired but Electric Flow Debuff detected on target!" .. secselapsed )
+    DEFAULT_CHAT_FRAME:AddMessage("Electric Bolt Timeout expired but Electric Flow Debuff detected on target!" .. secselapsed )
   end
 	Skill = {
-		{ name = "Custom: Elektrik Topu", use = ((not friendly) and (electricBoltCastable)) }
+		{ name = "Custom: Electric Bolt", use = ((not friendly) and (electricBoltCastable)) }
 	}
   MyCombat(Skill)
 end

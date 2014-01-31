@@ -89,8 +89,8 @@ local isdead = UnitIsDeadOrGhost("target");
 		CastSpellByName("Kesme");
 		PrintSkill("Kesme");
 	elseif (useyuklu and pmana >= manayukludarbe) then
-		CastSpellByName("Yüklü Darbe");
-		PrintSkill("Yüklü Darbe");
+		CastSpellByName("Static Field Charge Darbe");
+		PrintSkill("Static Field Charge Darbe");
 	elseif(nil ~= atakslot and atakslot > 0) then
 		UseAction(atakslot);
 		PrintSkill("Duz atak skili kullandin..");
@@ -213,9 +213,9 @@ local isdead = UnitIsDeadOrGhost("target");
 	elseif(usehanedan and pctmana >= 0.02 and pmana >= 35 and CD("Hanedan Arması")) then
 		CastSpellByName("Hanedan Arması");
 		PrintSkill("Hanedan Arması");
-	elseif (useatestopu and CD("Ateş Topu") and pmana >= manaatestopu) then
-		CastSpellByName("Ateş Topu");
-		PrintSkill("Ateş Topu");
+	elseif (useatestopu and CD("Fireball") and pmana >= manaatestopu) then
+		CastSpellByName("Fireball");
+		PrintSkill("Fireball");
 	elseif (usecapraz and CD("Çapraz Vuruş") and pmana >= manacaprazvurus) then
 		CastSpellByName("Çapraz Vuruş");
 		PrintSkill("Çapraz Vuruş");
@@ -226,8 +226,8 @@ local isdead = UnitIsDeadOrGhost("target");
 		CastSpellByName("Rüzgar Doğraması");
 		PrintSkill("Rüzgar Doğraması");
 	elseif (useyuklu and pmana >= manayukludarbe) then
-		CastSpellByName("Yüklü Darbe");
-		PrintSkill("Yüklü Darbe");
+		CastSpellByName("Static Field Charge Darbe");
+		PrintSkill("Static Field Charge Darbe");
 	elseif (useorman and pmana >= manaorman) then
 		CastSpellByName("Orman Ruhu'nun Gücü");
 		PrintSkill("Orman Ruhu'nun Gücü");
@@ -280,8 +280,8 @@ function BuffSelfWardenMage(usedogakoruma, usedikenli, useateskorumasi, usemese,
 	elseif(usedikenli and not pbuffs["Dikenli Kalkan"] and pmana >= manadikenlikalkan) then
 		CastSpellByName("Dikenli Kalkan");
 		PrintSkill("Dikenli Kalkan");
-	elseif((useateskorumasi == true ) and (not pbuffs["Ateş Koruması"])) then
-		CastSpellByName("Ateş Koruması");
+	elseif((useateskorumasi == true ) and (not pbuffs["Fire Ward"])) then
+		CastSpellByName("Fire Ward");
 	elseif(usemese and CD("Meşenin Gücü") and pmana >= manameseningucu) then
 		CastSpellByName("Meşenin Gücü");
 		PrintSkill("Meşenin Gücü");
@@ -296,9 +296,9 @@ function BuffSelfWardenMage(usedogakoruma, usedikenli, useateskorumasi, usemese,
 	elseif(usehanedan and pctmana >= 0.02 and pmana >= 35 and CD("Hanedan Arması")) then
 		CastSpellByName("Hanedan Arması");
 		PrintSkill("Hanedan Arması");
-	elseif(useyogunlastirma and CD("Yoğunlaştırma")) then
-		CastSpellByName("Yoğunlaştırma");
-		PrintSkill("Yoğunlaştırma");
+	elseif(useyogunlastirma and CD("Intensification")) then
+		CastSpellByName("Intensification");
+		PrintSkill("Intensification");
 	elseif(CD("Dikenli Kalkan")) then
 		SendSystemMsg("Bufflar Tamam!");
 	end
@@ -338,15 +338,15 @@ local isself = UnitIsUnit("target","player");
 	if (isdead) then
 		SendSystemMsg("Hedef Ölü..");
 	elseif (friendly and (not isself)) then
-		PrintSkill("İyileştirme");
-		CastSpellByName("İyileştirme");
-	elseif ((phealth <= toprakanapct) and CD("Toprak Ananın Koruması") and pmana >= 100) then
+		PrintSkill("Recover");
+		CastSpellByName("Recover");
+	elseif ((phealth <= toprakanapct) and CD("Mother Earth's Protection") and pmana >= 100) then
 		if (friendly and (not isself)) then TargetUnit("player") end;
-		CastSpellByName("Toprak Ananın Koruması");
+		CastSpellByName("Mother Earth's Protection");
 	elseif ((phealth <= recoverpct)) then
-		PrintSkill("İyileştirme");
+		PrintSkill("Recover");
 		if (friendly and (not isself)) then TargetUnit("player") end;
-		CastSpellByName("İyileştirme");
+		CastSpellByName("Recover");
 	elseif (nil ~= manaslot and manaslot > 0 and PctM("player") < manapct and GetPotUsable(manaslot)) then
 		PrintSkill("Mana Potu Kullandin!");
 		UseAction(manaslot);
@@ -383,9 +383,9 @@ local isself = UnitIsUnit("target","player");
 	elseif (usedeli and CD("Deli Diken") and pmana >= manadelidiken) then
 		PrintSkill("Deli Diken");
 		CastSpellByName("Deli Diken"); 
-	elseif (useyuklu and CD("Yüklü Darbe") and pmana >= manayukludarbe) then
-		PrintSkill("Yüklü Darbe");
-		CastSpellByName("Yüklü Darbe");
+	elseif (useyuklu and CD("Static Field Charge Darbe") and pmana >= manayukludarbe) then
+		PrintSkill("Static Field Charge Darbe");
+		CastSpellByName("Static Field Charge Darbe");
 	elseif (useorman and pmana >= manaorman) then
 		PrintSkill("Orman Ruhu'nun Gücü");
 		CastSpellByName("Orman Ruhu'nun Gücü");
@@ -406,15 +406,15 @@ function ProtectSelfWardenDruid(recoverpct, cpslot, cptct, toprakanapct, useelft
 	local friendly = (not UnitCanAttack("player","target"));
 	local isself = UnitIsUnit("target","player");
 	
-	if ((pctHealth <= recoverpct) and not pbuffs["İyileştirme"]) then
+	if ((pctHealth <= recoverpct) and not pbuffs["Recover"]) then
 		if (friendly and (not isself)) then TargetUnit("player") end;
-		CastSpellByName("İyileştirme");
+		CastSpellByName("Recover");
 	elseif (nil ~= cpslot and cpslot > 0 and pctHealth < cptct and GetPotUsable(cpslot)) then
 		UseAction(cpslot);
 		PrintSkill("Sağlık Potu Kullandın!");
-	elseif ((pctHealth <= toprakanapct) and CD("Toprak Ananın Koruması") and pmana >= 100) then
+	elseif ((pctHealth <= toprakanapct) and CD("Mother Earth's Protection") and pmana >= 100) then
 		if (friendly and (not isself)) then TargetUnit("player") end;
-		CastSpellByName("Toprak Ananın Koruması");
+		CastSpellByName("Mother Earth's Protection");
 	elseif(useelftilsimi and CD("Elf Tılsımı") and pmana >= 150) then
 		CastSpellByName("Elf Tılsımı");
 		PrintSkill("Elf Tılsımı");
@@ -426,7 +426,7 @@ function ProtectSelfWardenDruid(recoverpct, cpslot, cptct, toprakanapct, useelft
 		PrintSkill("Hasar Transferi");
 	elseif (pctHealth <= recoverpct) then
 		if (friendly and (not isself)) then TargetUnit("player") end;
-		CastSpellByName("İyileştirme");
+		CastSpellByName("Recover");
 	elseif(CD("Dikenli Kalkan")) then
 		SendSystemMsg("Bütün Koruma Skilleri Atıldı!!!");
 	end
@@ -450,9 +450,9 @@ function BuffSelfWardenDruid(usedogakoruma, usedikenli, usetoprakruhu, usesavage
 		PrintSkill("Dikenli Kalkan");
 	elseif((usetoprakruhu == true ) and (not pbuffs["Toprak Ruhu Esansı"]  or pbuffs["Toprak Ruhu Esansı"].time < 600)) then
 		CastSpellByName("Toprak Ruhu Esansı");
-	elseif (usesavage and (not pbuffs["Yabani Kutsama"] or pbuffs["Yabani Kutsama"].time < 600)) then
+	elseif (usesavage and (not pbuffs["Savage Blessing"] or pbuffs["Savage Blessing"].time < 600)) then
 		if((not isself) and friendly) then TargetUnit("player"); end
-		CastSpellByName("Vahşi Kutsama");
+		CastSpellByName("Savage Blessing");
 	elseif(usemese and CD("Meşenin Gücü") and pmana >= manameseningucu) then
 		CastSpellByName("Meşenin Gücü");
 		PrintSkill("Meşenin Gücü");
@@ -490,9 +490,9 @@ end
 
 function BossAttackWardenMain(getagro,recoverpct, toprakanapct, manaslot, manapct,elfrehberipct, atakslot, forcesinyal,usehiddet)
 	local mainclass, secondclass = UnitClass("player")
-	if (secondclass == "Doğa Alimi") then
+	if (secondclass == "Druid") then
 		BossAttackWardenDruidLite(recoverpct, toprakanapct, manaslot, manapct, elfrehberipct, true, true, true, false, false, true, getagro, getagro, 2, false, true, false, atakslot);
-	elseif(secondclass == "Savaşçı") then
+	elseif(secondclass == "Warrior") then
 		BossAttackWardenWarriorLite(manaslot, manapct, elfrehberipct, true, true, true, true, true, false, true, usehiddet, true,true, forcesinyal, true, true, true, true, 1);
 	else
 		SendSystemMsg("Yan Sınıf Tanımsız??");
@@ -501,9 +501,9 @@ end
 
 function BossAttackWardenMainDps(atakslot)
 	local mainclass, secondclass = UnitClass("player")
-	if (secondclass == "Doğa Alimi") then
+	if (secondclass == "Druid") then
 		BossAttackWardenDruidLite(0, 0, 0, .4, 0, false, false, true, false, false, false, false, false, 2, false, true, false, atakslot);
-	elseif(secondclass == "Savaşçı") then
+	elseif(secondclass == "Warrior") then
 		BossAttackWardenWarriorLite(0, 0, 0, false, false, false, false, false, false, false, false, false,false, false, true, true, true, true, atakslot);
 	else
 		SendSystemMsg("Yan Sınıf Tanımsız??");
@@ -512,13 +512,13 @@ end
 
 function BuffAllWardenMain(buffplus)
 	local mainclass, secondclass = UnitClass("player")
-	if(secondclass == "Doğa Alimi") then
+	if(secondclass == "Druid") then
 		if(not buffplus) then
 			BuffSelfWardenDruid(true, true, true, true, false, false,  0, true);
 		else
 			BuffSelfWardenDruid(true, true, true, true, true, true,  0, true);
 		end
-	elseif (secondclass == "Savaşçı") then
+	elseif (secondclass == "Warrior") then
 		if(not buffplus) then
 			BuffSelfWardenWarrior(true, true, false, false, false, false, false);
 		 else
@@ -531,9 +531,9 @@ end
 
 function ProtectSelfWardenMain(recoverpct, cpslot, cptct, toprakanpct, useelftilsimi, usemeseninkalbi,  usehasartransferi, useolumsuzguc, usesavunmaduzeni)
 	local mainclass, secondclass = UnitClass("player")
-	if (secondclass == "Doğa Alimi") then
+	if (secondclass == "Druid") then
 		ProtectSelfWardenDruid(recoverpct, cpslot, cptct, toprakanpct, useelftilsimi, usemeseninkalbi,  usehasartransferi)
-	elseif(secondclass == "Savaşçı") then
+	elseif(secondclass == "Warrior") then
 		ProtectSelfWardenWarrior(cpslot, cptct, useelftilsimi, usemeseninkalbi, useolumsuzguc, usesavunmaduzeni, usehasartransferi)
 	else
 		SendSystemMsg("Yan Sınıf Tanımsız??");
@@ -542,8 +542,8 @@ end
 
 function AttackMuhafiz()
 	if(UnitName("target") == "Dev Muhafız") then 
-		if CD("Toprağın Nabzı") then 
-			CastSpellByName("Toprağın Nabzı"); 
+		if CD("Earth Pulse") then 
+			CastSpellByName("Earth Pulse"); 
 		else 
 			BossAttackWardenMain(false,.4,0,.6,0,1,true,false);
 		end 

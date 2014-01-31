@@ -8,30 +8,30 @@ local tdebuffs
 		tdebuffs = ActualDebuffList("target")
 	end
 	
-	if(usefangritual and (not pbuffs["Diş Ayini"])) then
-		CastSpellByName("Diş Ayini"); 
+	if(usefangritual and (not pbuffs["Fang Ritual"])) then
+		CastSpellByName("Fang Ritual"); 
 	elseif (useshadow and (not pbuffs["Shadow Protection"])) then
 		CastSpellByName("Shadow Protection");
-	elseif (useenergywell and CD("Enerji Pınarı") and (not pbuffs["Enerji Pınarı"])) then
-		CastSpellByName("Enerji Pınarı");
-	elseif (useinflux and CD("Enerji Akısı") and (not pbuffs["Enerji Akısı"])) then
-		CastSpellByName("Enerji Akısı");
-	elseif (useelemental and CD("Element Zafiyeti") and (not tdebuffs["E	lemental Weakness"])) then
-		CastSpellByName("Element Zafiyeti");
-	elseif (useIntensification and CD("Yoğunlaştırma")) then 
-		CastSpellByName("Yoğunlaştırma"); 
-	elseif (usecatalyst and CD("Element Katalizi")) then
-		CastSpellByName("Element Katalizi");
-	elseif (useplazma and (not ((g_lastcast == "Plazma Oku") and (g_lastcasttarget == UnitGUID("target")))) and (not pbuffs["Yüklü"])) then
-		CastSpellByName("Plazma Oku");
+	elseif (useenergywell and CD("Energy Well") and (not pbuffs["Energy Well"])) then
+		CastSpellByName("Energy Well");
+	elseif (useinflux and CD("Energy Influx") and (not pbuffs["Energy Influx"])) then
+		CastSpellByName("Energy Influx");
+	elseif (useelemental and CD("Elemental Weakness") and (not tdebuffs["E	lemental Weakness"])) then
+		CastSpellByName("Elemental Weakness");
+	elseif (useIntensification and CD("Intensification")) then 
+		CastSpellByName("Intensification"); 
+	elseif (usecatalyst and CD("Elemental Catalysis")) then
+		CastSpellByName("Elemental Catalysis");
+	elseif (useplazma and (not ((g_lastcast == "Plasma Arrow") and (g_lastcasttarget == UnitGUID("target")))) and (not pbuffs["Static Field Charge"])) then
+		CastSpellByName("Plasma Arrow");
 	elseif ((electricbolttimeout > 0) and (not g_currentlyCasting) and ElectricBoltCastableOnTarget(electricbolttimeout, tdebuffs)) then
-		CastSpellByName("Elektrik Topu");
+		CastSpellByName("Electric Bolt");
 	elseif (useflame) then
-		CastSpellByName("Alev");
-	elseif (useexplosion and (not g_currentlyCasting) and pbuffs["Yüklü"]) then
-		CastSpellByName("Elektrik Patlaması");
+		CastSpellByName("Flame");
+	elseif (useexplosion and (not g_currentlyCasting) and pbuffs["Static Field Charge"]) then
+		CastSpellByName("Electric Explosion");
 	else
-		CastSpellByName("Alev");
+		CastSpellByName("Flame");
 	end
 end
 
@@ -39,25 +39,25 @@ function BossAttackHeavy(warn)
 	local tbuffs = BuffList("target");
 	local pbuffs = BuffList("player");
 	
-	local tti, cdi = CDLeft("Yoğunlaştırma");
-	local tte, cde = CDLeft("Element Katalizi");
+	local tti, cdi = CDLeft("Intensification");
+	local tte, cde = CDLeft("Elemental Catalysis");
 	
 	if(cdi> 1 and cde > 1) then
 	
-		if( not(pbuffs["Yoğunlaştırma"] or pbuffs["Element Katalizi"]) and warn) then
+		if( not(pbuffs["Intensification"] or pbuffs["Elemental Catalysis"]) and warn) then
 			SendSystemMsg("BUFFS EXPIRED, ABORT BossAttackHeavy()");
 		end
 		
-		if(pbuffs["Yüklü"]) then 
-			CastSpellByName("Elektrik Patlaması");
+		if(pbuffs["Static Field Charge"]) then 
+			CastSpellByName("Electric Explosion");
 			return
 		else
-			CastSpellByName("Plazma Oku");
+			CastSpellByName("Plasma Arrow");
 			return;
 		end
 	else
-		if(cdi == 0) then CastSpellByName("Yoğunlaştırma"); return; end
-		if(cde == 0) then CastSpellByName("Element Katalizi"); return; end
+		if(cdi == 0) then CastSpellByName("Intensification"); return; end
+		if(cde == 0) then CastSpellByName("Elemental Catalysis"); return; end
 	end
 end
 
@@ -105,38 +105,38 @@ local isdead = UnitIsDeadOrGhost("target");
 	end
   
 
-	if ((phealth <= earthhealth) and CD("Toprak Ananın Koruması")) then
-		CastSpellByName("Toprak Ananın Koruması"); 
+	if ((phealth <= earthhealth) and CD("Mother Earth's Protection")) then
+		CastSpellByName("Mother Earth's Protection"); 
 	elseif ((phealth <= recoverhealth) or friendly) then
-		CastSpellByName("İyileştirme");
-	elseif(useperception and (not pbuffs["Algı"])) then
-		CastSpellByName("Algı"); 
-	elseif (usemagictarget and (not pbuffs["Büyü Hedefi"])) then
-		CastSpellByName("Büyü Hedefi");
-	elseif (useinflux and CD("Enerji Akısı") and (not pbuffs["Enerji Akısı"])) then
-		CastSpellByName("Enerji Akısı");
-	elseif (useenergywell and CD("Enerji Pınarı") and (not pbuffs["Enerji Pınarı"])) then
-		CastSpellByName("Enerji Pınarı");
-	elseif (useelemental and CD("Element Zafiyeti") and (not tdebuffs["Element Zafiyeti"])) then
-		CastSpellByName("Element Zafiyeti");
-	elseif (usemagma and CD("Mağma Kılıcı")) then
-		CastSpellByName("Mağma Kılıcı");
-	elseif (useFireball and CD("Ateş Topu")) then 
-		CastSpellByName("Ateş Topu"); 
+		CastSpellByName("Recover");
+	elseif(useperception and (not pbuffs["Perception"])) then
+		CastSpellByName("Perception"); 
+	elseif (usemagictarget and (not pbuffs["Magic Target"])) then
+		CastSpellByName("Magic Target");
+	elseif (useinflux and CD("Energy Influx") and (not pbuffs["Energy Influx"])) then
+		CastSpellByName("Energy Influx");
+	elseif (useenergywell and CD("Energy Well") and (not pbuffs["Energy Well"])) then
+		CastSpellByName("Energy Well");
+	elseif (useelemental and CD("Elemental Weakness") and (not tdebuffs["Elemental Weakness"])) then
+		CastSpellByName("Elemental Weakness");
+	elseif (usemagma and CD("Magma Blade")) then
+		CastSpellByName("Magma Blade");
+	elseif (useFireball and CD("Fireball")) then 
+		CastSpellByName("Fireball"); 
 	elseif ((electricbolttimeout > 0) and (not g_currentlyCasting) and ElectricBoltCastableOnTarget(electricbolttimeout, tdebuffs)) then
-		CastSpellByName("Elektrik Topu");
-	elseif ((useexplosion) and (not g_currentlyCasting) and (pbuffs["Yüklü"])) then
-		CastSpellByName("Elektrik Patlaması");
-	elseif (useflame and (not g_currentlyCasting) and (not ((g_lastcast == "Alev") and (g_lastcasttarget == UnitGUID("target")) and (secselapsed < 1)))) then
-		CastSpellByName("Alev");
-	elseif (usemeteor and (not g_currentlyCasting) and (not ((g_lastcast == "Meteor Yağmuru") and (g_lastcasttarget == UnitGUID("target")))) and ((nil ~= pdebuffs) and (not pdebuffs["Cesur Saldırı"]))) then
-		CastSpellByName("Meteor Yağmuru");
-	elseif (useplazma and (not g_currentlyCasting) and (not ((g_lastcast == "Plazma Oku") and (g_lastcasttarget == UnitGUID("target"))))) then
-		CastSpellByName("Plazma Oku");
+		CastSpellByName("Electric Bolt");
+	elseif ((useexplosion) and (not g_currentlyCasting) and (pbuffs["Static Field Charge"])) then
+		CastSpellByName("Electric Explosion");
+	elseif (useflame and (not g_currentlyCasting) and (not ((g_lastcast == "Flame") and (g_lastcasttarget == UnitGUID("target")) and (secselapsed < 1)))) then
+		CastSpellByName("Flame");
+	elseif (usemeteor and (not g_currentlyCasting) and (not ((g_lastcast == "Meteor Shower") and (g_lastcasttarget == UnitGUID("target")))) and ((nil ~= pdebuffs) and (not pdebuffs["Mind Attack"]))) then
+		CastSpellByName("Meteor Shower");
+	elseif (useplazma and (not g_currentlyCasting) and (not ((g_lastcast == "Plasma Arrow") and (g_lastcasttarget == UnitGUID("target"))))) then
+		CastSpellByName("Plasma Arrow");
 	elseif ((nil ~= finalskill) and (finalskill ~= "")) then
 		CastSpellByName(finalskill);
 	else
-		CastSpellByName("Alev");
+		CastSpellByName("Flame");
 	end
 end
 
@@ -180,12 +180,12 @@ local isdead = UnitIsDeadOrGhost("target");
 		CastSpellByName("Toprak Asası"); 
 	elseif (usebriar and CD("Dikenli Kalkan") and (not pbuffs["Dikenli Kalkan"])) then
 		CastSpellByName("Dikenli Kalkan");
-	elseif (useinflux and CD("Enerji Akısı") and (not pbuffs["Enerji Akısı"])) then
-		CastSpellByName("Enerji Akısı");
-	elseif (useenergywell and CD("Enerji Pınarı") and (not pbuffs["Enerji Pınarı"])) then
-		CastSpellByName("Enerji Pınarı");
-	elseif (useelemental and CD("Element Zafiyeti") and (not tdebuffs["Element Zafiyeti"])) then
-		CastSpellByName("Element Zafiyeti");
+	elseif (useinflux and CD("Energy Influx") and (not pbuffs["Energy Influx"])) then
+		CastSpellByName("Energy Influx");
+	elseif (useenergywell and CD("Energy Well") and (not pbuffs["Energy Well"])) then
+		CastSpellByName("Energy Well");
+	elseif (useelemental and CD("Elemental Weakness") and (not tdebuffs["Elemental Weakness"])) then
+		CastSpellByName("Elemental Weakness");
 	elseif (usemarking and CD("Dünya İşaretlemesi")) then
 		CastSpellByName("Dünya İşaretlemesi");
 	elseif(usebladefirst and useblade and CD("Toprak İnleten Rüzgar Kılıcı")) then
@@ -194,22 +194,22 @@ local isdead = UnitIsDeadOrGhost("target");
 		CastSpellByName("Deprem");
 	elseif ((not usebladefirst) and useblade and CD("Toprak İnleten Rüzgar Kılıcı")) then
 		CastSpellByName("Toprak İnleten Rüzgar Kılıcı");
-	elseif (useFireball and CD("Ateş Topu")) then 
-		CastSpellByName("Ateş Topu"); 
+	elseif (useFireball and CD("Fireball")) then 
+		CastSpellByName("Fireball"); 
 	elseif ((electricbolttimeout > 0) and (not g_currentlyCasting) and ElectricBoltCastableOnTarget(electricbolttimeout, tdebuffs)) then
-		CastSpellByName("Elektrik Topu");
-	elseif ((useexplosion) and (not g_currentlyCasting) and (pbuffs["Yüklü"])) then
-		CastSpellByName("Elektrik Patlaması");
-	elseif (useflame and (not g_currentlyCasting) and (not ((g_lastcast == "Alev") and (g_lastcasttarget == UnitGUID("target")) and (secselapsed < 1)))) then
-		CastSpellByName("Alev");
-	elseif (usemeteor and (not g_currentlyCasting) and (not ((g_lastcast == "Meteor Yağmuru") and (g_lastcasttarget == UnitGUID("target")))) and ((nil ~= pdebuffs) and (not pdebuffs["Cesur Saldırı"]))) then
-		CastSpellByName("Meteor Yağmuru");
-	elseif (useplazma and (not g_currentlyCasting) and (not ((g_lastcast == "Plazma Oku") and (g_lastcasttarget == UnitGUID("target"))))) then
-		CastSpellByName("Plazma Oku");
+		CastSpellByName("Electric Bolt");
+	elseif ((useexplosion) and (not g_currentlyCasting) and (pbuffs["Static Field Charge"])) then
+		CastSpellByName("Electric Explosion");
+	elseif (useflame and (not g_currentlyCasting) and (not ((g_lastcast == "Flame") and (g_lastcasttarget == UnitGUID("target")) and (secselapsed < 1)))) then
+		CastSpellByName("Flame");
+	elseif (usemeteor and (not g_currentlyCasting) and (not ((g_lastcast == "Meteor Shower") and (g_lastcasttarget == UnitGUID("target")))) and ((nil ~= pdebuffs) and (not pdebuffs["Mind Attack"]))) then
+		CastSpellByName("Meteor Shower");
+	elseif (useplazma and (not g_currentlyCasting) and (not ((g_lastcast == "Plasma Arrow") and (g_lastcasttarget == UnitGUID("target"))))) then
+		CastSpellByName("Plasma Arrow");
 	elseif ((nil ~= finalskill) and (finalskill ~= "")) then
 		CastSpellByName(finalskill);
 	else
-		CastSpellByName("Alev");
+		CastSpellByName("Flame");
 	end
 end
 
@@ -261,51 +261,51 @@ local isself = UnitIsUnit("player","target");
 	if ((phealth <= halehealth) and CD("Kutsal Hale")) then
 		CastSpellByName("Kutsal Hale"); 
 	elseif ((phealth <= anlikhealth) or friendly) then
-		CastSpellByName("Anlık İyileştirme");
+		CastSpellByName("Anlık Recover");
 	elseif(usebuyuengeli and (not pbuffs["Büyü Engeli"])) then
 		CastSpellByName("Büyü Engeli"); 
 	elseif (useyagmurkutsamasi and (not pbuffs["Yağmurun Kutsaması"])) then
 		CastSpellByName("Yağmurun Kutsaması");
 	elseif (usebuyuozu and (not pbuffs["Büyünün Özü"])  and (isself or not friendly)) then
 		CastSpellByName("Büyünün Özü");
-	elseif (useenergywell and CD("Enerji Pınarı") and (not pbuffs["Enerji Pınarı"])) then
-		CastSpellByName("Enerji Pınarı");
-	elseif (useinflux and CD("Enerji Akısı") and (not pbuffs["Enerji Akısı"])) then
-		CastSpellByName("Enerji Akısı");
-	elseif (useelemental and CD("Element Zafiyeti") and (not tdebuffs["Element Zafiyeti"])) then
-		CastSpellByName("Element Zafiyeti");
+	elseif (useenergywell and CD("Energy Well") and (not pbuffs["Energy Well"])) then
+		CastSpellByName("Energy Well");
+	elseif (useinflux and CD("Energy Influx") and (not pbuffs["Energy Influx"])) then
+		CastSpellByName("Energy Influx");
+	elseif (useelemental and CD("Elemental Weakness") and (not tdebuffs["Elemental Weakness"])) then
+		CastSpellByName("Elemental Weakness");
 	elseif (usemedcezir and CD("Medcezir")) then
 		CastSpellByName("Medcezir");
-	elseif (useFireball and CD("Ateş Topu")) then 
-		CastSpellByName("Ateş Topu"); 
+	elseif (useFireball and CD("Fireball")) then 
+		CastSpellByName("Fireball"); 
 	elseif ((electricbolttimeout > 0) and (not g_currentlyCasting) and ElectricBoltCastableOnTarget(electricbolttimeout, tdebuffs)) then
-		CastSpellByName("Elektrik Topu");
-	elseif ((useexplosion) and (not g_currentlyCasting) and (pbuffs["Yüklü"])) then
-		CastSpellByName("Elektrik Patlaması");
-	elseif (useflame and (not g_currentlyCasting) and (not ((g_lastcast == "Alev") and (g_lastcasttarget == UnitGUID("target")) and (secselapsed < 1)))) then
-		CastSpellByName("Alev");
-	elseif (usemeteor and (not g_currentlyCasting) and (not ((g_lastcast == "Meteor Yağmuru") and (g_lastcasttarget == UnitGUID("target")))) and ((nil ~= pdebuffs) and (not pdebuffs["Cesur Saldırı"]))) then
-		CastSpellByName("Meteor Yağmuru");
-	elseif (useplazma and (not g_currentlyCasting) and (not ((g_lastcast == "Plazma Oku") and (g_lastcasttarget == UnitGUID("target"))))) then
-		CastSpellByName("Plazma Oku");
+		CastSpellByName("Electric Bolt");
+	elseif ((useexplosion) and (not g_currentlyCasting) and (pbuffs["Static Field Charge"])) then
+		CastSpellByName("Electric Explosion");
+	elseif (useflame and (not g_currentlyCasting) and (not ((g_lastcast == "Flame") and (g_lastcasttarget == UnitGUID("target")) and (secselapsed < 1)))) then
+		CastSpellByName("Flame");
+	elseif (usemeteor and (not g_currentlyCasting) and (not ((g_lastcast == "Meteor Shower") and (g_lastcasttarget == UnitGUID("target")))) and ((nil ~= pdebuffs) and (not pdebuffs["Mind Attack"]))) then
+		CastSpellByName("Meteor Shower");
+	elseif (useplazma and (not g_currentlyCasting) and (not ((g_lastcast == "Plasma Arrow") and (g_lastcasttarget == UnitGUID("target"))))) then
+		CastSpellByName("Plasma Arrow");
 	elseif ((nil ~= finalskill) and (finalskill ~= "")) then
 		CastSpellByName(finalskill);
 	else
-		CastSpellByName("Alev");
+		CastSpellByName("Flame");
 	end
 end
 
 function MageStun(usedischarge, usephoenix, usepurgatory, rapidpurgatory, dischargemessage)
   
-  	if (usedischarge and CD("Ateşleme")) then
-		CastSpellByName("Ateşleme");
+  	if (usedischarge and CD("Discharge")) then
+		CastSpellByName("Discharge");
 		if((nil ~= dischargemessage) and (dischargemessage ~= "")) then SendChatMessage(dischargemessage, "SAY"); end
 	elseif (usephoenix and CD("Phoenix")) then 
 		CastSpellByName("Phoenix");
-	elseif (usepurgatory and CD("Araf Ateşi")) then 
-		CastSpellByName("Araf Ateşi");
+	elseif (usepurgatory and CD("Purgatory Fire")) then 
+		CastSpellByName("Purgatory Fire");
 	elseif (usepurgatory and rapidpurgatory) then
-		CastSpellByName("Araf Ateşi");
+		CastSpellByName("Purgatory Fire");
 	end
 
 end
@@ -315,29 +315,29 @@ function BuffAllMage(useIntensification, intensificationfirst, useenergywell, us
   local pbuffs = BuffList("player")
   local friendly = (not UnitCanAttack("player","target"));
   
-  if ((usefangritual == true ) and (not pbuffs["Diş Ayini"])) then
-	CastSpellByName("Diş Ayini");
+  if ((usefangritual == true ) and (not pbuffs["Fang Ritual"])) then
+	CastSpellByName("Fang Ritual");
   elseif ((useshadowprotection == true ) and (not pbuffs["Shadow Protection"])) then
 	CastSpellByName("Shadow Protection");
   elseif (usebriar and CD("Dikenli Kalkan") and (not pbuffs["Dikenli Kalkan"] or pbuffs["Dikenli Kalkan"].time < 600)) then
 	CastSpellByName("Dikenli Kalkan");
   elseif(usescepter and (not pbuffs["Toprak Asası"] or pbuffs["Toprak Asası"].time < 600)) then
 	CastSpellByName("Toprak Asası");
-  elseif ((useIntensification == true ) and CD("Yoğunlaştırma") and (not pbuffs["Yoğunlaştırma"]) and (intensificationfirst == true)) then
-	CastSpellByName("Yoğunlaştırma");
-  elseif ((useenergywell == true ) and CD("Enerji Pınarı") and (not pbuffs["Enerji Pınarı"])) then
-	CastSpellByName("Enerji Pınarı");
-  elseif ((useperception == true ) and (not pbuffs["Algı"] or pbuffs["Algı"].time < 600)) then
-	CastSpellByName("Algı");
-  elseif((usemagictarget == true ) and (not pbuffs["Büyü Hedefi"] or pbuffs["Büyü Hedefi"].time < 600)) then
-	CastSpellByName("Büyü Hedefi");
-  elseif((useenergyinflux == true ) and CD("Enerji Akısı") and (not pbuffs["Enerji Akısı"])) then
-    CastSpellByName("Enerji Akısı");
-  elseif((usefireward == true ) and (not pbuffs["Ateş Koruması"] or pbuffs["Ateş Koruması"].time < 400)) then
-    CastSpellByName("Ateş Koruması");
-  elseif((usesavageblessing == true ) and (not pbuffs["Yabani Kutsama"] or pbuffs["Yabani Kutsama"].time < 600)) then
+  elseif((usefireward == true ) and (not pbuffs["Fire Ward"] or pbuffs["Fire Ward"].time < 400)) then
+    CastSpellByName("Fire Ward");
+  elseif ((useIntensification == true ) and CD("Intensification") and (not pbuffs["Intensification"]) and (intensificationfirst == true)) then
+	CastSpellByName("Intensification");
+  elseif ((useenergywell == true ) and CD("Energy Well") and (not pbuffs["Energy Well"])) then
+	CastSpellByName("Energy Well");
+  elseif ((useperception == true ) and (not pbuffs["Perception"] or pbuffs["Perception"].time < 600)) then
+	CastSpellByName("Perception");
+  elseif((usemagictarget == true ) and (not pbuffs["Magic Target"] or pbuffs["Magic Target"].time < 600)) then
+	CastSpellByName("Magic Target");
+  elseif((useenergyinflux == true ) and CD("Energy Influx") and (not pbuffs["Energy Influx"])) then
+    CastSpellByName("Energy Influx");
+  elseif((usesavageblessing == true ) and (not pbuffs["Savage Blessing"] or pbuffs["Savage Blessing"].time < 600)) then
     if(friendly) then TargetUnit("player"); end
-	CastSpellByName("Vahşi Kutsama");
+	CastSpellByName("Savage Blessing");
   elseif (usemarking and CD("Dünya İşaretlemesi")) then
 	CastSpellByName("Dünya İşaretlemesi");
   elseif (usebuyuengeli and (not pbuffs["Büyü Engeli"] or pbuffs["Büyü Engeli"].time < 600)) then
@@ -347,11 +347,11 @@ function BuffAllMage(useIntensification, intensificationfirst, useenergywell, us
   elseif (usebuyuozu and (not pbuffs["Büyünün Özü"] or pbuffs["Büyünün Özü"].time < 600)) then
 	if(friendly) then TargetUnit("player"); end
 	CastSpellByName("Büyünün Özü");
-  elseif((useIntensification == true ) and CD("Yoğunlaştırma") and (not intensificationfirst)) then
-    CastSpellByName("Yoğunlaştırma");
-  elseif (usecatalysis and CD("Element Katalizi")) then
-	CastSpellByName("Element Katalizi");
-  elseif(CD("Ateş Koruması")) then
+  elseif((useIntensification == true ) and CD("Intensification") and (not intensificationfirst)) then
+    CastSpellByName("Intensification");
+  elseif (usecatalysis and CD("Elemental Catalysis")) then
+	CastSpellByName("Elemental Catalysis");
+  elseif(CD("Fire Ward")) then
 		SendSystemMsg("Bufflar Tamam!");
   end
 end
@@ -363,18 +363,18 @@ function ChargeUp(chargeonly)
   
   local plasmaelapsed = os.time() - g_lastPlasmaArrow.LastCast
 
-  if((not chargeonly) and (pBuffs["Statik Alan Yükü"])) then
-	CastSpellByName("Statik Alan");
+  if((not chargeonly) and (pBuffs["Static Field Charge"])) then
+	CastSpellByName("Static Field");
 	PlaySoundByPath("interface/AddOns/KurbishFunctions/sounds/WindowsError.wav");
-  elseif((pBuffs["Yüklü"]) and (not pBuffs["Statik Alan Yükü"])) then
-	CastSpellByName("Elektrik Sıkıştırma");
-  elseif(chargeonly and (pBuffs["Statik Alan Yükü"])) then
-    CastSpellByName("Plazma Oku")
-  elseif((not tBuffs["Statik Alan"]) and (plasmaelapsed > 1)) then
-	CastSpellByName("Plazma Oku")
+  elseif((pBuffs["Static Field Charge"]) and (not pBuffs["Static Field Charge"])) then
+	CastSpellByName("Electric Compression");
+  elseif(chargeonly and (pBuffs["Static Field Charge"])) then
+    CastSpellByName("Plasma Arrow")
+  elseif((not tBuffs["Static Field"]) and (plasmaelapsed > 1)) then
+	CastSpellByName("Plasma Arrow")
   end
 	  
-  if((chargeonly) and (pBuffs["Yüklü"])) then PlaySoundByPath("interface/AddOns/KurbishFunctions/sounds/WindowsError.wav"); end
+  if((chargeonly) and (pBuffs["Static Field Charge"])) then PlaySoundByPath("interface/AddOns/KurbishFunctions/sounds/WindowsError.wav"); end
 end
 
 function BreakSkill(usehumanrules, uselightning, usesilence, usesilencefirst, warntbufflist, castifwarning, lightningmessage)
@@ -401,15 +401,15 @@ function BreakSkill(usehumanrules, uselightning, usesilence, usesilencefirst, wa
 	-- Switch castable if there is a warning and (castifwarning == true)
 	if((nil ~= castifwarning) and castifwarning and (not castable)) then castable =true; end;
 	
-	if (usesilence and castable and usesilencefirst and CD("Sessizlik")) then
-		CastSpellByName("Sessizlik");
-    elseif (uselightning and castable and CD("Yıldırım")) then
-		CastSpellByName("Yıldırım"); 
+	if (usesilence and castable and usesilencefirst and CD("Silence")) then
+		CastSpellByName("Silence");
+    elseif (uselightning and castable and CD("Lightning")) then
+		CastSpellByName("Lightning"); 
 		if((nil ~= lightningmessage) and (lightningmessage ~= "")) then SendChatMessage(lightningmessage, "SAY"); end
-	elseif (usesilence and castable and CD("Sessizlik")) then 
-		CastSpellByName("Sessizlik");
-	elseif (usehumanrules and castable and CD("Alev")) then
-		CastSpellByName("Alev");
+	elseif (usesilence and castable and CD("Silence")) then 
+		CastSpellByName("Silence");
+	elseif (usehumanrules and castable and CD("Flame")) then
+		CastSpellByName("Flame");
 	end
 	
 end
@@ -446,10 +446,10 @@ function ElectricBoltCastableOnTarget(electricbolttimeout, tbuffs)
 	castresult = false
   elseif (g_lastElectricBolt ~= nil) then
 	secselapsed = os.time() - g_lastElectricBolt.LastCast
-	-- PrintDebugMessage("Seconds elapsed since Elektrik Topu: " .. secselapsed )
+	-- PrintDebugMessage("Seconds elapsed since Electric Bolt: " .. secselapsed )
 
 	-- if((not tbuffs["Electric Flow"]) and (secselapsed > 1)) then
-	if((not tbuffs["Elektrik Akımı"]) and (secselapsed > 1)) then
+	if((not tbuffs["Electric Current"]) and (secselapsed > 1)) then
 		castresult = true;
 	elseif((g_lastElectricBolt ~= nil)  and (g_lastElectricBolt.TargetGUID ~= nil) and (g_lastElectricBolt.TargetGUID == targetguid) and (secselapsed < electricbolttimeout)) then
 		castresult = false;
@@ -468,7 +468,7 @@ end
 -- 
 --   if (g_lastCursedFangs ~= nil) then
 -- 	secselapsed = os.time() - g_lastCursedFangs.LastCast
--- 	-- PrintDebugMessage("Seconds elapsed since Elektrik Topu: " .. secselapsed )
+-- 	-- PrintDebugMessage("Seconds elapsed since Electric Bolt: " .. secselapsed )
 -- 
 -- 	if((not tbuffs["Cursed Fangs"]) and (secselapsed > 1)) then
 -- 		castresult = true;
@@ -491,7 +491,7 @@ function CursedFangCastableOnTarget(tbuffs, fangtimeout)
 
   if (g_lastCursedFangs ~= nil) then
 	secselapsed = os.time() - g_lastCursedFangs.LastCast
-	-- PrintDebugMessage("Seconds elapsed since Elektrik Topu: " .. secselapsed )
+	-- PrintDebugMessage("Seconds elapsed since Electric Bolt: " .. secselapsed )
 
 	if((not tbuffs["Cursed Fangs"]) and (secselapsed > 1)) then
 		castresult = true;
@@ -504,57 +504,61 @@ end
 
 function BossAttackMageMain(useelemental)
 	local mainclass, secondclass = UnitClass("player")
-	if (secondclass == "Gardiyan") then
-		BossAttackMageWardenLite(false,true, true, true, 11, false, true, false, true, true, true, true, false, useelemental, true, true, g_bossAttackMageMainWarnBuffs, "Plazma Oku");
-	elseif(secondclass == "Doğa Alimi") then
-		BossAttackMageDruidLite(.5,.6,true,true,11,false,true,false,true,true,true, true, false, useelemental, g_bossAttackMageMainWarnBuffs, "Plazma Oku", true);
-	elseif(secondclass == "Rahip") then
-		BossAttackMagePriestLite(.5, .4, true, true, 11, false, true, false, true, true, true, true, true, true, useelemental, g_bossAttackMageMainWarnBuffs, "Plazma Oku", true)
+	if (secondclass == "Warden") then
+		BossAttackMageWardenLite(false,true, true, true, 11, false, true, false, true, true, true, true, false, useelemental, true, true, g_bossAttackMageMainWarnBuffs, "Plasma Arrow");
+	elseif(secondclass == "Druid") then
+		BossAttackMageDruidLite(.5,.6,true,true,11,false,true,false,true,true,true, true, false, useelemental, g_bossAttackMageMainWarnBuffs, "Plasma Arrow", true);
+	elseif(secondclass == "Priest") then
+		BossAttackMagePriestLite(.5, .4, true, true, 11, false, true, false, true, true, true, true, true, true, useelemental, g_bossAttackMageMainWarnBuffs, "Plasma Arrow", true)
 	end
 end
 
 function BossAttackMageMainDps()
 	local mainclass, secondclass = UnitClass("player")
-	if (secondclass == "Gardiyan") then
+	if (secondclass == "Warden") then
 		BossAttackMageWardenLite(true,true, true, true, 11, false, false, true, true, true, true, false, false, false, false, false, g_bossAttackMageMainWarnBuffs, nil);
-	elseif(secondclass == "Doğa Alimi") then
-		BossAttackMageDruidLite(.5,.6,true,true,11,false,false,true,true,false,false,false,false,false,g_bossAttackMageMainWarnBuffs,"Plazma Oku",true);
-	elseif(secondclass == "Rahip") then
-		BossAttackMagePriestLite(.5, .4, true, true, 11, false, false, true, true, false, false, false, false, false, false, g_bossAttackMageMainWarnBuffs, "Plazma Oku", true)
+	elseif(secondclass == "Druid") then
+		BossAttackMageDruidLite(.5,.6,true,true,11,false,false,true,true,false,false,false,false,false,g_bossAttackMageMainWarnBuffs,"Plasma Arrow",true);
+	elseif(secondclass == "Priest") then
+		BossAttackMagePriestLite(.5, .4, true, true, 11, false, false, true, true, false, false, false, false, false, false, g_bossAttackMageMainWarnBuffs, "Plasma Arrow", true)
 	end
 end
 
 function ProtectSelfMageMain(phirusslot, phiruspct, recoverpct, gloveslot,holyauropercent,regeneratepct)
 	local mainclass, secondclass = UnitClass("player")
-	if (secondclass == "Gardiyan") then
+	if (secondclass == "Warden") then
 		ProtectSelfMageWarden(phirusslot,phiruspct,true, g_useGloveDebuffList,gloveslot);
-	elseif(secondclass == "Doğa Alimi") then
+	elseif(secondclass == "Druid") then
 		ProtectSelf(false,recoverpct,1.5,0,0,phirusslot,phiruspct,g_useGloveDebuffList,gloveslot);
-	elseif(secondclass == "Rahip") then
+	elseif(secondclass == "Priest") then
 		ProtectSelfPriest(holyauropercent, 0, regeneratepct, recoverpct, 0, 0, phirusslot, phiruspct, g_useGloveDebuffList, gloveslot, true);
 	end
 end
 
 function BreakSkillMageMain()
 	local mainclass, secondclass = UnitClass("player")
-	if (secondclass == "Gardiyan") then
+	if (secondclass == "Warden") then
 		BreakSkill(true,true,true,false,g_mageBreakSkillAvoidBuffs,false,'');
-	elseif(secondclass == "Doğa Alimi") then
+	elseif(secondclass == "Druid") then
 		BreakSkill(true,true,true,false,g_mageBreakSkillAvoidBuffs,false,'');
-	elseif(secondclass == "Rahip") then
+	elseif(secondclass == "Priest") then
 		BreakSkill(true,true,true,false,g_mageBreakSkillAvoidBuffs,false,'');
-	elseif(secondclass == "Büyücü") then
+	elseif(secondclass == "Mage") then
 		BreakSkill(true,true,true,false,g_mageBreakSkillAvoidBuffs,false,'');
+	elseif(secondclass == "Rogue") then
+		BreakSkill(true, true, true, false, g_mageBreakSkillAvoidBuffs, false, '')
 	end
 end
 
 function BuffAllMageMain(buffplus)
 	local mainclass, secondclass = UnitClass("player")
-	if (secondclass == "Gardiyan") then
+	if (secondclass == "Warden") then
 		BuffAllMage(buffplus, false, true, false, false, true, true, false, false, false, true, true, false,buffplus, false, false, false);
-	elseif(secondclass == "Doğa Alimi") then
+	elseif(secondclass == "Druid") then
 		BuffAllMage(buffplus,false,true,true,true,true,true,true,false,false,false,false,false,buffplus,false,false,false);
-	elseif(secondclass == "Rahip") then
+	elseif(secondclass == "Priest") then
 		BuffAllMage(buffplus,false,true,false,false,true,true,false,false,false,false,false,false,buffplus,true,true,true);
+	elseif(secondclass == "Rogue") then
+		BuffAllMage(buffplus,false,true,false,false,true,true,false,true, true, false, false,false, buffplus, false, false, false);
 	end
 end

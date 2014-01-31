@@ -44,11 +44,11 @@ function ProtectSelf(usedistract, earthProtectionPercent, recoverPercent, crysta
 	UseAction(gloveslot);
   elseif ((not pbuffs["Elektrostatik Yük"]) and CD("Elektrostatik Yük")) then
     CastSpellByName("Elektrostatik Yük");
-  elseif ((phealth <= earthProtectionPercent) and CD("Toprak Ananın Koruması") and combatstate and (not pbuffs["Crystal Candy"])) then
-	CastSpellByName("Toprak Ananın Koruması");
+  elseif ((phealth <= earthProtectionPercent) and CD("Mother Earth's Protection") and combatstate and (not pbuffs["Crystal Candy"])) then
+	CastSpellByName("Mother Earth's Protection");
   elseif (phealth <= recoverPercent) then
     if (friendly and (not isself)) then TargetUnit("player") end;
-	CastSpellByName("İyileştirme");
+	CastSpellByName("Recover");
   elseif (gloveslot > 0) then
 	UseAction(itemgloveslot);
 	PlaySoundByPath("interface/AddOns/KurbishFunctions/sounds/WindowsError.wav")

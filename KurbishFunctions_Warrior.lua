@@ -38,17 +38,17 @@ local maxelectricbuffname = "Yüksek Voltaj "..elektrikliofkecount;
 	elseif(uselavsilahi and not pbuffs["Lav Silahı"] and pmana >= manalavsilahi) then
 		CastSpellByName("Lav Silahı");
 		PrintSkill("Lav Silahı");
-	elseif (useatestopu and CD("Ateş Topu")) then 
-		CastSpellByName("Ateş Topu"); 
+	elseif (useatestopu and CD("Fireball")) then 
+		CastSpellByName("Fireball"); 
 	elseif(usegurleyen and CD("Gürleyen Kılıç") and pmana >= managurleyenkilic) then
 		CastSpellByName("Gürleyen Kılıç");
 		PrintSkill("Gürleyen Kılıç");
 	elseif(useasabiyet and CD("Asabiyet")) then
 		CastSpellByName("Asabiyet");
 		PrintSkill("Asabiyet");
-	elseif((useintensification == true ) and CD("Yoğunlaştırma")) then
-		CastSpellByName("Yoğunlaştırma");
-		PrintSkill("Yoğunlaştırma");
+	elseif((useintensification == true ) and CD("Intensification")) then
+		CastSpellByName("Intensification");
+		PrintSkill("Intensification");
 	elseif(useofkeli and CD("Öfkeli") and prage < 0.80) then
 		CastSpellByName("Öfkeli");
 		PrintSkill("Öfkeli");
@@ -58,9 +58,9 @@ local maxelectricbuffname = "Yüksek Voltaj "..elektrikliofkecount;
 	elseif((pelectriccount < elektrikliofkecount or (pbuffs[maxelectricbuffname] and pbuffs[maxelectricbuffname].time < elecktricbufftimer)) and prage >= .15)then
 		CastSpellByName("Elektrikli Öfke");
 		PrintSkill("Elektrikli Öfke");
-	elseif(useyildirimdokunusu and CD("Yıldırımın Dokunuşu") and pmana >= manayildirimindokunusu) then
-		CastSpellByName("Yıldırımın Dokunuşu");
-		PrintSkill("Yıldırımın Dokunuşu");	
+	elseif(useyildirimdokunusu and CD("Lightningın Dokunuşu") and pmana >= manayildirimindokunusu) then
+		CastSpellByName("Lightningın Dokunuşu");
+		PrintSkill("Lightningın Dokunuşu");	
 	elseif(nil ~= atakslot and atakslot > 0) then
 		UseAction(atakslot);
 		PrintSkill("Beyaz vurus kullandin..");
@@ -94,12 +94,12 @@ function BuffSelfWarriorMage(useelektrik, uselavsilahi,usefireward, useasabiyet,
 	elseif(uselavsilahi and (not pbuffs["Lav Silahı"] or pbuffs["Lav Silahı"].time < 600) and pmana >= manalavsilahi) then
 		CastSpellByName("Lav Silahı");
 		PrintSkill("Lav Silahı");
-	elseif((usefireward == true ) and (not pbuffs["Ateş Koruması"] or pbuffs["Ateş Koruması"].time < 400)) then
-		CastSpellByName("Ateş Koruması");
+	elseif((usefireward == true ) and (not pbuffs["Fire Ward"] or pbuffs["Fire Ward"].time < 400)) then
+		CastSpellByName("Fire Ward");
 	elseif(useasabiyet and CD("Asabiyet")) then
 		CastSpellByName("Asabiyet");
-	elseif((useintensification == true ) and CD("Yoğunlaştırma")) then
-		CastSpellByName("Yoğunlaştırma");
+	elseif((useintensification == true ) and CD("Intensification")) then
+		CastSpellByName("Intensification");
 	elseif(useofkeli and CD("Öfkeli") and prage < 0.80) then
 		CastSpellByName("Öfkeli");
 	elseif(usecinnet and CD("Cinnet")) then
