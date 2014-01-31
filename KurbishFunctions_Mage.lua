@@ -1,10 +1,20 @@
-function FullAttack(usefangritual, useshadow, useenergywell, useinflux, useelemental, useIntensification, usecatalyst, useplazma, electricbolttimeout, useflame, useexplosion)
+function BossAttackMageRogueLite(usefangritual, useshadow, useenergywell, useinflux, useelemental, useIntensification, usecatalyst, useplazma, usefireball, forcecursefang, usecursedfang, electricbolttimeout, useflame, useexplosion, warntbufflist)
 local friendly = (not UnitCanAttack("player","target"))
+local secselapsed = os.time() - g_lastcasttime
 local pbuffs = BuffList("player")
 local tbuffs = BuffList("target");
 local tdebuffs 
-
-	if (useelemental or (electricbolttimeout>0)) then
+local penergy = PctS("player")
+    
+	if((nil ~= warntbufflist) and UnitIsPlayer("target")) then
+		if(friendly) then 
+			WarnBuffs(tbuffs, warntbufflist);
+		else
+			WarnBuffs(ActualBuffList("target"), warntbufflist);
+		end
+	end
+	
+	if (useelemental or (electricbolttimeout>0) or usecursedfang) then
 		tdebuffs = ActualDebuffList("target")
 	end
 	
@@ -16,18 +26,24 @@ local tdebuffs
 		CastSpellByName("Energy Well");
 	elseif (useinflux and CD("Energy Influx") and (not pbuffs["Energy Influx"])) then
 		CastSpellByName("Energy Influx");
-	elseif (useelemental and CD("Elemental Weakness") and (not tdebuffs["E	lemental Weakness"])) then
+	elseif (useelemental and CD("Elemental Weakness") and (not tdebuffs["Elemental Weakness"])) then
 		CastSpellByName("Elemental Weakness");
 	elseif (useIntensification and CD("Intensification")) then 
 		CastSpellByName("Intensification"); 
 	elseif (usecatalyst and CD("Elemental Catalysis")) then
 		CastSpellByName("Elemental Catalysis");
-	elseif (useplazma and (not ((g_lastcast == "Plasma Arrow") and (g_lastcasttarget == UnitGUID("target")))) and (not pbuffs["Static Field Charge"])) then
-		CastSpellByName("Plasma Arrow");
+	elseif (usefireball and CD("Fireball")) then 
+		CastSpellByName("Fireball"); 
+	elseif(usecursedfang and forcecursefang and penergy >= .30)then
+	    CastSpellByName("Cursed Fangs");
+	elseif(usecursedfang and (not forcecursefang) and CursedFangCastableOnTarget(tdebuffs,penergy,11))then
+	    CastSpellByName("Cursed Fangs");
 	elseif ((electricbolttimeout > 0) and (not g_currentlyCasting) and ElectricBoltCastableOnTarget(electricbolttimeout, tdebuffs)) then
 		CastSpellByName("Electric Bolt");
-	elseif (useflame) then
+	elseif (useflame and (not g_currentlyCasting) and (not ((g_lastcast == "Flame") and (g_lastcasttarget == UnitGUID("target")) and (secselapsed < 1)))) then
 		CastSpellByName("Flame");
+	elseif (useplazma and (not g_currentlyCasting) and (not ((g_lastcast == "Plasma Arrow") and (g_lastcasttarget == UnitGUID("target"))))) then
+		CastSpellByName("Plasma Arrow");
 	elseif (useexplosion and (not g_currentlyCasting) and pbuffs["Static Field Charge"]) then
 		CastSpellByName("Electric Explosion");
 	else
@@ -63,7 +79,6 @@ end
 
 function BossAttackMageDruidLite(recoverhealth, earthhealth, useFireball, usemagma, electricbolttimeout, useexplosion, useflame, usemeteor, useplazma, useperception, usemagictarget, useinflux, useenergywell, useelemental, warntbufflist, finalskill, donthealpvp)
 local phealth = PctH("player")
-local penergy = PctS("player")
 local secselapsed = os.time() - g_lastcasttime
 local friendly = (not UnitCanAttack("player","target"))
 local pbuffs
@@ -481,7 +496,7 @@ end
 --   return castresult;
 -- end
 
-function CursedFangCastableOnTarget(tbuffs, fangtimeout)
+function CursedFangCastableOnTarget(tbuffs,penergy,fangtimeout)
   -- This function may fail to return proper value if the player moves while casting ElectricBolt and the target has Electric Flow Debuff cast by another player.
   -- First check if target does not have electric flow debuff
   
@@ -493,9 +508,9 @@ function CursedFangCastableOnTarget(tbuffs, fangtimeout)
 	secselapsed = os.time() - g_lastCursedFangs.LastCast
 	-- PrintDebugMessage("Seconds elapsed since Electric Bolt: " .. secselapsed )
 
-	if((not tbuffs["Cursed Fangs"]) and (secselapsed > 1)) then
+	if((not tbuffs["Cursed Fangs"]) and (penergy >= 0.3) and secselapsed > fangtimeout) then
 		castresult = true;
-	elseif((g_lastCursedFangs.TargetGUID == targetguid) and (secselapsed >= fangtimeout)) then
+	elseif((g_lastCursedFangs.TargetGUID == targetguid)) then
 		castresult = false;
 	end
   end
@@ -510,6 +525,8 @@ function BossAttackMageMain(useelemental)
 		BossAttackMageDruidLite(.5,.6,true,true,11,false,true,false,true,true,true, true, false, useelemental, g_bossAttackMageMainWarnBuffs, "Plasma Arrow", true);
 	elseif(secondclass == "Priest") then
 		BossAttackMagePriestLite(.5, .4, true, true, 11, false, true, false, true, true, true, true, true, true, useelemental, g_bossAttackMageMainWarnBuffs, "Plasma Arrow", true)
+	elseif(secondclass == "Rogue") then
+		BossAttackMageRogueLite(true, true, true, true, useelemental, true, true, false, true, false, true, 11, true, false, g_bossAttackMageMainWarnBuffs)
 	end
 end
 
@@ -521,12 +538,16 @@ function BossAttackMageMainDps()
 		BossAttackMageDruidLite(.5,.6,true,true,11,false,false,true,true,false,false,false,false,false,g_bossAttackMageMainWarnBuffs,"Plasma Arrow",true);
 	elseif(secondclass == "Priest") then
 		BossAttackMagePriestLite(.5, .4, true, true, 11, false, false, true, true, false, false, false, false, false, false, g_bossAttackMageMainWarnBuffs, "Plasma Arrow", true)
+	elseif(secondclass == "Rogue") then	
+		BossAttackMageRogueLite(false, false, false, false, false, false, false, false, true, true, true, 11, true, false, g_bossAttackMageMainWarnBuffs)
 	end
 end
 
 function ProtectSelfMageMain(phirusslot, phiruspct, recoverpct, gloveslot,holyauropercent,regeneratepct)
 	local mainclass, secondclass = UnitClass("player")
 	if (secondclass == "Warden") then
+		ProtectSelfMageWarden(phirusslot,phiruspct,true, g_useGloveDebuffList,gloveslot);
+	elseif (secondclass == "Rogue") then
 		ProtectSelfMageWarden(phirusslot,phiruspct,true, g_useGloveDebuffList,gloveslot);
 	elseif(secondclass == "Druid") then
 		ProtectSelf(false,recoverpct,1.5,0,0,phirusslot,phiruspct,g_useGloveDebuffList,gloveslot);

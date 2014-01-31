@@ -6,6 +6,7 @@ g_lastaction = ""  -- Define g_lastaction globally
 g_lastcast = ""  -- Define g_lastcast globally
 g_lastcasttarget = ""
 g_lastcasttime = 0;
+g_lastCursedFangs = { LastCast = 0 , TargetGUID = -999999999 }
 g_lastElectricBolt = { LastCast = 0 , TargetGUID = -999999999 }
 g_lastPlasmaArrow = { LastCast = 0 , TargetGUID = -999999999 }
 g_lastBriarEntwinement = { LastCast = 0 , TargetGUID = -999999999 }
@@ -60,6 +61,10 @@ function KurbishFunctions_OnEvent(this, event, arg1, arg2, arg3, arg4, arg5, arg
 			if(string.find(arg1, playername.." casts Briar Entwinement on")) then
 				g_lastBriarEntwinement.LastCast = os.time();
 				g_lastBriarEntwinement.TargetGUID = UnitGUID("target");
+				PrintDebugMessage("TABLO KAYIT : Briar Entwinement : " ..g_lastBriarEntwinement.TargetGUID.." @ "..g_lastBriarEntwinement.LastCast )
+			elseif(string.find(arg1, playername.." casts Cursed Fang on")) then
+				g_lastCursedFangs.LastCast = os.time();
+				g_lastCursedFangs.TargetGUID = UnitGUID("target");
 				PrintDebugMessage("TABLO KAYIT : Briar Entwinement : " ..g_lastBriarEntwinement.TargetGUID.." @ "..g_lastBriarEntwinement.LastCast )
 			elseif((nil ~= skillused) and string.match(skillused, "Blossoming Life")) then
 				g_lastBlossoming.LastCast = os.time();
