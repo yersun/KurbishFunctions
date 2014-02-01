@@ -14,7 +14,7 @@ g_lastWeakeningSeed = { LastCast = 0 , TargetGUID = -999999999 }
 g_lastWitheringSeed = { LastCast = 0 , TargetGUID = -999999999 }
 g_lastBlossoming = { LastCast = 0 , TargetName = "" }
 g_lastRecover = { LastCast = 0, TargetName = "" }
-g_debugEnabled = true
+g_debugEnabled = false
 g_currentlyCasting = false
 g_turnlookaround = true
 g_tank = ""

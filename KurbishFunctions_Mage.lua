@@ -342,14 +342,14 @@ function BuffAllMage(useIntensification, intensificationfirst, useenergywell, us
     CastSpellByName("Fire Ward");
   elseif ((useIntensification == true ) and CD("Intensification") and (not pbuffs["Intensification"]) and (intensificationfirst == true)) then
 	CastSpellByName("Intensification");
-  elseif ((useenergywell == true ) and CD("Energy Well") and (not pbuffs["Energy Well"])) then
-	CastSpellByName("Energy Well");
   elseif ((useperception == true ) and (not pbuffs["Perception"] or pbuffs["Perception"].time < 600)) then
 	CastSpellByName("Perception");
   elseif((usemagictarget == true ) and (not pbuffs["Magic Target"] or pbuffs["Magic Target"].time < 600)) then
 	CastSpellByName("Magic Target");
   elseif((useenergyinflux == true ) and CD("Energy Influx") and (not pbuffs["Energy Influx"])) then
     CastSpellByName("Energy Influx");
+  elseif ((useenergywell == true ) and CD("Energy Well") and (not pbuffs["Energy Well"])) then
+	CastSpellByName("Energy Well");
   elseif((usesavageblessing == true ) and (not pbuffs["Savage Blessing"] or pbuffs["Savage Blessing"].time < 600)) then
     if(friendly) then TargetUnit("player"); end
 	CastSpellByName("Savage Blessing");
