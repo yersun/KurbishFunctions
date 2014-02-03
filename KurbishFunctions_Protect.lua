@@ -42,8 +42,8 @@ function ProtectSelf(usedistract, earthProtectionPercent, recoverPercent, crysta
     UseAction(phirusSlot);
   elseif ((useGlove == true) and GetActionUsable(gloveslot) and (glcd == 0)) then
 	UseAction(gloveslot);
-  elseif ((not pbuffs["Elektrostatik Yük"]) and CD("Elektrostatik Yük")) then
-    CastSpellByName("Elektrostatik Yük");
+  elseif ((not pbuffs["Electrostatic Charge"]) and CD("Electrostatic Charge")) then
+    CastSpellByName("Electrostatic Charge");
   elseif ((phealth <= earthProtectionPercent) and CD("Mother Earth's Protection") and combatstate and (not pbuffs["Crystal Candy"])) then
 	CastSpellByName("Mother Earth's Protection");
   elseif (phealth <= recoverPercent) then
@@ -73,9 +73,9 @@ function ProtectSelfMageWarden(cpslot, cptct, useelftilsimi, glovedebuflist, glo
 	if (nil ~= cpslot and cpslot > 0 and pctHealth < cptct and GetPotUsable(cpslot)) then
 		UseAction(cpslot);
 		PrintSkill("Sağlık Potu Kullandın!");
-	elseif ((not pbuffs["Elektrostatik Yük"]) and CD("Elektrostatik Yük")) then
-		CastSpellByName("Elektrostatik Yük");
-		PrintSkill("Elektrostatik Yük");
+	elseif ((not pbuffs["Electrostatic Charge"]) and CD("Electrostatic Charge")) then
+		CastSpellByName("Electrostatic Charge");
+		PrintSkill("Electrostatic Charge");
 	elseif(useelftilsimi and CD("Elf Tılsımı") and pmana >= 150) then
 		CastSpellByName("Elf Tılsımı");
 		PrintSkill("Elf Tılsımı");

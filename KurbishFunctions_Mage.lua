@@ -473,29 +473,6 @@ function ElectricBoltCastableOnTarget(electricbolttimeout, tbuffs)
   return castresult;
 end
 
--- function CursedFangCastableOnTarget(tbuffs, fangtimeout)
---   -- This function may fail to return proper value if the player moves while casting ElectricBolt and the target has Electric Flow Debuff cast by another player.
---   -- First check if target does not have electric flow debuff
---   
---   local secselapsed = 0
---   local castresult = true;
---   local targetguid = UnitGUID("target");
--- 
---   if (g_lastCursedFangs ~= nil) then
--- 	secselapsed = os.time() - g_lastCursedFangs.LastCast
--- 	-- PrintDebugMessage("Seconds elapsed since Electric Bolt: " .. secselapsed )
--- 
--- 	if((not tbuffs["Cursed Fangs"]) and (secselapsed > 1)) then
--- 		castresult = true;
--- 	elseif((not tbuffs["Cursed Fangs"]) and (secselapsed <= 1)) then
--- 		castresult = false;
--- 	elseif((g_lastCursedFangs.TargetGUID == targetguid) and (secselapsed < fangtimeout)) then
--- 		castresult = false;
--- 	end
---   end
---   return castresult;
--- end
-
 function CursedFangCastableOnTarget(tbuffs,penergy,fangtimeout)
   -- This function may fail to return proper value if the player moves while casting ElectricBolt and the target has Electric Flow Debuff cast by another player.
   -- First check if target does not have electric flow debuff
@@ -522,7 +499,8 @@ function BossAttackMageMain(useelemental)
 	if (secondclass == "Warden") then
 		BossAttackMageWardenLite(false,true, true, true, 11, false, true, false, true, true, true, true, false, useelemental, true, true, g_bossAttackMageMainWarnBuffs, "Plasma Arrow");
 	elseif(secondclass == "Druid") then
-		BossAttackMageDruidLite(.5,.6,true,true,11,false,true,false,true,true,true, true, false, useelemental, g_bossAttackMageMainWarnBuffs, "Plasma Arrow", true);
+		BossAttackMageDruidLite(.5, 0, true, false, 11, false, true, false, false, false, false, false, false, useelemental, g_bossAttackMageMainWarnBuffs, "Plasma Arrow", true);
+		--BossAttackMageDruidLite(.5,.6,true,true,11,false,true,false,true,true,true, true, false, useelemental, g_bossAttackMageMainWarnBuffs, "Plasma Arrow", true);
 	elseif(secondclass == "Priest") then
 		BossAttackMagePriestLite(.5, .4, true, true, 11, false, true, false, true, true, true, true, true, true, useelemental, g_bossAttackMageMainWarnBuffs, "Plasma Arrow", true)
 	elseif(secondclass == "Rogue") then
@@ -535,7 +513,8 @@ function BossAttackMageMainDps()
 	if (secondclass == "Warden") then
 		BossAttackMageWardenLite(true,true, true, true, 11, false, false, true, true, true, true, false, false, false, false, false, g_bossAttackMageMainWarnBuffs, nil);
 	elseif(secondclass == "Druid") then
-		BossAttackMageDruidLite(.5,.6,true,true,11,false,false,true,true,false,false,false,false,false,g_bossAttackMageMainWarnBuffs,"Plasma Arrow",true);
+		BossAttackMageDruidLite(.5, 0, true, false, 11, false, false, true, false, false, false, false, false, false, g_bossAttackMageMainWarnBuffs, "Plasma Arrow", true);
+--		BossAttackMageDruidLite(.5,.6,true,true,11,false,false,true,true,false,false,false,false,false,g_bossAttackMageMainWarnBuffs,"Plasma Arrow",true);
 	elseif(secondclass == "Priest") then
 		BossAttackMagePriestLite(.5, .4, true, true, 11, false, false, true, true, false, false, false, false, false, false, g_bossAttackMageMainWarnBuffs, "Plasma Arrow", true)
 	elseif(secondclass == "Rogue") then	
@@ -561,7 +540,8 @@ function BreakSkillMageMain()
 	if (secondclass == "Warden") then
 		BreakSkill(true,true,true,false,g_mageBreakSkillAvoidBuffs,false,'');
 	elseif(secondclass == "Druid") then
-		BreakSkill(true,true,true,false,g_mageBreakSkillAvoidBuffs,false,'');
+		BreakSkill(true, true, false, false, g_mageBreakSkillAvoidBuffs, false, '');
+		-- BreakSkill(true,true,true,false,g_mageBreakSkillAvoidBuffs,false,'');
 	elseif(secondclass == "Priest") then
 		BreakSkill(true,true,true,false,g_mageBreakSkillAvoidBuffs,false,'');
 	elseif(secondclass == "Mage") then
@@ -576,7 +556,8 @@ function BuffAllMageMain(buffplus)
 	if (secondclass == "Warden") then
 		BuffAllMage(buffplus, false, true, false, false, true, true, false, false, false, true, true, false,buffplus, false, false, false);
 	elseif(secondclass == "Druid") then
-		BuffAllMage(buffplus,false,true,true,true,true,true,true,false,false,false,false,false,buffplus,false,false,false);
+		BuffAllMage(buffplus, false, false, false, false, false, false, true, false, false, false, false, false, buffplus, false, false, false);
+		-- BuffAllMage(buffplus,false,true,true,true,true,true,true,false,false,false,false,false,buffplus,false,false,false);
 	elseif(secondclass == "Priest") then
 		BuffAllMage(buffplus,false,true,false,false,true,true,false,false,false,false,false,false,buffplus,true,true,true);
 	elseif(secondclass == "Rogue") then

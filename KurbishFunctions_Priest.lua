@@ -39,8 +39,8 @@ function ProtectSelfPriest(holyauropercent, wavehealth, regeneratepct, urgentPer
   elseif(phealth <= wavehealth and CD("Dalga Zırhı") and (not pbuffs["Dalga Zırhı"]) and (not pdebuffs["Dalga Zırhı Etkisiz"])) then
 		if (friendly and not isself) then TargetUnit("player") end
 		CastSpellByName("Dalga Zırhı");
-  elseif(usemageelectrostatic and CD("Elektrostatik Yük") and (not pbuffs["Elektrostatik Yük"])) then
-		CastSpellByName("Elektrostatik Yük");
+  elseif(usemageelectrostatic and CD("Electrostatic Charge") and (not pbuffs["Electrostatic Charge"])) then
+		CastSpellByName("Electrostatic Charge");
   elseif((useCandy == true)  and combatstate and (phealth <= crystalCandyPercent) and GetActionUsable(crystalCandySlot) and (cccd == 0)) then
     UseAction(crystalCandySlot);
   elseif((usePhirus == true) and (phealth <= phirusPercent) and GetActionUsable(phirusSlot) and (phcd == 0)) then

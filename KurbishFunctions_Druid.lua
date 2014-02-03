@@ -826,7 +826,8 @@ function BossAttackDruidMain(useseeds)
 	if (secondclass == "Warden") then
 		NatureBossDruidMage(useseeds,useseeds,.95,1.9,.4,1.1, false, 1.8,.2,true,true);
 	elseif(secondclass == "Mage") then
-		NatureBossDruidMage(useseeds,useseeds,.95,1.9,.4,1.1, false, 1.8,.2,true,true);
+	NatureBossDruidMage(useseeds, useseeds , .9, .9, 0, .5, false, 1.8, 0, true, true);
+		--NatureBossDruidMage(useseeds,useseeds,.95,1.9,.4,1.1, false, 1.8,.2,true,true);
 	end
 	
 end
@@ -836,7 +837,8 @@ function BossAttackDruidMainDps()
 	if (secondclass == "Warden") then
 		NatureAttackDruidMage(false, false, .99,.4,.5,.3,false, false, true, true, false, true,true);
 	elseif(secondclass == "Mage") then
-		NatureAttackDruidMage(false, false, .99,.4,.5,.3,false, true, true, true, false, true,true);
+		NatureAttackDruidMage(false, false , .99, 0, .5, 0, false, true, false, true, false, true, true);
+		--NatureAttackDruidMage(false, false, .99,.4,.5,.3,false, true, true, true, false, true,true);
 	end
 end
 
@@ -862,7 +864,8 @@ function BreakSkillDruidMain(warnlist)
 	if (secondclass == "Warden") then
 		BreakSkillDruidMage(false, false, false, true, false, warnlist, false, '');
 	elseif(secondclass == "Mage") then
-		BreakSkillDruidMage(true, true, true, true, false, warnlist, false, '');
+		BreakSkillDruidMage(true, true, false, false, false, warnlist, false, '')
+		-- BreakSkillDruidMage(true, true, true, true, false, warnlist, false, '');
 	end
 end
 
