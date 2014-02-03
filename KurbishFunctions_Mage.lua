@@ -44,7 +44,7 @@ local penergy = PctS("player")
 		CastSpellByName("Flame");
 	elseif (useplazma and (not g_currentlyCasting) and (not ((g_lastcast == "Plasma Arrow") and (g_lastcasttarget == UnitGUID("target"))))) then
 		CastSpellByName("Plasma Arrow");
-	elseif (useexplosion and (not g_currentlyCasting) and pbuffs["Static Field Charge"]) then
+	elseif (useexplosion and (not g_currentlyCasting) and pbuffs["Charged"]) then
 		CastSpellByName("Electric Explosion");
 	else
 		CastSpellByName("Flame");
@@ -140,7 +140,7 @@ local isdead = UnitIsDeadOrGhost("target");
 		CastSpellByName("Fireball"); 
 	elseif ((electricbolttimeout > 0) and (not g_currentlyCasting) and ElectricBoltCastableOnTarget(electricbolttimeout, tdebuffs)) then
 		CastSpellByName("Electric Bolt");
-	elseif ((useexplosion) and (not g_currentlyCasting) and (pbuffs["Static Field Charge"])) then
+	elseif ((useexplosion) and (not g_currentlyCasting) and (pbuffs["Charged"])) then
 		CastSpellByName("Electric Explosion");
 	elseif (useflame and (not g_currentlyCasting) and (not ((g_lastcast == "Flame") and (g_lastcasttarget == UnitGUID("target")) and (secselapsed < 1)))) then
 		CastSpellByName("Flame");
@@ -213,7 +213,7 @@ local isdead = UnitIsDeadOrGhost("target");
 		CastSpellByName("Fireball"); 
 	elseif ((electricbolttimeout > 0) and (not g_currentlyCasting) and ElectricBoltCastableOnTarget(electricbolttimeout, tdebuffs)) then
 		CastSpellByName("Electric Bolt");
-	elseif ((useexplosion) and (not g_currentlyCasting) and (pbuffs["Static Field Charge"])) then
+	elseif ((useexplosion) and (not g_currentlyCasting) and (pbuffs["Charged"])) then
 		CastSpellByName("Electric Explosion");
 	elseif (useflame and (not g_currentlyCasting) and (not ((g_lastcast == "Flame") and (g_lastcasttarget == UnitGUID("target")) and (secselapsed < 1)))) then
 		CastSpellByName("Flame");
@@ -499,7 +499,7 @@ function BossAttackMageMain(useelemental)
 	if (secondclass == "Warden") then
 		BossAttackMageWardenLite(false,true, true, true, 11, false, true, false, true, true, true, true, false, useelemental, true, true, g_bossAttackMageMainWarnBuffs, "Plasma Arrow");
 	elseif(secondclass == "Druid") then
-		BossAttackMageDruidLite(.5, 0, true, false, 11, false, true, false, false, false, false, false, false, useelemental, g_bossAttackMageMainWarnBuffs, "Plasma Arrow", true);
+	    BossAttackMageDruidLite(.5, 0, true, false, 11, false, true, false, false, false, false, false, false, useelemental, g_bossAttackMageMainWarnBuffs, "Plasma Arrow", true);
 		--BossAttackMageDruidLite(.5,.6,true,true,11,false,true,false,true,true,true, true, false, useelemental, g_bossAttackMageMainWarnBuffs, "Plasma Arrow", true);
 	elseif(secondclass == "Priest") then
 		BossAttackMagePriestLite(.5, .4, true, true, 11, false, true, false, true, true, true, true, true, true, useelemental, g_bossAttackMageMainWarnBuffs, "Plasma Arrow", true)
