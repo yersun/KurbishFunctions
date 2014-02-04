@@ -1,30 +1,31 @@
-local manadogakoruma = 330;
-local manadikenlikalkan = 282;
-local manameseningucu = 330;
-local manavahsiguc = 240;
+local manaprotectionofnature = 330;
+local manabriarshield = 282;
+local manapoweroftheoak = 330;
+local manasavagepower = 240;
 local manaatestopu = 180;
-local manacaprazvurus = 350;
+local manacrosschop = 350;
 local manadelidiken = 490;
-local manaruzgardograma = 120;
-local manayukludarbe = 140;
-local manaorman = 105;
+local manawindchop = 120;
+local manachargedchop = 140;
+local manapowerofthewoodspirit = 105;
 local manakorumabicagi = 120;
 local manaelfduasi = 188;
-local manaciftdograma = 60;
+local manadoublechop = 60;
+local manafrantic = 70;
 
--- local manadogakoruma = 330;
--- local manadikenlikalkan = 210;
--- local manameseningucu = 330;
--- local manavahsiguc = 240;
+-- local manaprotectionofnature = 330;
+-- local manabriarshield = 210;
+-- local manapoweroftheoak = 330;
+-- local manasavagepower = 240;
 -- local manaatestopu = 180;
--- local manacaprazvurus = 350;
+-- local manacrosschop = 350;
 -- local manadelidiken = 490;
--- local manaruzgardograma = 120;
--- local manayukludarbe = 140;
--- local manaorman = 105;
+-- local manawindchop = 120;
+-- local manachargedchop = 140;
+-- local manapowerofthewoodspirit = 105;
 
 
-function BossAttackWardenWarriorLite(manaslot, manapct, elfrehberipct, usedogakoruma, usedikenli, usemese, usevahsi, useofkeli, usecilginlik, usehanedan, usehiddet, usesinyal,usecapraz, forcesinyal, usecanavar, usecift, usekesme, useyuklu, atakslot)
+function BossAttackWardenWarriorLite(manaslot, manapct, elvenguidencepct, useprotectionofnature, usebriarshield, useoak, usesavagepower, useenraged, useberserk, usecoatofarms, usehiddet, usesinyal,usecross, forcesinyal, usecanavar, usecift, useslash, usecharged, atakslot)
 local phealth = PctH("player")
 local prage = PctS("player")
 local pmana = UnitMana("player");
@@ -37,100 +38,100 @@ local isdead = UnitIsDeadOrGhost("target");
 -- local tbuffs = BuffList("target");
  
 	if (isdead) then
-		SendSystemMsg("Hedef Ölü..");
+		SendSystemMsg("Target Dead..");
 	elseif (nil ~= manaslot and manaslot > 0 and PctM("player") < manapct and GetPotUsable(manaslot)) then
 		UseAction(manaslot);
-		PrintSkill("Mana Potu Kullandin!");
-	elseif(ispetout and (nil ~= elfrehberipct) and (elfrehberipct > 0) and (pctmana < elfrehberipct) and CD("Elf Rehberi")) then
-		CastSpellByName("Elf Rehberi");
-		PrintSkill("Elf Rehberi");
-	elseif(usedogakoruma and not pbuffs["Doğanın Koruması"] and pmana >= manadogakoruma) then
-		CastSpellByName("Doğanın Koruması");
-		PrintSkill("Doğanın Koruması");
-	elseif(usedikenli and not pbuffs["Dikenli Kalkan"] and pmana >= manadikenlikalkan) then
-		CastSpellByName("Dikenli Kalkan");
-		PrintSkill("Dikenli Kalkan");
-	elseif(usemese and CD("Meşenin Gücü") and pmana >= manameseningucu) then
-		CastSpellByName("Meşenin Gücü");
-		PrintSkill("Meşenin Gücü");
-	elseif(usevahsi and CD("Vahşi Güç") and pmana >= manavahsiguc) then
-		CastSpellByName("Vahşi Güç");
-		PrintSkill("Vahşi Güç");
-	elseif(useofkeli and CD("Öfkeli") and prage < 0.80) then
-		CastSpellByName("Öfkeli");
-		PrintSkill("Öfkeli");
-	-- elseif(usesavunmaduzeni and CD("Savunma Düzeni") and prage >= 0.25) then
-	--	CastSpellByName("Savunma Düzeni");
-	elseif(usecilginlik and CD("Çılgınlık") and prage >= 0.25) then
-		CastSpellByName("Çılgınlık");
-		PrintSkill("Çılgınlık");
-	elseif(usehanedan and pctmana >= 0.02 and pmana >= 35 and CD("Hanedan Arması")) then
-		CastSpellByName("Hanedan Arması");
-		PrintSkill("Hanedan Arması");
+		PrintSkill("Used Mana Pot!");
+	elseif(ispetout and (nil ~= elvenguidencepct) and (elvenguidencepct > 0) and (pctmana < elvenguidencepct) and CD("Elven Guidance")) then
+		CastSpellByName("Elven Guidance");
+		PrintSkill("Elven Guidance");
+	elseif(useprotectionofnature and not pbuffs["Protection of Nature"] and pmana >= manaprotectionofnature) then
+		CastSpellByName("Protection of Nature");
+		PrintSkill("Protection of Nature");
+	elseif(usebriarshield and not pbuffs["Briar Shield"] and pmana >= manabriarshield) then
+		CastSpellByName("Briar Shield");
+		PrintSkill("Briar Shield");
+	elseif(useoak and CD("Power of the Oak") and pmana >= manapoweroftheoak) then
+		CastSpellByName("Power of the Oak");
+		PrintSkill("Power of the Oak");
+	elseif(usesavagepower and ispetout and CD("Savage Power") and pmana >= manasavagepower) then
+		CastSpellByName("Savage Power");
+		PrintSkill("Savage Power");
+	elseif(useenraged and CD("Enraged") and prage < 0.80) then
+		CastSpellByName("Enraged");
+		PrintSkill("Enraged");
+	-- elseif(usedefensiveformation and CD("Defensive Formation") and prage >= 0.25) then
+	--	CastSpellByName("Defensive Formation");
+	elseif(useberserk and CD("Berserk") and prage >= 0.25) then
+		CastSpellByName("Berserk");
+		PrintSkill("Berserk");
+	elseif(usecoatofarms and pctmana >= 0.02 and pmana >= 35 and CD("Coat of Arms")) then
+		CastSpellByName("Coat of Arms");
+		PrintSkill("Coat of Arms");
 	elseif(usehiddet and pmana >= 35 and CD("Hiddet")) then
 		CastSpellByName("Hiddet");
 		PrintSkill("Hiddet");
-	elseif(usesinyal and tdebuffs["Canavar Mührü"] and CD("Sinyal Uzmanlığı") and prage >= 0.20 and (not pbuffs["Sinyal Uzmanlığının Gücü"])) then
-		CastSpellByName("Sinyal Uzmanlığı");
-		PrintSkill("Sinyal Uzmanlığı");
-	elseif (usecapraz and CD("Çapraz Vuruş") and pmana >= manacaprazvurus) then
-		CastSpellByName("Çapraz Vuruş");
-		PrintSkill("Çapraz Vuruş");
-	elseif (usecanavar and CD("Canavar Doğrama") and prage >= 0.20) then
-		CastSpellByName("Canavar Doğrama");
-		PrintSkill("Canavar Doğrama");		
-	elseif(forcesinyal and tdebuffs["Canavar Mührü"] and CD("Sinyal Uzmanlığı") and prage >= 0.20) then
-		CastSpellByName("Sinyal Uzmanlığı");
-		PrintSkill("Sinyal Uzmanlığı");
-	elseif (usecift and CD("Çift Doğrama") and pmana >= manaciftdograma) then
-		CastSpellByName("Çift Doğrama"); 
-		PrintSkill("Çift Doğrama");
-	elseif (usekesme and prage >= 0.25) then
-		CastSpellByName("Kesme");
-		PrintSkill("Kesme");
-	elseif (useyuklu and pmana >= manayukludarbe) then
-		CastSpellByName("Static Field Charge Darbe");
-		PrintSkill("Static Field Charge Darbe");
+	elseif(usesinyal and tdebuffs["Beast Sigil"] and CD("Pulse Mastery") and prage >= 0.20 and (not pbuffs["Pulse Mastery"])) then -- Check and correct player buff here, actual buff is not Pulse Mastery
+		CastSpellByName("Pulse Mastery");
+		PrintSkill("Pulse Mastery");
+	elseif (usecross and CD("Cross Chop") and pmana >= manacrosschop) then
+		CastSpellByName("Cross Chop");
+		PrintSkill("Cross Chop");
+	elseif (usecanavar and CD("Beast Chop") and prage >= 0.20) then
+		CastSpellByName("Beast Chop");
+		PrintSkill("Beast Chop");		
+	elseif(forcesinyal and tdebuffs["Beast Sigil"] and CD("Pulse Mastery") and prage >= 0.20) then
+		CastSpellByName("Pulse Mastery");
+		PrintSkill("Pulse Mastery");
+	elseif (usecift and CD("Double Chop") and pmana >= manadoublechop) then
+		CastSpellByName("Double Chop"); 
+		PrintSkill("Double Chop");
+	elseif (useslash and prage >= 0.25) then
+		CastSpellByName("Slash");
+		PrintSkill("Slash");
+	elseif (usecharged and pmana >= manachargedchop) then
+		CastSpellByName("Charged Chop");
+		PrintSkill("Charged Chop");
 	elseif(nil ~= atakslot and atakslot > 0) then
 		UseAction(atakslot);
-		PrintSkill("Duz atak skili kullandin..");
+		PrintSkill("White Attack Skill Used..");
 	else
-		SendSystemMsg("DIKKAT! Mana/Ofke kontrol edin.");
+		SendSystemMsg("WARNING! Check Mana/Rage!.");
 	end
 end
 
-function BuffSelfWardenWarrior(usedogakoruma, usedikenli, usemese, usevahsi, useofkeli, usecilginlik, usehanedan)
+function BuffSelfWardenWarrior(useprotectionofnature, usebriarshield, useoak, usesavagepower, useenraged, useberserk, usecoatofarms)
 	local pbuffs = BuffList("player");
 	local prage = PctS("player");
 	local pmana = UnitMana("player");
 	local ispetout = UnitExists("playerpet");
 	local pctmana = PctM("player");
 	
-	if(usedogakoruma and not pbuffs["Doğanın Koruması"] and pmana >= manadogakoruma) then
-		CastSpellByName("Doğanın Koruması");
-		PrintSkill("Doğanın Koruması");
-	elseif(usedikenli and not pbuffs["Dikenli Kalkan"] and pmana >= manadikenlikalkan) then
-		CastSpellByName("Dikenli Kalkan");
-		PrintSkill("Dikenli Kalkan");
-	elseif(usemese and CD("Meşenin Gücü") and pmana >= manameseningucu) then
-		CastSpellByName("Meşenin Gücü");
-		PrintSkill("Meşenin Gücü");
-	elseif(usevahsi and CD("Vahşi Güç") and pmana >= manavahsiguc) then
-		CastSpellByName("Vahşi Güç");
-		PrintSkill("Vahşi Güç");
-	elseif(useofkeli and CD("Öfkeli") and prage < 0.80) then
-		CastSpellByName("Öfkeli");
-		PrintSkill("Öfkeli");
-	-- elseif(usesavunmaduzeni and CD("Savunma Düzeni") and prage >= 0.25) then
-	--	CastSpellByName("Savunma Düzeni");
-	elseif(usecilginlik and CD("Çılgınlık") and prage >= 0.25) then
-		CastSpellByName("Çılgınlık");
-		PrintSkill("Çılgınlık");
-	elseif(usehanedan and pctmana >= 0.02 and pmana >= 35 and CD("Hanedan Arması")) then
-		CastSpellByName("Hanedan Arması");
-		PrintSkill("Hanedan Arması");
-	elseif(CD("Dikenli Kalkan")) then
-		SendSystemMsg("Bufflar Tamam!");
+	if(useprotectionofnature and not pbuffs["Protection of Nature"] and pmana >= manaprotectionofnature) then
+		CastSpellByName("Protection of Nature");
+		PrintSkill("Protection of Nature");
+	elseif(usebriarshield and (not pbuffs["Briar Shield"]  or pbuffs["Briar Shield"].time < 600) and pmana >= manabriarshield) then
+		CastSpellByName("Briar Shield");
+		PrintSkill("Briar Shield");
+	elseif(useoak and CD("Power of the Oak") and pmana >= manapoweroftheoak) then
+		CastSpellByName("Power of the Oak");
+		PrintSkill("Power of the Oak");
+	elseif(usesavagepower and ispetout and CD("Savage Power") and pmana >= manasavagepower) then
+		CastSpellByName("Savage Power");
+		PrintSkill("Savage Power");
+	elseif(useenraged and CD("Enraged") and prage < 0.80) then
+		CastSpellByName("Enraged");
+		PrintSkill("Enraged");
+	-- elseif(usedefensiveformation and CD("Defensive Formation") and prage >= 0.25) then
+	--	CastSpellByName("Defensive Formation");
+	elseif(useberserk and CD("Berserk") and prage >= 0.25) then
+		CastSpellByName("Berserk");
+		PrintSkill("Berserk");
+	elseif(usecoatofarms and pctmana >= 0.02 and pmana >= 35 and CD("Coat of Arms")) then
+		CastSpellByName("Coat of Arms");
+		PrintSkill("Coat of Arms");
+	elseif(CD("Briar Shield")) then
+		SendSystemMsg("Buffs All Done!");
 	end
 end
 
@@ -145,7 +146,7 @@ function PrintSkill(skillname)
 	if(printSkill) then Msg("-->"..skillname); end
 end
 
-function ProtectSelfWardenWarrior(cpslot, cptct, useelftilsimi, usemeseninkalbi, useolumsuzguc, usesavunmaduzeni, usehasartransferi)
+function ProtectSelfWardenWarrior(cpslot, cptct, useelvenamulet, useheartoftheoak, useimmortalpower, usedefensiveformation, usedamagetransfer)
 	local pctHealth = PctH("player")
 	local pmana = UnitMana("player");
 	local pbuffs = BuffList("player");
@@ -154,31 +155,31 @@ function ProtectSelfWardenWarrior(cpslot, cptct, useelftilsimi, usemeseninkalbi,
 	
 	if (nil ~= cpslot and cpslot > 0 and pctHealth < cptct and GetPotUsable(cpslot)) then
 		UseAction(cpslot);
-		PrintSkill("Sağlık Potu Kullandın!");
-	elseif(useelftilsimi and CD("Elf Tılsımı") and pmana >= 150) then
-		CastSpellByName("Elf Tılsımı");
-		PrintSkill("Elf Tılsımı");
-	elseif(usemeseninkalbi and CD("Meşenin Kalbi")) then
-		CastSpellByName("Meşenin Kalbi");
-		PrintSkill("Meşenin Kalbi");
-	elseif(useolumsuzguc and CD("Ölümsüz Güç") and PctM("player") >= 0.02 and (pmana >= 35)) then
-		CastSpellByName("Ölümsüz Güç");
-		PrintSkill("Ölümsüz Güç");
-	elseif(usesavunmaduzeni and CD("Savunma Düzeni") and prage >= 0.25) then
-		CastSpellByName("Savunma Düzeni");
-		PrintSkill("Savunma Düzeni");
-	-- elseif(usesavunmaduzeni and CD("Savunma Düzeni") and prage >= 0.25) then
-	--	CastSpellByName("Savunma Düzeni");
-	elseif(usehasartransferi and CD("Hasar Transferi") and pmana >= 30 and ispetout) then
-		CastSpellByName("Hasar Transferi");
-		PrintSkill("Hasar Transferi");
-	elseif(CD("Dikenli Kalkan")) then
-		SendSystemMsg("Bütün Koruma Skilleri Atıldı!!!");
+		PrintSkill("Used Health Pot!");
+	elseif(useelvenamulet and CD("Elven Amulet") and pmana >= 150) then
+		CastSpellByName("Elven Amulet");
+		PrintSkill("Elven Amulet");
+	elseif(useheartoftheoak and CD("Heart of the Oak")) then
+		CastSpellByName("Heart of the Oak");
+		PrintSkill("Heart of the Oak");
+	elseif(useimmortalpower and CD("Immortal Power") and PctM("player") >= 0.02 and (pmana >= 35)) then
+		CastSpellByName("Immortal Power");
+		PrintSkill("Immortal Power");
+	elseif(usedefensiveformation and CD("Defensive Formation") and prage >= 0.25) then
+		CastSpellByName("Defensive Formation");
+		PrintSkill("Defensive Formation");
+	-- elseif(usedefensiveformation and CD("Defensive Formation") and prage >= 0.25) then
+	--	CastSpellByName("Defensive Formation");
+	elseif(usedamagetransfer and CD("Damage Transfer") and pmana >= 30 and ispetout) then
+		CastSpellByName("Damage Transfer");
+		PrintSkill("Damage Transfer");
+	elseif(CD("Briar Shield")) then
+		SendSystemMsg("All Protection Skills on Cooldown!!!");
 	end
 		
 end
 
-function BossAttackWardenMageLite(manaslot, manapct, elfrehberipct, usedogakoruma, usedikenli, usemese, usevahsi, usehanedan, useatestopu, usecapraz, usedeli, useruzgar, useyuklu, useorman, atakslot)
+function BossAttackWardenMageLite(manaslot, manapct, elvenguidencepct, useprotectionofnature, usebriarshield, useoak, usesavagepower, usefireball, usecross, usethorny, usewindchop, usecharged, usewoodspirit, atakslot)
 local phealth = PctH("player")
 local prage = PctS("player")
 local pmana = UnitMana("player");
@@ -191,55 +192,52 @@ local isdead = UnitIsDeadOrGhost("target");
 -- local tbuffs = BuffList("target");
  
 	if (isdead) then
-		SendSystemMsg("Hedef Ölü..");
+		SendSystemMsg("Target Dead..");
 	elseif (nil ~= manaslot and manaslot > 0 and PctM("player") < manapct and GetPotUsable(manaslot)) then
 		UseAction(manaslot);
-		PrintSkill("Mana Potu Kullandin!");
-	elseif(ispetout and (nil ~= elfrehberipct) and (elfrehberipct > 0) and (pctmana < elfrehberipct) and CD("Elf Rehberi")) then
-		CastSpellByName("Elf Rehberi");
-		PrintSkill("Elf Rehberi");
-	elseif(usedogakoruma and not pbuffs["Doğanın Koruması"] and pmana >= manadogakoruma) then
-		CastSpellByName("Doğanın Koruması");
-		PrintSkill("Doğanın Koruması");
-	elseif(usedikenli and not pbuffs["Dikenli Kalkan"] and pmana >= manadikenlikalkan) then
-		CastSpellByName("Dikenli Kalkan");
-		PrintSkill("Dikenli Kalkan");
-	elseif(usemese and CD("Meşenin Gücü") and pmana >= manameseningucu) then
-		CastSpellByName("Meşenin Gücü");
-		PrintSkill("Meşenin Gücü");
-	elseif(usevahsi and CD("Vahşi Güç") and pmana >= manavahsiguc) then
-		CastSpellByName("Vahşi Güç");
-		PrintSkill("Vahşi Güç");
-	elseif(usehanedan and pctmana >= 0.02 and pmana >= 35 and CD("Hanedan Arması")) then
-		CastSpellByName("Hanedan Arması");
-		PrintSkill("Hanedan Arması");
-	elseif (useatestopu and CD("Fireball") and pmana >= manaatestopu) then
+		PrintSkill("Used Mana Pot!");
+	elseif(ispetout and (nil ~= elvenguidencepct) and (elvenguidencepct > 0) and (pctmana < elvenguidencepct) and CD("Elven Guidance")) then
+		CastSpellByName("Elven Guidance");
+		PrintSkill("Elven Guidance");
+	elseif(useprotectionofnature and not pbuffs["Protection of Nature"] and pmana >= manaprotectionofnature) then
+		CastSpellByName("Protection of Nature");
+		PrintSkill("Protection of Nature");
+	elseif(usebriarshield and not pbuffs["Briar Shield"] and pmana >= manabriarshield) then
+		CastSpellByName("Briar Shield");
+		PrintSkill("Briar Shield");
+	elseif(useoak and CD("Power of the Oak") and pmana >= manapoweroftheoak) then
+		CastSpellByName("Power of the Oak");
+		PrintSkill("Power of the Oak");
+	elseif(usesavagepower and ispetout and CD("Savage Power") and pmana >= manasavagepower) then
+		CastSpellByName("Savage Power");
+		PrintSkill("Savage Power");
+	elseif (usefireball and CD("Fireball") and pmana >= manaatestopu) then
 		CastSpellByName("Fireball");
 		PrintSkill("Fireball");
-	elseif (usecapraz and CD("Çapraz Vuruş") and pmana >= manacaprazvurus) then
-		CastSpellByName("Çapraz Vuruş");
-		PrintSkill("Çapraz Vuruş");
-	elseif (usedeli and CD("Deli Diken") and pmana >= manadelidiken) then
-		CastSpellByName("Deli Diken"); 
-		PrintSkill("Deli Diken");
-	elseif (useruzgar and pmana >= manaruzgardograma) then
-		CastSpellByName("Rüzgar Doğraması");
-		PrintSkill("Rüzgar Doğraması");
-	elseif (useyuklu and pmana >= manayukludarbe) then
-		CastSpellByName("Static Field Charge Darbe");
-		PrintSkill("Static Field Charge Darbe");
-	elseif (useorman and pmana >= manaorman) then
-		CastSpellByName("Orman Ruhu'nun Gücü");
-		PrintSkill("Orman Ruhu'nun Gücü");
+	elseif (usecross and CD("Cross Chop") and pmana >= manacrosschop) then
+		CastSpellByName("Cross Chop");
+		PrintSkill("Cross Chop");
+	elseif (usethorny and CD("Thorny Vines") and pmana >= manadelidiken) then
+		CastSpellByName("Thorny Vines"); 
+		PrintSkill("Thorny Vines");
+	elseif (usewindchop and pmana >= manawindchop) then
+		CastSpellByName("Wind Chop");
+		PrintSkill("Wind Chop");
+	elseif (usecharged and pmana >= manachargedchop) then
+		CastSpellByName("Charged Chop");
+		PrintSkill("Charged Chop");
+	elseif (usewoodspirit and pmana >= manapowerofthewoodspirit) then
+		CastSpellByName("Power of the Wood Spirit");
+		PrintSkill("Power of the Wood Spirit");
 	elseif(nil ~= atakslot and atakslot > 0) then
 		UseAction(atakslot);
-		PrintSkill("Duz atak skili kullandin..");
+		PrintSkill("White Attack Skill Used..");
 	else
-		SendSystemMsg("DIKKAT! Mana/Ofke kontrol edin.");
+		SendSystemMsg("WARNING! Check Mana/Rage!.");
 	end
 end
 
-function ProtectSelfWardenMage(cpslot, cptct, usemeseninkalbi, usekristalkorumasi, useelftilsimi, usehasartransferi)
+function ProtectSelfWardenMage(cpslot, cptct, useheartoftheoak, usekristalkorumasi, useelvenamulet, usedamagetransfer)
 	local pctHealth = PctH("player")
 	local pmana = UnitMana("player");
 	local pbuffs = BuffList("player");
@@ -248,81 +246,81 @@ function ProtectSelfWardenMage(cpslot, cptct, usemeseninkalbi, usekristalkorumas
 	
 	if (nil ~= cpslot and cpslot > 0 and pctHealth < cptct and GetPotUsable(cpslot)) then
 		UseAction(cpslot);
-		PrintSkill("Sağlık Potu Kullandın!");
-	elseif(usemeseninkalbi and CD("Meşenin Kalbi")) then
-		CastSpellByName("Meşenin Kalbi");
-		PrintSkill("Meşenin Kalbi");
+		PrintSkill("Used Health Pot!");
+	elseif(useheartoftheoak and CD("Heart of the Oak")) then
+		CastSpellByName("Heart of the Oak");
+		PrintSkill("Heart of the Oak");
 	elseif(usekristalkorumasi and CD("Kristal Koruması")) then
 		CastSpellByName("Kristal Koruması");
 		PrintSkill("Kristal Koruması");
-	elseif(useelftilsimi and CD("Elf Tılsımı") and pmana >= 150) then
-		CastSpellByName("Elf Tılsımı");
-		PrintSkill("Elf Tılsımı");
-	elseif(usehasartransferi and CD("Hasar Transferi") and pmana >= 30 and ispetout) then
-		CastSpellByName("Hasar Transferi");
-		PrintSkill("Hasar Transferi");
-	elseif(CD("Dikenli Kalkan")) then
-		SendSystemMsg("Bütün Koruma Skilleri Atıldı!!!");
+	elseif(useelvenamulet and CD("Elven Amulet") and pmana >= 150) then
+		CastSpellByName("Elven Amulet");
+		PrintSkill("Elven Amulet");
+	elseif(usedamagetransfer and CD("Damage Transfer") and pmana >= 30 and ispetout) then
+		CastSpellByName("Damage Transfer");
+		PrintSkill("Damage Transfer");
+	elseif(CD("Briar Shield")) then
+		SendSystemMsg("All Protection Skills on Cooldown!!!");
 	end
 		
 end
 
-function BuffSelfWardenMage(usedogakoruma, usedikenli, useateskorumasi, usemese, usevahsi,  elfrehberipct, usehanedan, useyogunlastirma)
+function BuffSelfWardenMage(useprotectionofnature, usebriarshield, useateskorumasi, useoak, usesavagepower,  elvenguidencepct, usecoatofarms, useyogunlastirma)
 	local pbuffs = BuffList("player");
 	local prage = PctS("player");
 	local pmana = UnitMana("player");
 	local ispetout = UnitExists("playerpet");
 	local pctmana = PctM("player");
 	
-	if(usedogakoruma and not pbuffs["Doğanın Koruması"] and pmana >= manadogakoruma) then
-		CastSpellByName("Doğanın Koruması");
-		PrintSkill("Doğanın Koruması");
-	elseif(usedikenli and not pbuffs["Dikenli Kalkan"] and pmana >= manadikenlikalkan) then
-		CastSpellByName("Dikenli Kalkan");
-		PrintSkill("Dikenli Kalkan");
+	if(useprotectionofnature and not pbuffs["Protection of Nature"] and pmana >= manaprotectionofnature) then
+		CastSpellByName("Protection of Nature");
+		PrintSkill("Protection of Nature");
+	elseif(usebriarshield and not pbuffs["Briar Shield"] and pmana >= manabriarshield) then
+		CastSpellByName("Briar Shield");
+		PrintSkill("Briar Shield");
 	elseif((useateskorumasi == true ) and (not pbuffs["Fire Ward"])) then
 		CastSpellByName("Fire Ward");
-	elseif(usemese and CD("Meşenin Gücü") and pmana >= manameseningucu) then
-		CastSpellByName("Meşenin Gücü");
-		PrintSkill("Meşenin Gücü");
-	elseif(usevahsi and CD("Vahşi Güç") and pmana >= manavahsiguc) then
-		CastSpellByName("Vahşi Güç");
-		PrintSkill("Vahşi Güç");
-	-- elseif(usesavunmaduzeni and CD("Savunma Düzeni") and prage >= 0.25) then
-	--	CastSpellByName("Savunma Düzeni");
-	elseif(ispetout and (nil ~= elfrehberipct) and (elfrehberipct > 0) and (pctmana < elfrehberipct) and CD("Elf Rehberi")) then
-		CastSpellByName("Elf Rehberi");
-		PrintSkill("Elf Rehberi");
-	elseif(usehanedan and pctmana >= 0.02 and pmana >= 35 and CD("Hanedan Arması")) then
-		CastSpellByName("Hanedan Arması");
-		PrintSkill("Hanedan Arması");
+	elseif(useoak and CD("Power of the Oak") and pmana >= manapoweroftheoak) then
+		CastSpellByName("Power of the Oak");
+		PrintSkill("Power of the Oak");
+	elseif(usesavagepower and ispetout and CD("Savage Power") and pmana >= manasavagepower) then
+		CastSpellByName("Savage Power");
+		PrintSkill("Savage Power");
+	-- elseif(usedefensiveformation and CD("Defensive Formation") and prage >= 0.25) then
+	--	CastSpellByName("Defensive Formation");
+	elseif(ispetout and (nil ~= elvenguidencepct) and (elvenguidencepct > 0) and (pctmana < elvenguidencepct) and CD("Elven Guidance")) then
+		CastSpellByName("Elven Guidance");
+		PrintSkill("Elven Guidance");
+	elseif(usecoatofarms and pctmana >= 0.02 and pmana >= 35 and CD("Coat of Arms")) then
+		CastSpellByName("Coat of Arms");
+		PrintSkill("Coat of Arms");
 	elseif(useyogunlastirma and CD("Intensification")) then
 		CastSpellByName("Intensification");
 		PrintSkill("Intensification");
-	elseif(CD("Dikenli Kalkan")) then
-		SendSystemMsg("Bufflar Tamam!");
+	elseif(CD("Briar Shield")) then
+		SendSystemMsg("Buffs All Done!");
 	end
 end
 
-function AreaAttackWarden(usedeli, useorman)
+function AreaAttackWarden(usefrantic, usewoodspirit)
 	local pmana = UnitMana("player");
 	local isdead = UnitIsDeadOrGhost("target");
 	local friendly = (not UnitCanAttack("player","target"));
 	
-	if (usedeli and CD("Deli Diken") and pmana >= manadelidiken) then
-		CastSpellByName("Deli Diken"); 
-		PrintSkill("Deli Diken");
-	elseif (useorman and (isdead or friendly)) then
-		SendSystemMsg("Hedef ölü veya düşman değil.");
-	elseif (useorman and pmana >= manaorman) then
-		CastSpellByName("Orman Ruhu'nun Gücü");
-		PrintSkill("Orman Ruhu'nun Gücü");
+	if (usefrantic and CD("Frantic Briar") and pmana >= manafrantic) then
+		CastSpellByName("Frantic Briar"); 
+		PrintSkill("Frantic Briar");
+	elseif (usewoodspirit and (isdead or friendly)) then
+		SendSystemMsg("Target Dead or not enemy.");
+	elseif (usewoodspirit and pmana >= manapowerofthewoodspirit) then
+		CastSpellByName("Power of the Wood Spirit");
+		PrintSkill("Power of the Wood Spirit");
 	else
-		SendSystemMsg("Alan Skilleri Beklemede.");
+		SendSystemMsg("Area skills on cooldown.");
 	end
 end
 
-function BossAttackWardenDruidLite(recoverpct, toprakanapct, manaslot, manapct, elfrehberipct, usedogakoruma, usedikenli, usetoprakruhu, usemese, usevahsi, useelfduasi, usethornsigil, usecapraz, korumabicagitimer, usedeli, useyuklu, useorman, atakslot)
+function BossAttackWardenDruidLite(recoverpct, motherearthpct, manaslot, manapct, elvenguidencepct, useprotectionofnature, usebriarshield, useearthspirit, useoak, usesavagepower, useelfduasi, usethornsigil, usecross, korumabicagitimer, usethorny, usecharged, usewoodspirit, atakslot)
 local phealth = PctH("player")
 local prage = PctS("player")
 local pmana = UnitMana("player");
@@ -336,11 +334,11 @@ local isself = UnitIsUnit("target","player");
 -- local tbuffs = BuffList("target");
  
 	if (isdead) then
-		SendSystemMsg("Hedef Ölü..");
+		SendSystemMsg("Target Dead..");
 	elseif (friendly and (not isself)) then
 		PrintSkill("Recover");
 		CastSpellByName("Recover");
-	elseif ((phealth <= toprakanapct) and CD("Mother Earth's Protection") and pmana >= 100) then
+	elseif ((phealth <= motherearthpct) and CD("Mother Earth's Protection") and pmana >= 100) then
 		if (friendly and (not isself)) then TargetUnit("player") end;
 		CastSpellByName("Mother Earth's Protection");
 	elseif ((phealth <= recoverpct)) then
@@ -348,56 +346,56 @@ local isself = UnitIsUnit("target","player");
 		if (friendly and (not isself)) then TargetUnit("player") end;
 		CastSpellByName("Recover");
 	elseif (nil ~= manaslot and manaslot > 0 and PctM("player") < manapct and GetPotUsable(manaslot)) then
-		PrintSkill("Mana Potu Kullandin!");
+		PrintSkill("Used Mana Pot!");
 		UseAction(manaslot);
-	elseif(ispetout and (nil ~= elfrehberipct) and (elfrehberipct > 0) and (pctmana < elfrehberipct) and CD("Elf Rehberi")) then
-		PrintSkill("Elf Rehberi");
-		CastSpellByName("Elf Rehberi");
-	elseif(usedogakoruma and not pbuffs["Doğanın Koruması"] and pmana >= manadogakoruma) then
-		PrintSkill("Doğanın Koruması");
-		CastSpellByName("Doğanın Koruması");
-	elseif(usedikenli and not pbuffs["Dikenli Kalkan"] and pmana >= manadikenlikalkan) then
-		PrintSkill("Dikenli Kalkan");
-		CastSpellByName("Dikenli Kalkan");
-	elseif((usetoprakruhu == true ) and (not pbuffs["Toprak Ruhu Esansı"])) then
-		PrintSkill("Toprak Ruhu Esansı");
-		CastSpellByName("Toprak Ruhu Esansı");
-	elseif(usemese and CD("Meşenin Gücü") and pmana >= manameseningucu) then
-		PrintSkill("Meşenin Gücü");
-		CastSpellByName("Meşenin Gücü");
-	elseif(usevahsi and CD("Vahşi Güç") and pmana >= manavahsiguc) then
-		PrintSkill("Vahşi Güç");
-		CastSpellByName("Vahşi Güç");
-	elseif(useelfduasi and ispetout and CD("Elf Duası") and pmana >= manaelfduasi) then
-		PrintSkill("Elf Duası");
-		CastSpellByName("Elf Duası");
-	elseif(usethornsigil and (not friendly) and CD("Diken Mühürü") and pmana >= 35) then
-		PrintSkill("Diken Mühürü");	
-		CastSpellByName("Diken Mühürü");
-	elseif (usecapraz and CD("Çapraz Vuruş") and pmana >= manacaprazvurus) then
-		PrintSkill("Çapraz Vuruş");
-		CastSpellByName("Çapraz Vuruş");
-	elseif ((not pbuffs["Koruma Bıçağı"] or pbuffs["Koruma Bıçağı"].time <= korumabicagitimer) and CD("Koruma Bıçağı") and pmana >= manakorumabicagi) then
-		PrintSkill("Koruma Bıçağı");
-		CastSpellByName("Koruma Bıçağı");
-	elseif (usedeli and CD("Deli Diken") and pmana >= manadelidiken) then
-		PrintSkill("Deli Diken");
-		CastSpellByName("Deli Diken"); 
-	elseif (useyuklu and CD("Static Field Charge Darbe") and pmana >= manayukludarbe) then
-		PrintSkill("Static Field Charge Darbe");
-		CastSpellByName("Static Field Charge Darbe");
-	elseif (useorman and pmana >= manaorman) then
-		PrintSkill("Orman Ruhu'nun Gücü");
-		CastSpellByName("Orman Ruhu'nun Gücü");
+	elseif(ispetout and (nil ~= elvenguidencepct) and (elvenguidencepct > 0) and (pctmana < elvenguidencepct) and CD("Elven Guidance")) then
+		PrintSkill("Elven Guidance");
+		CastSpellByName("Elven Guidance");
+	elseif(useprotectionofnature and not pbuffs["Protection of Nature"] and pmana >= manaprotectionofnature) then
+		PrintSkill("Protection of Nature");
+		CastSpellByName("Protection of Nature");
+	elseif(usebriarshield and not pbuffs["Briar Shield"] and pmana >= manabriarshield) then
+		PrintSkill("Briar Shield");
+		CastSpellByName("Briar Shield");
+	elseif((useearthspirit == true ) and (not pbuffs["Earth Spirit Essence"])) then
+		PrintSkill("Earth Spirit Essence");
+		CastSpellByName("Earth Spirit Essence");
+	elseif(useoak and CD("Power of the Oak") and pmana >= manapoweroftheoak) then
+		PrintSkill("Power of the Oak");
+		CastSpellByName("Power of the Oak");
+	elseif(usesavagepower and ispetout and CD("Savage Power") and pmana >= manasavagepower) then
+		PrintSkill("Savage Power");
+		CastSpellByName("Savage Power");
+	elseif(useelfduasi and ispetout and CD("Elven Prayer") and pmana >= manaelfduasi) then
+		PrintSkill("Elven Prayer");
+		CastSpellByName("Elven Prayer");
+	elseif(usethornsigil and (not friendly) and CD("Thorn Sigil") and pmana >= 35) then
+		PrintSkill("Thorn Sigil");	
+		CastSpellByName("Thorn Sigil");
+	elseif (usecross and CD("Cross Chop") and pmana >= manacrosschop) then
+		PrintSkill("Cross Chop");
+		CastSpellByName("Cross Chop");
+	elseif ((not pbuffs["Blade of Protection"] or pbuffs["Blade of Protection"].time <= korumabicagitimer) and CD("Blade of Protection") and pmana >= manakorumabicagi) then
+		PrintSkill("Blade of Protection");
+		CastSpellByName("Blade of Protection");
+	elseif (usethorny and CD("Thorny Vines") and pmana >= manadelidiken) then
+		PrintSkill("Thorny Vines");
+		CastSpellByName("Thorny Vines"); 
+	elseif (usecharged and CD("Charged Chop") and pmana >= manachargedchop) then
+		PrintSkill("Charged Chop");
+		CastSpellByName("Charged Chop");
+	elseif (usewoodspirit and pmana >= manapowerofthewoodspirit) then
+		PrintSkill("Power of the Wood Spirit");
+		CastSpellByName("Power of the Wood Spirit");
 	elseif(nil ~= atakslot and atakslot > 0) then
-		PrintSkill("Duz atak skili kullandin..");
+		PrintSkill("White Attack Skill Used..");
 		UseAction(atakslot);
 	else
-		SendSystemMsg("DIKKAT! Mana/Ofke kontrol edin.");
+		SendSystemMsg("WARNING! Check Mana/Rage!.");
 	end
 end
 
-function ProtectSelfWardenDruid(recoverpct, cpslot, cptct, toprakanapct, useelftilsimi, usemeseninkalbi,  usehasartransferi)
+function ProtectSelfWardenDruid(recoverpct, cpslot, cptct, motherearthpct, useelvenamulet, useheartoftheoak,  usedamagetransfer)
 	local pctHealth = PctH("player")
 	local pmana = UnitMana("player");
 	local pbuffs = BuffList("player");
@@ -411,29 +409,29 @@ function ProtectSelfWardenDruid(recoverpct, cpslot, cptct, toprakanapct, useelft
 		CastSpellByName("Recover");
 	elseif (nil ~= cpslot and cpslot > 0 and pctHealth < cptct and GetPotUsable(cpslot)) then
 		UseAction(cpslot);
-		PrintSkill("Sağlık Potu Kullandın!");
-	elseif ((pctHealth <= toprakanapct) and CD("Mother Earth's Protection") and pmana >= 100) then
+		PrintSkill("Used Health Pot!");
+	elseif ((pctHealth <= motherearthpct) and CD("Mother Earth's Protection") and pmana >= 100) then
 		if (friendly and (not isself)) then TargetUnit("player") end;
 		CastSpellByName("Mother Earth's Protection");
-	elseif(useelftilsimi and CD("Elf Tılsımı") and pmana >= 150) then
-		CastSpellByName("Elf Tılsımı");
-		PrintSkill("Elf Tılsımı");
-	elseif(usemeseninkalbi and CD("Meşenin Kalbi")) then
-		CastSpellByName("Meşenin Kalbi");
-		PrintSkill("Meşenin Kalbi");
-	elseif(usehasartransferi and CD("Hasar Transferi") and pmana >= 30 and ispetout) then
-		CastSpellByName("Hasar Transferi");
-		PrintSkill("Hasar Transferi");
+	elseif(useelvenamulet and CD("Elven Amulet") and pmana >= 150) then
+		CastSpellByName("Elven Amulet");
+		PrintSkill("Elven Amulet");
+	elseif(useheartoftheoak and CD("Heart of the Oak")) then
+		CastSpellByName("Heart of the Oak");
+		PrintSkill("Heart of the Oak");
+	elseif(usedamagetransfer and CD("Damage Transfer") and pmana >= 30 and ispetout) then
+		CastSpellByName("Damage Transfer");
+		PrintSkill("Damage Transfer");
 	elseif (pctHealth <= recoverpct) then
 		if (friendly and (not isself)) then TargetUnit("player") end;
 		CastSpellByName("Recover");
-	elseif(CD("Dikenli Kalkan")) then
-		SendSystemMsg("Bütün Koruma Skilleri Atıldı!!!");
+	elseif(CD("Briar Shield")) then
+		SendSystemMsg("All Protection Skills on Cooldown!!!");
 	end
 		
 end
 
-function BuffSelfWardenDruid(usedogakoruma, usedikenli, usetoprakruhu, usesavage, usemese, usevahsi,  elfrehberipct, useelfduasi)
+function BuffSelfWardenDruid(useprotectionofnature, usebriarshield, useearthspirit, usesavage, useoak, usesavagepower,  elvenguidencepct, useelfduasi)
 	local pbuffs = BuffList("player");
 	local prage = PctS("player");
 	local pmana = UnitMana("player");
@@ -442,33 +440,33 @@ function BuffSelfWardenDruid(usedogakoruma, usedikenli, usetoprakruhu, usesavage
 	local friendly = (not UnitCanAttack("player","target"));
 	local isself = UnitName("target") == UnitName("player");
 	
-	if(usedogakoruma and (not pbuffs["Doğanın Koruması"] or pbuffs["Doğanın Koruması"].time < 240) and pmana >= manadogakoruma) then
-		CastSpellByName("Doğanın Koruması");
-		PrintSkill("Doğanın Koruması");
-	elseif(usedikenli and (not pbuffs["Dikenli Kalkan"] or pbuffs["Dikenli Kalkan"].time < 600) and pmana >= manadikenlikalkan) then
-		CastSpellByName("Dikenli Kalkan");
-		PrintSkill("Dikenli Kalkan");
-	elseif((usetoprakruhu == true ) and (not pbuffs["Toprak Ruhu Esansı"]  or pbuffs["Toprak Ruhu Esansı"].time < 600)) then
-		CastSpellByName("Toprak Ruhu Esansı");
+	if(useprotectionofnature and (not pbuffs["Protection of Nature"] or pbuffs["Protection of Nature"].time < 240) and pmana >= manaprotectionofnature) then
+		CastSpellByName("Protection of Nature");
+		PrintSkill("Protection of Nature");
+	elseif(usebriarshield and (not pbuffs["Briar Shield"] or pbuffs["Briar Shield"].time < 600) and pmana >= manabriarshield) then
+		CastSpellByName("Briar Shield");
+		PrintSkill("Briar Shield");
+	elseif((useearthspirit == true ) and (not pbuffs["Earth Spirit Essence"]  or pbuffs["Earth Spirit Essence"].time < 600)) then
+		CastSpellByName("Earth Spirit Essence");
 	elseif (usesavage and (not pbuffs["Savage Blessing"] or pbuffs["Savage Blessing"].time < 600)) then
 		if((not isself) and friendly) then TargetUnit("player"); end
 		CastSpellByName("Savage Blessing");
-	elseif(usemese and CD("Meşenin Gücü") and pmana >= manameseningucu) then
-		CastSpellByName("Meşenin Gücü");
-		PrintSkill("Meşenin Gücü");
-	elseif(usevahsi and CD("Vahşi Güç") and pmana >= manavahsiguc) then
-		CastSpellByName("Vahşi Güç");
-		PrintSkill("Vahşi Güç");
-	-- elseif(usesavunmaduzeni and CD("Savunma Düzeni") and prage >= 0.25) then
-	--	CastSpellByName("Savunma Düzeni");
-	elseif(ispetout and (nil ~= elfrehberipct) and (elfrehberipct > 0) and (pctmana < elfrehberipct) and CD("Elf Rehberi")) then
-		CastSpellByName("Elf Rehberi");
-		PrintSkill("Elf Rehberi");
-	elseif(useelfduasi and ispetout and CD("Elf Duası") and pmana >= manaelfduasi) then
-		CastSpellByName("Elf Duası");
-		PrintSkill("Elf Duası");
-	elseif(CD("Dikenli Kalkan")) then
-		SendSystemMsg("Bufflar Tamam!");
+	elseif(useoak and CD("Power of the Oak") and pmana >= manapoweroftheoak) then
+		CastSpellByName("Power of the Oak");
+		PrintSkill("Power of the Oak");
+	elseif(usesavagepower and ispetout and CD("Savage Power") and pmana >= manasavagepower) then
+		CastSpellByName("Savage Power");
+		PrintSkill("Savage Power");
+	-- elseif(usedefensiveformation and CD("Defensive Formation") and prage >= 0.25) then
+	--	CastSpellByName("Defensive Formation");
+	elseif(ispetout and (nil ~= elvenguidencepct) and (elvenguidencepct > 0) and (pctmana < elvenguidencepct) and CD("Elven Guidance")) then
+		CastSpellByName("Elven Guidance");
+		PrintSkill("Elven Guidance");
+	elseif(useelfduasi and ispetout and CD("Elven Prayer") and pmana >= manaelfduasi) then
+		CastSpellByName("Elven Prayer");
+		PrintSkill("Elven Prayer");
+	elseif(CD("Briar Shield")) then
+		SendSystemMsg("Buffs All Done!");
 	end
 end
 
@@ -477,25 +475,25 @@ function GetPetOut()
 	local ispetout = UnitExists("playerpet");
 	local spell_name = UnitCastingTime("player")
 	
-	if(combatstate and CD("Meşenin Kalbi")) then
-		CastSpellByName("Meşenin Kalbi");
-		PrintSkill("Meşenin Kalbi");
+	if(combatstate and CD("Heart of the Oak")) then
+		CastSpellByName("Heart of the Oak");
+		PrintSkill("Heart of the Oak");
 	elseif((nil == spell_name) and (not ispetout)) then
-		CastSpellByName("Meşenin Ruhunu Çağır");
-		PrintSkill("Meşenin Ruhunu Çağır");
+		CastSpellByName("Summon Spirit of the Oak");
+		PrintSkill("Summon Spirit of the Oak");
 	elseif(ispetout) then
-		SendSystemMsg("Pet Dışarıda!");
+		SendSystemMsg("Pet Already Out!");
 	end
 end
 
-function BossAttackWardenMain(getagro,recoverpct, toprakanapct, manaslot, manapct,elfrehberipct, atakslot, forcesinyal,usehiddet)
+function BossAttackWardenMain(getagro,recoverpct, motherearthpct, manaslot, manapct,elvenguidencepct, atakslot, forcesinyal,usehiddet)
 	local mainclass, secondclass = UnitClass("player")
 	if (secondclass == "Druid") then
-		BossAttackWardenDruidLite(recoverpct, toprakanapct, manaslot, manapct, elfrehberipct, true, true, true, false, false, true, getagro, getagro, 2, false, true, false, atakslot);
+		BossAttackWardenDruidLite(recoverpct, motherearthpct, manaslot, manapct, elvenguidencepct, true, true, true, false, false, true, getagro, getagro, 2, false, true, false, atakslot);
 	elseif(secondclass == "Warrior") then
-		BossAttackWardenWarriorLite(manaslot, manapct, elfrehberipct, true, true, true, true, true, false, true, usehiddet, true,true, forcesinyal, true, true, true, true, 1);
+		BossAttackWardenWarriorLite(manaslot, manapct, elvenguidencepct, true, true, true, true, true, false, true, usehiddet, true,true, forcesinyal, true, true, true, true, 1);
 	else
-		SendSystemMsg("Yan Sınıf Tanımsız??");
+		SendSystemMsg("Side class undefined??");
 	end
 end
 
@@ -506,7 +504,7 @@ function BossAttackWardenMainDps(atakslot)
 	elseif(secondclass == "Warrior") then
 		BossAttackWardenWarriorLite(0, 0, 0, false, false, false, false, false, false, false, false, false,false, false, true, true, true, true, atakslot);
 	else
-		SendSystemMsg("Yan Sınıf Tanımsız??");
+		SendSystemMsg("Side class undefined??");
 	end
 end
 
@@ -525,18 +523,18 @@ function BuffAllWardenMain(buffplus)
 			BuffSelfWardenWarrior(true, true, true, true, true, false, true);
 		 end
 	else
-		SendSystemMsg("Yan Sınıf Tanımsız??");
+		SendSystemMsg("Side class undefined??");
 	end
 end
 
-function ProtectSelfWardenMain(recoverpct, cpslot, cptct, toprakanpct, useelftilsimi, usemeseninkalbi,  usehasartransferi, useolumsuzguc, usesavunmaduzeni)
+function ProtectSelfWardenMain(recoverpct, cpslot, cptct, toprakanpct, useelvenamulet, useheartoftheoak,  usedamagetransfer, useimmortalpower, usedefensiveformation)
 	local mainclass, secondclass = UnitClass("player")
 	if (secondclass == "Druid") then
-		ProtectSelfWardenDruid(recoverpct, cpslot, cptct, toprakanpct, useelftilsimi, usemeseninkalbi,  usehasartransferi)
+		ProtectSelfWardenDruid(recoverpct, cpslot, cptct, toprakanpct, useelvenamulet, useheartoftheoak,  usedamagetransfer)
 	elseif(secondclass == "Warrior") then
-		ProtectSelfWardenWarrior(cpslot, cptct, useelftilsimi, usemeseninkalbi, useolumsuzguc, usesavunmaduzeni, usehasartransferi)
+		ProtectSelfWardenWarrior(cpslot, cptct, useelvenamulet, useheartoftheoak, useimmortalpower, usedefensiveformation, usedamagetransfer)
 	else
-		SendSystemMsg("Yan Sınıf Tanımsız??");
+		SendSystemMsg("Side class undefined??");
 	end
 end
 

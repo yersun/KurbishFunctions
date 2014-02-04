@@ -56,7 +56,7 @@ function ProtectSelf(usedistract, earthProtectionPercent, recoverPercent, crysta
   
 end
 
-function ProtectSelfMageWarden(cpslot, cptct, useelftilsimi, glovedebuflist, gloveslot)
+function ProtectSelfMageWarden(cpslot, cptct, useelvenamulet, glovedebuflist, gloveslot)
 	local pctHealth = PctH("player")
 	local pmana = UnitMana("player");
 	local pbuffs = BuffList("player");
@@ -72,13 +72,13 @@ function ProtectSelfMageWarden(cpslot, cptct, useelftilsimi, glovedebuflist, glo
   
 	if (nil ~= cpslot and cpslot > 0 and pctHealth < cptct and GetPotUsable(cpslot)) then
 		UseAction(cpslot);
-		PrintSkill("Sağlık Potu Kullandın!");
+		PrintSkill("Used Health Pot!");
 	elseif ((not pbuffs["Electrostatic Charge"]) and CD("Electrostatic Charge")) then
 		CastSpellByName("Electrostatic Charge");
 		PrintSkill("Electrostatic Charge");
-	elseif(useelftilsimi and CD("Elf Tılsımı") and pmana >= 150) then
-		CastSpellByName("Elf Tılsımı");
-		PrintSkill("Elf Tılsımı");
+	elseif(useelvenamulet and CD("Elven Amulet") and pmana >= 150) then
+		CastSpellByName("Elven Amulet");
+		PrintSkill("Elven Amulet");
 	elseif ((useGlove == true) and GetActionUsable(gloveslot) and (glcd == 0)) then
 		UseAction(gloveslot);
 	else
@@ -108,10 +108,10 @@ function ProtectSelfWarriorMage(cpslot, cptct, usetehlike, useicgudu, savunmaduz
 		PrintSkill("Hayatta Kalma İç Güdüsü");
 	elseif (nil ~= cpslot and cpslot > 0 and pctHealth < cptct and GetPotUsable(cpslot)) then
 		UseAction(cpslot);
-		PrintSkill("Sağlık Potu Kullandın!");
-	elseif(pctHealth <= savunmaduzenipct and CD("Savunma Düzeni") and prage >= .25) then
-		CastSpellByName("Savunma Düzeni");
-		PrintSkill("Savunma Düzeni");
+		PrintSkill("Used Health Pot!");
+	elseif(pctHealth <= savunmaduzenipct and CD("Defensive Formation") and prage >= .25) then
+		CastSpellByName("Defensive Formation");
+		PrintSkill("Defensive Formation");
 	elseif ((useGlove == true) and GetActionUsable(gloveslot) and (glcd == 0)) then
 		UseAction(gloveslot);
 	else

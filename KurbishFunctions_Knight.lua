@@ -132,7 +132,7 @@ function ProtectKnightPriest(hphiruspct, hphirusslot, useyenileme, usekararlilik
 		PrintDebugMessage("TANK ACTION : Use mana firus!");
 		UseAction(mphirusslot);
 	elseif(CD("Büyü Engeli")) then
-		SendSystemMsg("Bütün Koruma Skilleri Atıldı!!!");
+		SendSystemMsg("All Protection Skills on Cooldown!!!");
 	end
 end
 

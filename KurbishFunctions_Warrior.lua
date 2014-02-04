@@ -2,18 +2,19 @@ local manaelektriksaldirisi = 264;
 local manalavsilahi = 156;
 local managurleyenkilic = 30;
 local manayildirimindokunusu = 30;
--- local manavahsiguc = 240;
+
+-- local manasavagepower = 240;
 -- local manaatestopu = 180;
--- local manacaprazvurus = 350;
+-- local manacrosschop = 350;
 -- local manadelidiken = 490;
--- local manaruzgardograma = 120;
--- local manayukludarbe = 148;
--- local manaorman = 105;
+-- local manawindchop = 120;
+-- local manachargedchop = 148;
+-- local manapowerofthewoodspirit = 105;
 -- local manakorumabicagi = 140;
 -- local manaelfduasi = 140;
--- local manaciftdograma = 60;
+-- local manadoublechop = 60;
 
-function BossAttackWarriorMageLite(manaslot, manapct, useelektrik, uselavsilahi, useatestopu, usegurleyen, useasabiyet, useintensification, useofkeli, usecinnet, elektrikliofkecount, useyildirimdokunusu, atakslot, elecktricbufftimer)
+function BossAttackWarriorMageLite(manaslot, manapct, useelektrik, uselavsilahi, usefireball, usegurleyen, useasabiyet, useintensification, useenraged, usecinnet, elektrikliofkecount, useyildirimdokunusu, atakslot, elecktricbufftimer)
 local phealth = PctH("player")
 local pmana = UnitSkill("player")
 local prage = PctM("player");
@@ -28,17 +29,17 @@ local maxelectricbuffname = "Yüksek Voltaj "..elektrikliofkecount;
 -- local tbuffs = BuffList("target");
  
 	if (isdead) then
-		SendSystemMsg("Hedef Ölü..");
+		SendSystemMsg("Target Dead..");
 	elseif (nil ~= manaslot and manaslot > 0 and pctmana < manapct and GetPotUsable(manaslot)) then
 		UseAction(manaslot);
-		PrintSkill("Mana Potu Kullandin!");
+		PrintSkill("Used Mana Pot!");
 	elseif(useelektrik and not pbuffs["Elektrik Saldırısı"] and pmana >= manaelektriksaldirisi) then
 		CastSpellByName("Elektrik Saldırısı");
 		PrintSkill("Elektrik Saldırısı");
 	elseif(uselavsilahi and not pbuffs["Lav Silahı"] and pmana >= manalavsilahi) then
 		CastSpellByName("Lav Silahı");
 		PrintSkill("Lav Silahı");
-	elseif (useatestopu and CD("Fireball")) then 
+	elseif (usefireball and CD("Fireball")) then 
 		CastSpellByName("Fireball"); 
 	elseif(usegurleyen and CD("Gürleyen Kılıç") and pmana >= managurleyenkilic) then
 		CastSpellByName("Gürleyen Kılıç");
@@ -49,9 +50,9 @@ local maxelectricbuffname = "Yüksek Voltaj "..elektrikliofkecount;
 	elseif((useintensification == true ) and CD("Intensification")) then
 		CastSpellByName("Intensification");
 		PrintSkill("Intensification");
-	elseif(useofkeli and CD("Öfkeli") and prage < 0.80) then
-		CastSpellByName("Öfkeli");
-		PrintSkill("Öfkeli");
+	elseif(useenraged and CD("Enraged") and prage < 0.80) then
+		CastSpellByName("Enraged");
+		PrintSkill("Enraged");
 	elseif(usecinnet and CD("Cinnet")) then
 		CastSpellByName("Cinnet");
 		PrintSkill("Cinnet");
@@ -81,7 +82,7 @@ function GetElectricCount(pbuffs)
 	return electriccount;	
 end
 
-function BuffSelfWarriorMage(useelektrik, uselavsilahi,usefireward, useasabiyet, useintensification, useofkeli, usecinnet)
+function BuffSelfWarriorMage(useelektrik, uselavsilahi,usefireward, useasabiyet, useintensification, useenraged, usecinnet)
 	local pbuffs = BuffList("player");
 	local prage = PctM("player");
 	local pmana = UnitSkill("player");
@@ -100,12 +101,12 @@ function BuffSelfWarriorMage(useelektrik, uselavsilahi,usefireward, useasabiyet,
 		CastSpellByName("Asabiyet");
 	elseif((useintensification == true ) and CD("Intensification")) then
 		CastSpellByName("Intensification");
-	elseif(useofkeli and CD("Öfkeli") and prage < 0.80) then
-		CastSpellByName("Öfkeli");
+	elseif(useenraged and CD("Enraged") and prage < 0.80) then
+		CastSpellByName("Enraged");
 	elseif(usecinnet and CD("Cinnet")) then
 		CastSpellByName("Cinnet");
 	elseif(CD("Elektrik Saldırısı")) then
-		SendSystemMsg("Bufflar Tamam!");
+		SendSystemMsg("Buffs All Done!");
 	end
 end
 

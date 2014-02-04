@@ -88,7 +88,7 @@ local pdebuffs
 local isdead = UnitIsDeadOrGhost("target");
 
 	if (isdead) then
-		SendSystemMsg("Hedef Ölü..");
+		SendSystemMsg("Target Dead..");
 		return;
 	end
 	
@@ -167,7 +167,7 @@ local pdebuffs
 local isdead = UnitIsDeadOrGhost("target");
 
 	if (isdead) then
-		SendSystemMsg("Hedef Ölü..");
+		SendSystemMsg("Target Dead..");
 		return;
 	end
 
@@ -193,8 +193,8 @@ local isdead = UnitIsDeadOrGhost("target");
 	
 	if(usescepter and (not pbuffs["Toprak Asası"])) then
 		CastSpellByName("Toprak Asası"); 
-	elseif (usebriar and CD("Dikenli Kalkan") and (not pbuffs["Dikenli Kalkan"])) then
-		CastSpellByName("Dikenli Kalkan");
+	elseif (usebriar and CD("Briar Shield") and (not pbuffs["Briar Shield"])) then
+		CastSpellByName("Briar Shield");
 	elseif (useinflux and CD("Energy Influx") and (not pbuffs["Energy Influx"])) then
 		CastSpellByName("Energy Influx");
 	elseif (useenergywell and CD("Energy Well") and (not pbuffs["Energy Well"])) then
@@ -241,7 +241,7 @@ local isdead = UnitIsDeadOrGhost("target");
 local isself = UnitIsUnit("player","target");
 
 	if (isdead) then
-		SendSystemMsg("Hedef Ölü..");
+		SendSystemMsg("Target Dead..");
 		return;
 	end
 	
@@ -334,8 +334,8 @@ function BuffAllMage(useIntensification, intensificationfirst, useenergywell, us
 	CastSpellByName("Fang Ritual");
   elseif ((useshadowprotection == true ) and (not pbuffs["Shadow Protection"])) then
 	CastSpellByName("Shadow Protection");
-  elseif (usebriar and CD("Dikenli Kalkan") and (not pbuffs["Dikenli Kalkan"] or pbuffs["Dikenli Kalkan"].time < 600)) then
-	CastSpellByName("Dikenli Kalkan");
+  elseif (usebriar and CD("Briar Shield") and (not pbuffs["Briar Shield"] or pbuffs["Briar Shield"].time < 600)) then
+	CastSpellByName("Briar Shield");
   elseif(usescepter and (not pbuffs["Toprak Asası"] or pbuffs["Toprak Asası"].time < 600)) then
 	CastSpellByName("Toprak Asası");
   elseif((usefireward == true ) and (not pbuffs["Fire Ward"] or pbuffs["Fire Ward"].time < 400)) then
@@ -367,7 +367,7 @@ function BuffAllMage(useIntensification, intensificationfirst, useenergywell, us
   elseif (usecatalysis and CD("Elemental Catalysis")) then
 	CastSpellByName("Elemental Catalysis");
   elseif(CD("Fire Ward")) then
-		SendSystemMsg("Bufflar Tamam!");
+		SendSystemMsg("Buffs All Done!");
   end
 end
 

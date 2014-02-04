@@ -41,7 +41,7 @@ function PrintKurbishSignatureMage()
 
 	DEFAULT_CHAT_FRAME:AddMessage(" ");	
 		
-	DEFAULT_CHAT_FRAME:AddMessage("BossAttackMageRogueLite(wampirehealth, useFireball, usecursedfang, fangtimeout, fangenergypct, electricbolttimeout, useexplosion, useflame, usemeteor, useplazma, usefangritual, useshadow, useinflux, useenergywell, useelemental, warntbufflist, finalskill)");
+	DEFAULT_CHAT_FRAME:AddMessage("BossAttackMageRogueLite(wampirehealth, useFireball, usecursedfang, fangtimeout, fangenergypct, electricbolttimeout, usesavagepower, useflame, usemeteor, useplazma, usefangritual, useshadow, useinflux, useenergywell, useelemental, warntbufflist, finalskill)");
 	
 	DEFAULT_CHAT_FRAME:AddMessage(" ");
 	
@@ -49,15 +49,15 @@ function PrintKurbishSignatureMage()
 	
 	DEFAULT_CHAT_FRAME:AddMessage(" ");
 	
-	DEFAULT_CHAT_FRAME:AddMessage("FullAttack(usefangritual, useshadow, useenergywell, useinflux, useelemental, useIntensification, usecatalyst, useplazma, electricbolttimeout, useflame, useexplosion)");
+	DEFAULT_CHAT_FRAME:AddMessage("FullAttack(usefangritual, useshadow, useenergywell, useinflux, useelemental, useIntensification, usecatalyst, useplazma, electricbolttimeout, useflame, usesavagepower)");
 	
 	DEFAULT_CHAT_FRAME:AddMessage(" ");
 	
-	DEFAULT_CHAT_FRAME:AddMessage("BossAttackMageDruidLite(Recoverhealth, earthhealth, useFireball, usemagma, electricbolttimeout, useexplosion, useflame, usemeteor, useplazma, usePerception, usemagictarget, useinflux, useenergywell, useelemental, warntbufflist, finalskill, donthealpvp)");
+	DEFAULT_CHAT_FRAME:AddMessage("BossAttackMageDruidLite(Recoverhealth, earthhealth, useFireball, usemagma, electricbolttimeout, usesavagepower, useflame, usemeteor, useplazma, usePerception, usemagictarget, useinflux, useenergywell, useelemental, warntbufflist, finalskill, donthealpvp)");
 	
 	DEFAULT_CHAT_FRAME:AddMessage(" ");
 	
-	DEFAULT_CHAT_FRAME:AddMessage("BossAttackMageWardenLite(usebladefirst, usesurge, useblade, useFireball, electricbolttimeout, useexplosion, useflame, usemeteor, useplazma, usescepter, usebriar, useinflux, useenergywell, useelemental, usebriar, usemarking, warntbufflist, finalskill)");
+	DEFAULT_CHAT_FRAME:AddMessage("BossAttackMageWardenLite(usebladefirst, usesurge, useblade, useFireball, electricbolttimeout, usesavagepower, useflame, usemeteor, useplazma, usescepter, usebriar, useinflux, useenergywell, useelemental, usebriar, usemarking, warntbufflist, finalskill)");
 	
 	DEFAULT_CHAT_FRAME:AddMessage(" ");
 	

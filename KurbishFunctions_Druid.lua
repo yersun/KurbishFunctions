@@ -174,7 +174,7 @@ function NatureAttackDruidMage(useweakening, usewithering , blossominghealth, ea
   local isdead = UnitIsDeadOrGhost("target");
 
 	if (isdead) then
-		SendSystemMsg("Hedef Ölü..");
+		SendSystemMsg("Target Dead..");
 		return;
 	end
   
@@ -245,7 +245,7 @@ function NatureBossDruidMage(useweakening, usewithering , selfblossominghealth, 
   local isdead = UnitIsDeadOrGhost("target");
 
 	if (isdead) then
-		SendSystemMsg("Hedef Ölü..");
+		SendSystemMsg("Target Dead..");
 		return;
 	end
 	
@@ -619,24 +619,24 @@ function BuffAllDruid(useconcentration, useblessing, usemagicturmoil, usesavage,
   
 end
 
-function BuffAllDruidWarden(usedikenli, useconcentration, usegizlizarafet, useormaninzerafeti, usesavage)
+function BuffAllDruidWarden(usebriarshield, useconcentration, usegizlizarafet, usewoodspiritinzerafeti, usesavage)
   local pbuffs = BuffList("player")
   local isself = UnitName("target") == UnitName("player");
   local friendly = (not UnitCanAttack("player","target"))
   
-  if(usedikenli and (not pbuffs["Dikenli Kalkan"] or pbuffs["Dikenli Kalkan"].time < 600)) then
+  if(usebriarshield and (not pbuffs["Briar Shield"] or pbuffs["Briar Shield"].time < 600)) then
 	if((not isself) and friendly) then TargetUnit("player"); end
-	CastSpellByName("Dikenli Kalkan");
+	CastSpellByName("Briar Shield");
   elseif (useconcentration and (not pbuffs["Concentration Prayer"] or pbuffs["Concentration Prayer"].time < 300)) then
     CastSpellByName("Concentration Prayer");
   elseif (usegizlizarafet and (not pbuffs["Gizemli Zarafet"] or pbuffs["Gizemli Zarafet"].time < 600)) then
     CastSpellByName("Gizli Zarafet");
-  elseif (useormaninzerafeti and (not pbuffs["Ormanın Zerafeti"]  or pbuffs["Ormanın Zerafeti"].time < 600)) then
+  elseif (usewoodspiritinzerafeti and (not pbuffs["Ormanın Zerafeti"]  or pbuffs["Ormanın Zerafeti"].time < 600)) then
     CastSpellByName("Ormanın Zerafeti");
   elseif (usesavage and (not pbuffs["Savage Blessing"] or pbuffs["Savage Blessing"].time < 600)) then
 	if((not isself) and friendly) then TargetUnit("player"); end
     CastSpellByName("Savage Blessing");
-  elseif(CD("Dikenli Kalkan")) then
+  elseif(CD("Briar Shield")) then
 		SendSystemMsg("Bütün Bufflar Atıldı!!!");
   end
 end
