@@ -864,7 +864,7 @@ function BreakSkillDruidMain(warnlist)
 	if (secondclass == "Warden") then
 		BreakSkillDruidMage(false, false, false, true, false, warnlist, false, '');
 	elseif(secondclass == "Mage") then
-		BreakSkillDruidMage(true, true, false, false, false, warnlist, false, '')
+		BreakSkillDruidMage(true, true, true, false, false, warnlist, false, '')
 		-- BreakSkillDruidMage(true, true, true, true, false, warnlist, false, '');
 	end
 end

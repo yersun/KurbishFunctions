@@ -540,7 +540,7 @@ function BreakSkillMageMain()
 	if (secondclass == "Warden") then
 		BreakSkill(true,true,true,false,g_mageBreakSkillAvoidBuffs,false,'');
 	elseif(secondclass == "Druid") then
-		BreakSkill(true, true, false, false, g_mageBreakSkillAvoidBuffs, false, '');
+		BreakSkill(true, true, true, false, g_mageBreakSkillAvoidBuffs, false, '');
 		-- BreakSkill(true,true,true,false,g_mageBreakSkillAvoidBuffs,false,'');
 	elseif(secondclass == "Priest") then
 		BreakSkill(true,true,true,false,g_mageBreakSkillAvoidBuffs,false,'');
@@ -556,7 +556,7 @@ function BuffAllMageMain(buffplus)
 	if (secondclass == "Warden") then
 		BuffAllMage(buffplus, false, true, false, false, true, true, false, false, false, true, true, false,buffplus, false, false, false);
 	elseif(secondclass == "Druid") then
-		BuffAllMage(buffplus, false, false, false, false, false, false, true, false, false, false, false, false, buffplus, false, false, false);
+		BuffAllMage(buffplus, false, false, true, true, false, false, true, false, false, false, false, false, buffplus, false, false, false);
 		-- BuffAllMage(buffplus,false,true,true,true,true,true,true,false,false,false,false,false,buffplus,false,false,false);
 	elseif(secondclass == "Priest") then
 		BuffAllMage(buffplus,false,true,false,false,true,true,false,false,false,false,false,false,buffplus,true,true,true);
