@@ -835,7 +835,8 @@ end
 function BossAttackDruidMainDps()
 	local mainclass, secondclass = UnitClass("player")
 	if (secondclass == "Warden") then
-		NatureAttackDruidMage(false, false, .99,.4,.5,.3,false, false, true, true, false, true,true);
+		NatureAttackDruidMage(false, false , .99, 0, .5, 0, false, false, false, true, false, true, true)
+		--NatureAttackDruidMage(false, false, .99,.4,.5,.3,false, false, true, true, false, true,true);
 	elseif(secondclass == "Mage") then
 		NatureAttackDruidMage(false, false , .99, 0, .5, 0, false, true, false, true, false, true, true);
 		--NatureAttackDruidMage(false, false, .99,.4,.5,.3,false, true, true, true, false, true,true);
@@ -846,15 +847,19 @@ function BuffAllDruidMain(buffplus)
 	local mainclass, secondclass = UnitClass("player")
 	if (secondclass == "Warden") then
 		if(not buffplus) then
-			BuffAllDruidWarden(true, true,true,true,true);
+			BuffAllDruidWarden(true, false, false, false, true)
+			--BuffAllDruidWarden(true, true,true,true,true);
 		 else
-			BuffAllDruidWarden(true, true,true,true,true);
+		    BuffAllDruidWarden(true, false, false, false, true)
+			--BuffAllDruidWarden(true, true,true,true,true);
 		 end
 	elseif(secondclass == "Mage") then
 		if(not buffplus) then
-			BuffAllDruid(true,false,false,true,true);
+			BuffAllDruid(false, false, false, true, false);
+			--BuffAllDruid(true,false,false,true,true);
 		else
-			BuffAllDruid(true,false,false,true,true);
+			BuffAllDruid(false, false, false, true, false);
+			--BuffAllDruid(true,false,false,true,true);
 		end
 	end
 end
@@ -864,7 +869,7 @@ function BreakSkillDruidMain(warnlist)
 	if (secondclass == "Warden") then
 		BreakSkillDruidMage(false, false, false, true, false, warnlist, false, '');
 	elseif(secondclass == "Mage") then
-		BreakSkillDruidMage(true, true, true, false, false, warnlist, false, '')
+		BreakSkillDruidMage(true, true, true, true, false, warnlist, false, '')
 		-- BreakSkillDruidMage(true, true, true, true, false, warnlist, false, '');
 	end
 end
