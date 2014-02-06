@@ -847,18 +847,18 @@ function BuffAllDruidMain(buffplus)
 	local mainclass, secondclass = UnitClass("player")
 	if (secondclass == "Warden") then
 		if(not buffplus) then
-			BuffAllDruidWarden(true, false, false, false, true)
+			BuffAllDruidWarden(true, true, false, false, true)
 			--BuffAllDruidWarden(true, true,true,true,true);
 		 else
-		    BuffAllDruidWarden(true, false, false, false, true)
+		    BuffAllDruidWarden(true, true, false, false, true)
 			--BuffAllDruidWarden(true, true,true,true,true);
 		 end
 	elseif(secondclass == "Mage") then
 		if(not buffplus) then
-			BuffAllDruid(false, false, false, true, false);
+			BuffAllDruid(true, false, false, true, false);
 			--BuffAllDruid(true,false,false,true,true);
 		else
-			BuffAllDruid(false, false, false, true, false);
+			BuffAllDruid(true, false, false, true, false);
 			--BuffAllDruid(true,false,false,true,true);
 		end
 	end
