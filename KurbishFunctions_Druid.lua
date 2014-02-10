@@ -619,7 +619,7 @@ function BuffAllDruid(useconcentration, useblessing, usemagicturmoil, usesavage,
   
 end
 
-function BuffAllDruidWarden(usebriarshield, useconcentration, usemysteriousgrace, usewoodspiritinzerafeti, usesavage)
+function BuffAllDruidWarden(usebriarshield, useconcentration, usemysteriousgrace, usegraceofforest, usesavage)
   local pbuffs = BuffList("player")
   local isself = UnitName("target") == UnitName("player");
   local friendly = (not UnitCanAttack("player","target"))
@@ -631,8 +631,8 @@ function BuffAllDruidWarden(usebriarshield, useconcentration, usemysteriousgrace
     CastSpellByName("Concentration Prayer");
   elseif (usemysteriousgrace and (not pbuffs["Mysterious Grace"] or pbuffs["Mysterious Grace"].time < 600)) then
     CastSpellByName("Mysterious Grace");
-  elseif (usewoodspiritinzerafeti and (not pbuffs["Ormanın Zerafeti"]  or pbuffs["Ormanın Zerafeti"].time < 600)) then
-    CastSpellByName("Ormanın Zerafeti");
+  elseif (usegraceofforest and (not pbuffs["Grace of the Forest "]  or pbuffs["Grace of the Forest "].time < 600)) then
+    CastSpellByName("Grace of the Forest ");
   elseif (usesavage and (not pbuffs["Savage Blessing"] or pbuffs["Savage Blessing"].time < 600)) then
 	if((not isself) and friendly) then TargetUnit("player"); end
     CastSpellByName("Savage Blessing");
