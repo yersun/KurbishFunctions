@@ -500,7 +500,7 @@ end
 function BossAttackWardenMainDps(atakslot)
 	local mainclass, secondclass = UnitClass("player")
 	if (secondclass == "Druid") then
-		BossAttackWardenDruidLite(.5, .4, 25, .4, 0, true, true, true, false, false, true, false, false, 0, false, true, false, 1);
+		BossAttackWardenDruidLite(.5, .4, 25, .4, 0, true, true, true, false, false, true, false, false, 0, false, true, false, atakslot);
 		-- BossAttackWardenDruidLite(0, 0, 0, .4, 0, false, false, true, false, false, false, false, false, 2, false, true, false, atakslot);
 	elseif(secondclass == "Warrior") then
 		BossAttackWardenWarriorLite(0, 0, 0, false, false, false, false, false, false, false, false, false,false, false, true, true, true, true, atakslot);
@@ -512,12 +512,7 @@ end
 function BuffAllWardenMain(buffplus)
 	local mainclass, secondclass = UnitClass("player")
 	if(secondclass == "Druid") then
-		if(not buffplus) then
-			BuffSelfWardenDruid(true, true, true, true, false, buffplus,  0, false)
-			-- BuffSelfWardenDruid(true, true, true, true, false, false,  0, true);
-		else
-			BuffSelfWardenDruid(true, true, true, true, true, true,  0, true);
-		end
+			BuffSelfWardenDruid(true, true, true, true, buffplus, buffplus,  0, true)
 	elseif (secondclass == "Warrior") then
 		if(not buffplus) then
 			BuffSelfWardenWarrior(true, true, false, false, false, false, false);
