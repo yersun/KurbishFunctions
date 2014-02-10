@@ -619,7 +619,7 @@ function BuffAllDruid(useconcentration, useblessing, usemagicturmoil, usesavage,
   
 end
 
-function BuffAllDruidWarden(usebriarshield, useconcentration, usegizlizarafet, usewoodspiritinzerafeti, usesavage)
+function BuffAllDruidWarden(usebriarshield, useconcentration, usemysteriousgrace, usewoodspiritinzerafeti, usesavage)
   local pbuffs = BuffList("player")
   local isself = UnitName("target") == UnitName("player");
   local friendly = (not UnitCanAttack("player","target"))
@@ -629,8 +629,8 @@ function BuffAllDruidWarden(usebriarshield, useconcentration, usegizlizarafet, u
 	CastSpellByName("Briar Shield");
   elseif (useconcentration and (not pbuffs["Concentration Prayer"] or pbuffs["Concentration Prayer"].time < 300)) then
     CastSpellByName("Concentration Prayer");
-  elseif (usegizlizarafet and (not pbuffs["Gizemli Zarafet"] or pbuffs["Gizemli Zarafet"].time < 600)) then
-    CastSpellByName("Gizli Zarafet");
+  elseif (usemysteriousgrace and (not pbuffs["Mysterious Grace"] or pbuffs["Mysterious Grace"].time < 600)) then
+    CastSpellByName("Mysterious Grace");
   elseif (usewoodspiritinzerafeti and (not pbuffs["Ormanın Zerafeti"]  or pbuffs["Ormanın Zerafeti"].time < 600)) then
     CastSpellByName("Ormanın Zerafeti");
   elseif (usesavage and (not pbuffs["Savage Blessing"] or pbuffs["Savage Blessing"].time < 600)) then
@@ -847,10 +847,10 @@ function BuffAllDruidMain(buffplus)
 	local mainclass, secondclass = UnitClass("player")
 	if (secondclass == "Warden") then
 		if(not buffplus) then
-			BuffAllDruidWarden(true, true, false, false, true)
+			BuffAllDruidWarden(true, true, true, false, true)
 			--BuffAllDruidWarden(true, true,true,true,true);
 		 else
-		    BuffAllDruidWarden(true, true, false, false, true)
+		    BuffAllDruidWarden(true, true, true, false, true)
 			--BuffAllDruidWarden(true, true,true,true,true);
 		 end
 	elseif(secondclass == "Mage") then
