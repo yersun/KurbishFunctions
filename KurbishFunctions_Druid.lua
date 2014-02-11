@@ -631,13 +631,13 @@ function BuffAllDruidWarden(usebriarshield, useconcentration, usemysteriousgrace
     CastSpellByName("Concentration Prayer");
   elseif (usemysteriousgrace and (not pbuffs["Mysterious Grace"] or pbuffs["Mysterious Grace"].time < 600)) then
     CastSpellByName("Mysterious Grace");
-  elseif (usegraceofforest and (not pbuffs["Grace of the Forest "]  or pbuffs["Grace of the Forest "].time < 600)) then
-    CastSpellByName("Grace of the Forest ");
+  elseif (usegraceofforest and (not pbuffs["Grace of the Forest"]  or pbuffs["Grace of the Forest"].time < 600)) then
+    CastSpellByName("Grace of the Forest");
   elseif (usesavage and (not pbuffs["Savage Blessing"] or pbuffs["Savage Blessing"].time < 600)) then
 	if((not isself) and friendly) then TargetUnit("player"); end
     CastSpellByName("Savage Blessing");
   elseif(CD("Briar Shield")) then
-		SendSystemMsg("Bütün Bufflar Atıldı!!!");
+		SendSystemMsg("All Buffs Done!!!");
   end
 end
 
@@ -846,13 +846,7 @@ end
 function BuffAllDruidMain(buffplus)
 	local mainclass, secondclass = UnitClass("player")
 	if (secondclass == "Warden") then
-		if(not buffplus) then
-			BuffAllDruidWarden(true, true, true, false, true)
-			--BuffAllDruidWarden(true, true,true,true,true);
-		 else
-		    BuffAllDruidWarden(true, true, true, false, true)
-			--BuffAllDruidWarden(true, true,true,true,true);
-		 end
+			BuffAllDruidWarden(true, true,true,true,true);
 	elseif(secondclass == "Mage") then
 		if(not buffplus) then
 			BuffAllDruid(true, false, false, true, false);
