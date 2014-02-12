@@ -556,8 +556,7 @@ function BuffAllMageMain(buffplus)
 	if (secondclass == "Warden") then
 		BuffAllMage(buffplus, false, true, false, false, true, true, false, false, false, true, true, false,buffplus, false, false, false);
 	elseif(secondclass == "Druid") then
-		BuffAllMage(buffplus, false, false, true, true, false, false, true, false, false, false, false, false, buffplus, false, false, false);
-		-- BuffAllMage(buffplus,false,true,true,true,true,true,true,false,false,false,false,false,buffplus,false,false,false);
+     	BuffAllMage(buffplus,false,true,true,true,true,true,true,false,false,false,false,false,buffplus,false,false,false);
 	elseif(secondclass == "Priest") then
 		BuffAllMage(buffplus,false,true,false,false,true,true,false,false,false,false,false,false,buffplus,true,true,true);
 	elseif(secondclass == "Rogue") then
