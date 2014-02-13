@@ -499,8 +499,8 @@ function BossAttackMageMain(useelemental)
 	if (secondclass == "Warden") then
 		BossAttackMageWardenLite(false,true, true, true, 11, false, true, false, true, true, true, true, false, useelemental, true, true, g_bossAttackMageMainWarnBuffs, "Plasma Arrow");
 	elseif(secondclass == "Druid") then
-	    BossAttackMageDruidLite(.5, 0, true, false, 11, false, true, false, false, false, false, false, false, useelemental, g_bossAttackMageMainWarnBuffs, "Plasma Arrow", true);
-		--BossAttackMageDruidLite(.5,.6,true,true,11,false,true,false,true,true,true, true, false, useelemental, g_bossAttackMageMainWarnBuffs, "Plasma Arrow", true);
+	    -- BossAttackMageDruidLite(.5, 0, true, true, 11, false, true, false, false, false, false, false, false, useelemental, g_bossAttackMageMainWarnBuffs, "Plasma Arrow", true);
+		BossAttackMageDruidLite(.5,.6,true,true,11,false,true,false,true,true,true, true, false, useelemental, g_bossAttackMageMainWarnBuffs, "Plasma Arrow", true);
 	elseif(secondclass == "Priest") then
 		BossAttackMagePriestLite(.5, .4, true, true, 11, false, true, false, true, true, true, true, true, true, useelemental, g_bossAttackMageMainWarnBuffs, "Plasma Arrow", true)
 	elseif(secondclass == "Rogue") then
@@ -513,8 +513,8 @@ function BossAttackMageMainDps()
 	if (secondclass == "Warden") then
 		BossAttackMageWardenLite(true,true, true, true, 11, false, false, true, true, true, true, false, false, false, false, false, g_bossAttackMageMainWarnBuffs, nil);
 	elseif(secondclass == "Druid") then
-		BossAttackMageDruidLite(.5, 0, true, false, 11, false, false, true, false, false, false, false, false, false, g_bossAttackMageMainWarnBuffs, "Plasma Arrow", true);
---		BossAttackMageDruidLite(.5,.6,true,true,11,false,false,true,true,false,false,false,false,false,g_bossAttackMageMainWarnBuffs,"Plasma Arrow",true);
+		-- BossAttackMageDruidLite(.5, 0, true, true, 11, false, false, true, false, false, false, false, false, false, g_bossAttackMageMainWarnBuffs, "Plasma Arrow", true);
+		BossAttackMageDruidLite(.5,.6,true,true,11,false,false,true,true,false,false,false,false,false,g_bossAttackMageMainWarnBuffs,"Plasma Arrow",true);
 	elseif(secondclass == "Priest") then
 		BossAttackMagePriestLite(.5, .4, true, true, 11, false, false, true, true, false, false, false, false, false, false, g_bossAttackMageMainWarnBuffs, "Plasma Arrow", true)
 	elseif(secondclass == "Rogue") then	
