@@ -554,7 +554,7 @@ end
 function BuffAllMageMain(buffplus)
 	local mainclass, secondclass = UnitClass("player")
 	if (secondclass == "Warden") then
-		BuffAllMage(buffplus, false, true, false, false, true, true, false, false, false, true, true, false,buffplus, false, false, false);
+		BuffAllMage(buffplus, false, true, false, false, true, true, false, false, false, true, true, buffplus,buffplus, false, false, false);
 	elseif(secondclass == "Druid") then
      	BuffAllMage(buffplus,false,true,true,true,true,true,true,false,false,false,false,false,buffplus,false,false,false);
 	elseif(secondclass == "Priest") then
