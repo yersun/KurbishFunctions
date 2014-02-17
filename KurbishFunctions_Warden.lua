@@ -54,7 +54,7 @@ local isdead = UnitIsDeadOrGhost("target");
 	elseif(useoak and CD("Power of the Oak") and pmana >= manapoweroftheoak) then
 		CastSpellByName("Power of the Oak");
 		PrintSkill("Power of the Oak");
-	elseif(usesavagepower and ispetout and CD("Savage Power") and pmana >= manasavagepower) then
+	elseif(usesavagepower and CD("Savage Power") and pmana >= manasavagepower) then
 		CastSpellByName("Savage Power");
 		PrintSkill("Savage Power");
 	elseif(useenraged and CD("Enraged") and prage < 0.80) then
@@ -116,7 +116,7 @@ function BuffSelfWardenWarrior(useprotectionofnature, usebriarshield, useoak, us
 	elseif(useoak and CD("Power of the Oak") and pmana >= manapoweroftheoak) then
 		CastSpellByName("Power of the Oak");
 		PrintSkill("Power of the Oak");
-	elseif(usesavagepower and ispetout and CD("Savage Power") and pmana >= manasavagepower) then
+	elseif(usesavagepower and CD("Savage Power") and pmana >= manasavagepower) then
 		CastSpellByName("Savage Power");
 		PrintSkill("Savage Power");
 	elseif(useenraged and CD("Enraged") and prage < 0.80) then
@@ -208,7 +208,7 @@ local isdead = UnitIsDeadOrGhost("target");
 	elseif(useoak and CD("Power of the Oak") and pmana >= manapoweroftheoak) then
 		CastSpellByName("Power of the Oak");
 		PrintSkill("Power of the Oak");
-	elseif(usesavagepower and ispetout and CD("Savage Power") and pmana >= manasavagepower) then
+	elseif(usesavagepower and CD("Savage Power") and pmana >= manasavagepower) then
 		CastSpellByName("Savage Power");
 		PrintSkill("Savage Power");
 	elseif (usefireball and CD("Fireball") and pmana >= manaatestopu) then
@@ -283,7 +283,7 @@ function BuffSelfWardenMage(useprotectionofnature, usebriarshield, useateskoruma
 	elseif(useoak and CD("Power of the Oak") and pmana >= manapoweroftheoak) then
 		CastSpellByName("Power of the Oak");
 		PrintSkill("Power of the Oak");
-	elseif(usesavagepower and ispetout and CD("Savage Power") and pmana >= manasavagepower) then
+	elseif(usesavagepower and CD("Savage Power") and pmana >= manasavagepower) then
 		CastSpellByName("Savage Power");
 		PrintSkill("Savage Power");
 	-- elseif(usedefensiveformation and CD("Defensive Formation") and prage >= 0.25) then
@@ -363,7 +363,7 @@ local isself = UnitIsUnit("target","player");
 	elseif(useoak and CD("Power of the Oak") and pmana >= manapoweroftheoak) then
 		PrintSkill("Power of the Oak");
 		CastSpellByName("Power of the Oak");
-	elseif(usesavagepower and ispetout and CD("Savage Power") and pmana >= manasavagepower) then
+	elseif(usesavagepower and CD("Savage Power") and pmana >= manasavagepower) then
 		PrintSkill("Savage Power");
 		CastSpellByName("Savage Power");
 	elseif(useelfduasi and ispetout and CD("Elven Prayer") and pmana >= manaelfduasi) then
@@ -454,7 +454,7 @@ function BuffSelfWardenDruid(useprotectionofnature, usebriarshield, useearthspir
 	elseif(useoak and CD("Power of the Oak") and pmana >= manapoweroftheoak) then
 		CastSpellByName("Power of the Oak");
 		PrintSkill("Power of the Oak");
-	elseif(usesavagepower and ispetout and CD("Savage Power") and pmana >= manasavagepower) then
+	elseif(usesavagepower and CD("Savage Power") and pmana >= manasavagepower) then
 		CastSpellByName("Savage Power");
 		PrintSkill("Savage Power");
 	-- elseif(usedefensiveformation and CD("Defensive Formation") and prage >= 0.25) then
