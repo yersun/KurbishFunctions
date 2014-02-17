@@ -191,8 +191,8 @@ local isdead = UnitIsDeadOrGhost("target");
 		tdebuffs = ActualDebuffList("target")
 	end
 	
-	if(usescepter and (not pbuffs["Toprak Asası"])) then
-		CastSpellByName("Toprak Asası"); 
+	if(usescepter and (not pbuffs["Earth Scepter"])) then
+		CastSpellByName("Earth Scepter"); 
 	elseif (usebriar and CD("Briar Shield") and (not pbuffs["Briar Shield"])) then
 		CastSpellByName("Briar Shield");
 	elseif (useinflux and CD("Energy Influx") and (not pbuffs["Energy Influx"])) then
@@ -201,14 +201,14 @@ local isdead = UnitIsDeadOrGhost("target");
 		CastSpellByName("Energy Well");
 	elseif (useelemental and CD("Elemental Weakness") and (not tdebuffs["Elemental Weakness"])) then
 		CastSpellByName("Elemental Weakness");
-	elseif (usemarking and CD("Dünya İşaretlemesi")) then
-		CastSpellByName("Dünya İşaretlemesi");
-	elseif(usebladefirst and useblade and CD("Toprak İnleten Rüzgar Kılıcı")) then
-		CastSpellByName("Toprak İnleten Rüzgar Kılıcı");
-	elseif (usesurge and CD("Deprem")) then
-		CastSpellByName("Deprem");
-	elseif ((not usebladefirst) and useblade and CD("Toprak İnleten Rüzgar Kılıcı")) then
-		CastSpellByName("Toprak İnleten Rüzgar Kılıcı");
+	elseif (usemarking and CD("Earth Marking")) then
+		CastSpellByName("Earth Marking");
+	elseif(usebladefirst and useblade and CD("Earth Groaning Wind Blade")) then
+		CastSpellByName("Earth Groaning Wind Blade");
+	elseif (usesurge and CD("Earth Surge")) then
+		CastSpellByName("Earth Surge");
+	elseif ((not usebladefirst) and useblade and CD("Earth Groaning Wind Blade")) then
+		CastSpellByName("Earth Groaning Wind Blade");
 	elseif (useFireball and CD("Fireball")) then 
 		CastSpellByName("Fireball"); 
 	elseif ((electricbolttimeout > 0) and (not g_currentlyCasting) and ElectricBoltCastableOnTarget(electricbolttimeout, tdebuffs)) then
@@ -336,8 +336,8 @@ function BuffAllMage(useIntensification, intensificationfirst, useenergywell, us
 	CastSpellByName("Shadow Protection");
   elseif (usebriar and CD("Briar Shield") and (not pbuffs["Briar Shield"] or pbuffs["Briar Shield"].time < 600)) then
 	CastSpellByName("Briar Shield");
-  elseif(usescepter and (not pbuffs["Toprak Asası"] or pbuffs["Toprak Asası"].time < 600)) then
-	CastSpellByName("Toprak Asası");
+  elseif(usescepter and (not pbuffs["Earth Scepter"] or pbuffs["Earth Scepter"].time < 600)) then
+	CastSpellByName("Earth Scepter");
   elseif((usefireward == true ) and (not pbuffs["Fire Ward"] or pbuffs["Fire Ward"].time < 400)) then
     CastSpellByName("Fire Ward");
   elseif ((useIntensification == true ) and CD("Intensification") and (not pbuffs["Intensification"]) and (intensificationfirst == true)) then
@@ -353,8 +353,8 @@ function BuffAllMage(useIntensification, intensificationfirst, useenergywell, us
   elseif((usesavageblessing == true ) and (not pbuffs["Savage Blessing"] or pbuffs["Savage Blessing"].time < 600)) then
     if(friendly) then TargetUnit("player"); end
 	CastSpellByName("Savage Blessing");
-  elseif (usemarking and CD("Dünya İşaretlemesi")) then
-	CastSpellByName("Dünya İşaretlemesi");
+  elseif (usemarking and CD("Earth Marking")) then
+	CastSpellByName("Earth Marking");
   elseif (usebuyuengeli and (not pbuffs["Büyü Engeli"] or pbuffs["Büyü Engeli"].time < 600)) then
 	CastSpellByName("Büyü Engeli");
   elseif (useyagmurkutsamasi and (not pbuffs["Yağmurun Kutsaması"] or pbuffs["Yağmurun Kutsaması"].time < 600)) then
