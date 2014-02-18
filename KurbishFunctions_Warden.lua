@@ -68,9 +68,9 @@ local isdead = UnitIsDeadOrGhost("target");
 	elseif(usecoatofarms and pctmana >= 0.02 and pmana >= 35 and CD("Coat of Arms")) then
 		CastSpellByName("Coat of Arms");
 		PrintSkill("Coat of Arms");
-	elseif(usehiddet and pmana >= 35 and CD("Hiddet")) then
-		CastSpellByName("Hiddet");
-		PrintSkill("Hiddet");
+	elseif(usehiddet and pmana >= 35 and CD("Ire")) then
+		CastSpellByName("Ire");
+		PrintSkill("Ire");
 	elseif(usesinyal and tdebuffs["Beast Sigil"] and CD("Pulse Mastery") and prage >= 0.20 and (not pbuffs["Pulse Mastery"])) then -- Check and correct player buff here, actual buff is not Pulse Mastery
 		CastSpellByName("Pulse Mastery");
 		PrintSkill("Pulse Mastery");
