@@ -82,7 +82,7 @@ function GetElectricCount(pbuffs)
 	return electriccount;	
 end
 
-function BuffSelfWarriorMage(useelektrik, uselavsilahi,usefireward, useBerserk, useintensification, useenraged, useBerserk)
+function BuffSelfWarriorMage(useelektrik, uselavsilahi,usefireward, useintensification, useenraged, useBerserk)
 	local pbuffs = BuffList("player");
 	local prage = PctM("player");
 	local pmana = UnitSkill("player");
