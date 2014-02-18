@@ -82,7 +82,7 @@ function GetElectricCount(pbuffs)
 	return electriccount;	
 end
 
-function BuffSelfWarriorMage(useelektrik, uselavsilahi,usefireward, useintensification, useenraged, useBerserk, useAggressiveness)
+function BuffSelfWarriorMage(useelektrik, uselavsilahi,usefireward, useintensification, useenraged, useBerserk, useAggressiveness, useFrenzy)
 	local pbuffs = BuffList("player");
 	local prage = PctM("player");
 	local pmana = UnitSkill("player");
@@ -105,6 +105,8 @@ function BuffSelfWarriorMage(useelektrik, uselavsilahi,usefireward, useintensifi
 		CastSpellByName("Berserk");
 	elseif(useAggressiveness and CD("Aggressiveness")) then
 		CastSpellByName("Aggressiveness");
+	elseif(useFrenzy and CD("Frenzy")) then
+		CastSpellByName("Frenzy");
 	elseif(CD("Electric Attack")) then
 		SendSystemMsg("Buffs All Done!");
 	end
