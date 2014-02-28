@@ -838,8 +838,8 @@ function BossAttackDruidMainDps()
 		NatureAttackDruidMage(false, false , .99, 0, .5, 0, true, false, true, true, false, true, true)
 		--NatureAttackDruidMage(false, false, .99,.4,.5,.3,false, false, true, true, false, true,true);
 	elseif(secondclass == "Mage") then
-		NatureAttackDruidMage(false, false , .99, 0, .5, 0, false, true, false, true, false, true, true);
-		--NatureAttackDruidMage(false, false, .99,.4,.5,.3,false, true, true, true, false, true,true);
+		-- NatureAttackDruidMage(false, false , .99, 0, .5, 0, false, true, false, true, false, true, true);
+		NatureAttackDruidMage(false, false, .99,.4,.5,.3,false, true, true, true, false, true,true);
 	end
 end
 
