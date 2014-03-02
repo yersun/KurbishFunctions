@@ -217,10 +217,10 @@ function NatureAttackDruidMage(useweakening, usewithering , blossominghealth, ea
     CastSpellByName("Weakening Seed");
   elseif ((not friendly) and (usewithering == true) and CD("Withering Seed")) then
     CastSpellByName("Withering Seed");
-   elseif ((usefireball == true) and CD("Fireball") and (not friendly)) then
-    CastSpellByName("Fireball");
   elseif((useeartharrow == true) and (not friendly) and pbuffs["Inspiration"]) then
 	CastSpellByName("Earth Arrow");
+  elseif ((usefireball == true) and CD("Fireball") and (not friendly)) then
+    CastSpellByName("Fireball");
   elseif ((usewrath == true) and CD("Mother Nature's Wrath") and (not friendly)) then
     CastSpellByName("Mother Nature's Wrath");
   elseif ((userockslide == true) and CD("Rockslide") and (not friendly)) then
