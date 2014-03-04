@@ -470,9 +470,9 @@ function DruidTimedHeal(targetableSkillSlot, useSpring, useyasaminruhu, blossomi
    
    if (spell ~= nil) then return end
    
-		if(useSpring and CD("Mother Earth's Fountain")) then
+		if(useSpring and CD("Spring of Blessings")) then
 			-- if(UnitIsPlayer("target") and friendly) then TargetUnit("player"); end;
-			CastSpellByName("Mother Earth's Fountain");
+			CastSpellByName("Spring of Blessings");
 			return;
 		elseif(useyasaminruhu and CD("Yaşamın Ruhu")) then
 			CastSpellByName("Yaşamın Ruhu");
