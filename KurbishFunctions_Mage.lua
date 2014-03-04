@@ -381,7 +381,7 @@ function ChargeUp(chargeonly)
   if((not chargeonly) and (pBuffs["Static Field Charge"])) then
 	CastSpellByName("Static Field");
 	PlaySoundByPath("interface/AddOns/KurbishFunctions/sounds/WindowsError.wav");
-  elseif((pBuffs["Static Field Charge"]) and (not pBuffs["Static Field Charge"])) then
+  elseif((pBuffs["Charged"]) and (not pBuffs["Static Field Charge"])) then
 	CastSpellByName("Electric Compression");
   elseif(chargeonly and (pBuffs["Static Field Charge"])) then
     CastSpellByName("Plasma Arrow")
