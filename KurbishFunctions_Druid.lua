@@ -870,11 +870,11 @@ function BreakSkillDruidMain(warnlist)
 	end
 end
 
-function DruidMainTimedHeal(targetableSkillSlot,useyasam, blossominghealth)
+function DruidMainTimedHeal(targetableSkillSlot, blossominghealth)
 	local mainclass, secondclass = UnitClass("player")
 	if (secondclass == "Warden") then
-		DruidTimedHeal(targetableSkillSlot, false, useyasam, blossominghealth)
-	elseif(secondclass == "Mage") then
 		DruidTimedHeal(targetableSkillSlot, true, false, blossominghealth)
+	elseif(secondclass == "Mage") then
+		DruidTimedHeal(targetableSkillSlot, true, true, blossominghealth)
 	end
 end
