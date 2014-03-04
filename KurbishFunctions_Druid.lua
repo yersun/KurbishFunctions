@@ -453,7 +453,7 @@ function SetTank()
 end
 -- /run PartyHeal(2,1,.4,1,false,.8,.4,false);
 
-function DruidTimedHeal(targetableSkillSlot, useSpring, useyasaminruhu, blossominghealth)
+function DruidTimedHeal(targetableSkillSlot, useMother, useSpring,  blossominghealth)
 --    targetableSkillSlot = Quickbar slot # for targetable, instant-cast buff without a cooldown (eg. Amp Attack) for range checking.
 
    local pbuffs = BuffList("player")
@@ -470,12 +470,12 @@ function DruidTimedHeal(targetableSkillSlot, useSpring, useyasaminruhu, blossomi
    
    if (spell ~= nil) then return end
    
-		if(useSpring and CD("Spring of Blessings")) then
-			-- if(UnitIsPlayer("target") and friendly) then TargetUnit("player"); end;
-			CastSpellByName("Spring of Blessings");
+   		if(useMother and CD("Mother Earth's Fountain")) then
+			if(UnitIsPlayer("target") and friendly) then TargetUnit("player"); end;
+			CastSpellByName("Mother Earth's Fountain");
 			return;
-		elseif(useyasaminruhu and CD("Yaşamın Ruhu")) then
-			CastSpellByName("Yaşamın Ruhu");
+		elseif(useSpring and CD("Spring of Blessings")) then
+			CastSpellByName("Spring of Blessings");
 			return;
 		end;
 		
