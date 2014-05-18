@@ -75,10 +75,12 @@ function LookAroundAndAttackRogue(attackslot, turnaround, recoverpct, manapct, m
 	end
 end
 
-function BuffAllRogueDruid(usehysteric, useinformer, useassasin, usekillin)
+function BuffAllRogueDruid(usesavage, usehysteric, useinformer, useassasin, usekillin)
   
   local pbuffs = BuffList("player")
-  if ((usehysteric == true ) and (not pbuffs["Hysteric Vengeance"])) then
+  if ((usesavage == true ) and (not pbuffs["Savage Blessing"] or pbuffs["Savage Blessing"].time < 600) then
+	CastSpellByName("Savage Blessing");
+  elseif ((usehysteric == true ) and (not pbuffs["Hysteric Vengeance"]) or pbuffs["Hysteric Vengeance"].time < 600) then
 	CastSpellByName("Hysteric Vengeance");
   elseif ((useinformer == true ) and CD("Informer") and (not pbuffs["Informer"])) then
 	CastSpellByName("Informer");
