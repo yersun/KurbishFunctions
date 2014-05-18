@@ -78,7 +78,7 @@ end
 function BuffAllRogueDruid(usesavage, usehysteric, useinformer, useassasin, usekillin)
   
   local pbuffs = BuffList("player")
-  if ((usesavage == true ) and (not pbuffs["Savage Blessing"] or pbuffs["Savage Blessing"].time < 600) then
+  if ((usesavage == true ) and (not pbuffs["Savage Blessing"] or pbuffs["Savage Blessing"].time < 600)) then
 	CastSpellByName("Savage Blessing");
   elseif ((usehysteric == true ) and (not pbuffs["Hysteric Vengeance"]) or pbuffs["Hysteric Vengeance"].time < 600) then
 	CastSpellByName("Hysteric Vengeance");
