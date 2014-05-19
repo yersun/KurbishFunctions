@@ -38,12 +38,12 @@ function ProtectSelf(usedistract, earthProtectionPercent, recoverPercent, crysta
 	CastSpellByName("Distract");
   elseif((useCandy == true) and combatstate and (phealth <= crystalCandyPercent) and GetPotUsable(crystalCandySlot) and (cccd == 0)) then
     UseAction(crystalCandySlot);
+  elseif ((not pbuffs["Electrostatic Charge"]) and CD("Electrostatic Charge")) then
+    CastSpellByName("Electrostatic Charge");
   elseif((usePhirus == true) and (phealth <= phirusPercent) and GetPotUsable(phirusSlot) and (phcd == 0)) then
     UseAction(phirusSlot);
   elseif ((useGlove == true) and GetActionUsable(gloveslot) and (glcd == 0)) then
 	UseAction(gloveslot);
-  elseif ((not pbuffs["Electrostatic Charge"]) and CD("Electrostatic Charge")) then
-    CastSpellByName("Electrostatic Charge");
   elseif ((phealth <= earthProtectionPercent) and CD("Mother Earth's Protection") and combatstate and (not pbuffs["Crystal Candy"])) then
 	CastSpellByName("Mother Earth's Protection");
   elseif (phealth <= recoverPercent) then
@@ -70,19 +70,19 @@ function ProtectSelfMageWarden(cpslot, cptct, useelvenamulet, glovedebuflist, gl
 		useGlove = HasBuffsFromList(pdebuffs, glovedebuflist)
 	end
   
-	if (nil ~= cpslot and cpslot > 0 and pctHealth < cptct and GetPotUsable(cpslot)) then
-		UseAction(cpslot);
-		PrintSkill("Used Health Pot!");
-	elseif ((not pbuffs["Electrostatic Charge"]) and CD("Electrostatic Charge")) then
+	if ((not pbuffs["Electrostatic Charge"]) and CD("Electrostatic Charge")) then
 		CastSpellByName("Electrostatic Charge");
 		PrintSkill("Electrostatic Charge");
+	elseif (nil ~= cpslot and cpslot > 0 and pctHealth < cptct and GetPotUsable(cpslot)) then
+		UseAction(cpslot);
+		PrintSkill("Used Health Pot!");
 	elseif(useelvenamulet and CD("Elven Amulet") and pmana >= 150) then
 		CastSpellByName("Elven Amulet");
 		PrintSkill("Elven Amulet");
 	elseif ((useGlove == true) and GetActionUsable(gloveslot) and (glcd == 0)) then
 		UseAction(gloveslot);
 	else
-		PrintSkill("Koruma için başka skill atılamıyor..");
+		PrintSkill("No Skill Left for Protection..");
 	end
 end
 
