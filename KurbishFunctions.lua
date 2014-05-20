@@ -459,3 +459,14 @@ function BuffHolyProtection(holskillslot, playername)
 	   end
    end
 end
+
+function RepairMainHand(mindura)
+	local durableValue, durableMax, itemName = GetInventoryItemDurable("player", 15);
+	if(durableValue <= mindura) then
+		UseItemByName(TEXT("Sys201967_name"));
+		PickupEquipmentItem(15);
+		DEFAULT_CHAT_FRAME:AddMessage(itemName.." was repaired!",0,1,1)
+	else
+		DEFAULT_CHAT_FRAME:AddMessage(itemName.." durability is fine("..durableValue.."). Not Repaired.",0,1,1)
+	end
+end

@@ -64,8 +64,8 @@ function BossAttackHeavy(warn)
 			SendSystemMsg("BUFFS EXPIRED, ABORT BossAttackHeavy()");
 		end
 		
-		if(pbuffs["Static Field Charge"]) then 
-			CastSpellByName("Electric Explosion");
+		if(pbuffs["Charged"]) then 
+			CastSpellByName("Flame");
 			return
 		else
 			CastSpellByName("Plasma Arrow");
