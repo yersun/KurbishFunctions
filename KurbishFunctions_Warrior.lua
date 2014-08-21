@@ -25,7 +25,7 @@ local tdebuffs = ActualDebuffList("target");
 local isdead = UnitIsDeadOrGhost("target");
 local pelectriccount = GetElectricCount(pbuffs);
 if(nil == elecktricbufftimer) then elecktricbufftimer = 2; end
-local maxelectricbuffname = "High Voltage "..elektrikliofkecount;
+local maxelectricbuffname = "High Voltage III";
 -- local tbuffs = BuffList("target");
  
 	if (isdead) then
@@ -56,7 +56,7 @@ local maxelectricbuffname = "High Voltage "..elektrikliofkecount;
 	elseif(useBerserk and CD("Berserk")) then
 		CastSpellByName("Berserk");
 		PrintSkill("Berserk");
-	elseif((pelectriccount < elektrikliofkecount or (pbuffs[maxelectricbuffname] and pbuffs[maxelectricbuffname].time < elecktricbufftimer)) and prage >= .15)then
+	elseif(prage >= .15 and (pelectriccount < elektrikliofkecount or (pbuffs[maxelectricbuffname] and pbuffs[maxelectricbuffname].time < elecktricbufftimer)))then
 		CastSpellByName("Electrical Rage");
 		PrintSkill("Electrical Rage");
 	elseif(useyildirimdokunusu and CD("Lightning's Touch") and pmana >= manayildirimindokunusu) then
@@ -72,11 +72,11 @@ end
 
 function GetElectricCount(pbuffs)
 	local electriccount = 0;
-	if(pbuffs["High Voltage 1"]) then
+	if(pbuffs["High Voltage I"]) then
 		electriccount = 1;
-	elseif(pbuffs["High Voltage 2"]) then
+	elseif(pbuffs["High Voltage II"]) then
 		electriccount = 2;
-	elseif(pbuffs["High Voltage 3"]) then
+	elseif(pbuffs["High Voltage III"]) then
 		electriccount = 3;
 	end
 	return electriccount;	

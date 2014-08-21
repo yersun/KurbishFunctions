@@ -539,6 +539,8 @@ function BreakSkillMageMain()
 	local mainclass, secondclass = UnitClass("player")
 	if (secondclass == "Warden") then
 		BreakSkill(true,true,true,false,g_mageBreakSkillAvoidBuffs,false,'');
+	elseif (secondclass == "Warrior") then
+		BreakSkill(true,true,true,false,g_mageBreakSkillAvoidBuffs,false,'');
 	elseif(secondclass == "Druid") then
 		BreakSkill(true, true, true, false, g_mageBreakSkillAvoidBuffs, false, '');
 		-- BreakSkill(true,true,true,false,g_mageBreakSkillAvoidBuffs,false,'');
