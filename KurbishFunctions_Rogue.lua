@@ -22,7 +22,7 @@ local combatstate = GetPlayerCombatState();
 	
 	if (usemeditation  and (not combatstate) and (not pbuffs["Premeditation"]  or pbuffs["Premeditation"].time < 5)) then
 		CastSpellByName("Premeditation");
-	elseif (usevampire and not tbuffs["Vampire Arrows"]) then
+	elseif (usevampire and CD("Vampire Arrows") and not tbuffs["Vampire Arrows"]) then
 		CastSpellByName("Vampire Arrows");
 	elseif (useshadow and (penergy >= .20)) then
 		CastSpellByName("Shadowstab");
