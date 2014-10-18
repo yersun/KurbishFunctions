@@ -1,3 +1,44 @@
+function BossAttackRogueMainDps(atakslot)
+	local mainclass, secondclass = UnitClass("player")
+	if (secondclass == "Scout") then
+		BossAttackRogueScout(attackslot, true, true, true, true,  true, true);
+		-- BossAttackWardenDruidLite(0, 0, 0, .4, 0, false, false, true, false, false, false, false, false, 2, false, true, false, atakslot);
+	elseif(secondclass == "Druid") then
+		BossAttackRogueDruid(attackslot, .5, false, true, true, true,  true)
+	else
+		SendSystemMsg("Side class undefined??");
+	end
+end
+
+function BossAttackRogueScout(attackslot, usemeditation, usevampire, useshadow, uselowblow,  usewound, useshot)
+local phealth = PctH("player")
+local penergy = PctM("player")
+local secselapsed = os.time() - g_lastcasttime
+local friendly = (not UnitCanAttack("player","target"))
+local pbuffs = BuffList("player");
+local tbuffs = BuffList("target");
+-- local tbuffs = BuffList("target");
+local combatstate = GetPlayerCombatState();
+	
+	if (usemeditation  and (not combatstate) and (not pbuffs["Premeditation"]  or pbuffs["Premeditation"].time < 5)) then
+		CastSpellByName("Premeditation");
+	elseif (usevampire and not tbuffs["Vampire Arrows"]) then
+		CastSpellByName("Vampire Arrows");
+	elseif (useshadow and (penergy >= .20)) then
+		CastSpellByName("Shadowstab");
+	elseif (uselowblow and (not tbuffs["Grievous Wound"]) and (penergy >= .30)) then
+		CastSpellByName("Low Blow");
+	elseif (usewound and (penergy >= .35) and CD("Wound Attack")) then
+		CastSpellByName("Wound Attack");
+	elseif (uselowblow and (penergy >= .30)) then
+		CastSpellByName("Low Blow");
+	elseif (useshot) then
+		CastSpellByName("Shot");
+	else
+		UseAction(attackslot);
+	end
+end
+
 function BossAttackRogueDruid(attackslot, recoverhealth, usehysteric, useinformer, useshadow, uselowblow,  usewound)
 local phealth = PctH("player")
 local penergy = PctM("player")
@@ -75,12 +116,26 @@ function LookAroundAndAttackRogue(attackslot, turnaround, recoverpct, manapct, m
 	end
 end
 
-function BuffAllRogueDruid(usesavage, usehysteric, useinformer, useassasin, usekillin)
-  
+function BuffAllRogueMain(buffplus)
+	local mainclass, secondclass = UnitClass("player")
+	if(secondclass == "Druid") then
+			BuffAllRogue(false, true, true, true, true, true, true);
+	elseif (secondclass == "Scout") then
+		BuffAllRogue(true, false, false, true, true, false, true);
+	else
+		SendSystemMsg("Side class undefined??");
+	end
+end
+
+function BuffAllRogue(usecombatmaster, usesavage, usehysteric, useinformer, useassasin, usekillin, usepremeditation)
+  local combatstate = GetPlayerCombatState();
+	
   local pbuffs = BuffList("player")
-  if ((usesavage == true ) and (not pbuffs["Savage Blessing"] or pbuffs["Savage Blessing"].time < 600)) then
+  if ((usecombatmaster == true ) and (not pbuffs["Combat Master"] or pbuffs["Combat Master"].time < 600)) then
+	CastSpellByName("Combat Master");
+  elseif ((usesavage == true ) and (not pbuffs["Savage Blessing"] or pbuffs["Savage Blessing"].time < 600)) then
 	CastSpellByName("Savage Blessing");
-  elseif ((usehysteric == true ) and (not pbuffs["Hysteric Vengeance"]) or pbuffs["Hysteric Vengeance"].time < 600) then
+  elseif ((usehysteric == true ) and (not pbuffs["Hysteric Vengeance"] or pbuffs["Hysteric Vengeance"].time < 600)) then
 	CastSpellByName("Hysteric Vengeance");
   elseif ((useinformer == true ) and CD("Informer") and (not pbuffs["Informer"])) then
 	CastSpellByName("Informer");
@@ -88,5 +143,7 @@ function BuffAllRogueDruid(usesavage, usehysteric, useinformer, useassasin, usek
 	CastSpellByName("Assassins Rage");
 	  elseif ((usekillin == true ) and CD("Killin' Time") and (not pbuffs["Killin' Time"])) then
 	CastSpellByName("Killin' Time");
+  elseif (usemeditation and (not combatstate) and (not pbuffs["Premeditation"]  or pbuffs["Premeditation"].time < 5)) then
+		CastSpellByName("Premeditation");
   end
 end
