@@ -131,7 +131,7 @@ function BuffAllRogue(usecombatmaster, usesavage, usehysteric, useinformer, usea
   local combatstate = GetPlayerCombatState();
 	
   local pbuffs = BuffList("player")
-  if ((usecombatmaster == true ) and (not pbuffs["Combat Master"] or pbuffs["Combat Master"].time < 600)) then
+  if ((usecombatmaster == true ) and (not pbuffs["Combat Master"])) then
 	CastSpellByName("Combat Master");
   elseif ((usesavage == true ) and (not pbuffs["Savage Blessing"] or pbuffs["Savage Blessing"].time < 600)) then
 	CastSpellByName("Savage Blessing");
