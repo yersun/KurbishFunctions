@@ -53,6 +53,19 @@ function BuffAllScoutMain(buffplus)
 	end
 end
 
+function BreakSkillScout(usethroat, useneck, usejoint)
+local pfocus = PctM("player"); -- this is focus(greenbar)
+local penergy = PctS("player");
+
+	if(usethroat and CD("Throat Attack") and (pfocus >= .15)) then
+		CastSpellByName("Throat Attack");
+	elseif (useneck  and CD("Neck Strike") and (pfocus >= .30)) then
+		CastSpellByName("Neck Strike");
+	elseif (usejoint  and CD("Joint Blow") and (pfocus >= .15)) then
+		CastSpellByName("Joint Blow");
+	end
+end
+
 function BuffAllScoutRogue(usefrost)
   local pbuffs = BuffList("player")
   if ((usefrost == true ) and (not pbuffs["Frost Arrow"] or pbuffs["Frost Arrow"].time < 600)) then
