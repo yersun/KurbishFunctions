@@ -46,7 +46,7 @@ function BuffAllScoutMain(buffplus)
 	local mainclass, secondclass = UnitClass("player")
 	if(secondclass == "Druid") then
 		BuffAllScoutDruid();
-	elseif (secondclass == "Scout") then
+	elseif (secondclass == "Rogue") then
 		BuffAllScoutRogue(true);
 	else
 		SendSystemMsg("Side class undefined??");
