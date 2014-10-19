@@ -47,13 +47,13 @@ function BuffAllScoutMain(buffplus)
 	if(secondclass == "Druid") then
 		BuffAllScoutDruid();
 	elseif (secondclass == "Rogue") then
-		BuffAllScoutRogue(true);
+		BuffAllScoutRogue(true,true);
 	else
 		SendSystemMsg("Side class undefined??");
 	end
 end
 
-function BreakSkillScout(usethroat, useneck, usejoint)
+function BreakSkillScout(usethroat, useneck, useblinding, usejoint)
 local pfocus = PctM("player"); -- this is focus(greenbar)
 local penergy = PctS("player");
 
@@ -61,15 +61,19 @@ local penergy = PctS("player");
 		CastSpellByName("Throat Attack");
 	elseif (useneck  and CD("Neck Strike") and (pfocus >= .30)) then
 		CastSpellByName("Neck Strike");
+	elseif (useblinding  and CD("Blinding Powder") and (penergy >= .30)) then
+		CastSpellByName("Blinding Powder");
 	elseif (usejoint  and CD("Joint Blow") and (pfocus >= .15)) then
 		CastSpellByName("Joint Blow");
 	end
 end
 
-function BuffAllScoutRogue(usefrost)
+function BuffAllScoutRogue(usefrost, usearrowessense)
   local pbuffs = BuffList("player")
   if ((usefrost == true ) and (not pbuffs["Frost Arrow"] or pbuffs["Frost Arrow"].time < 300)) then
 	CastSpellByName("Frost Arrow");
+  elseif ((usearrowessense == true ) and CD("Arrow of Essense")) then
+	CastSpellByName("Arrow of Essense");
   end
 end
 
