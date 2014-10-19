@@ -13,6 +13,7 @@ end
 function BossAttackRogueScout(attackslot, usemeditation, usevampire, useshadow, uselowblow,  usewound, useshot)
 local phealth = PctH("player")
 local penergy = PctM("player")
+local pfocus = PctS("player")
 local secselapsed = os.time() - g_lastcasttime
 local friendly = (not UnitCanAttack("player","target"))
 local pbuffs = BuffList("player");
@@ -22,7 +23,7 @@ local combatstate = GetPlayerCombatState();
 	
 	if (usemeditation  and (not combatstate) and (not pbuffs["Premeditation"]  or pbuffs["Premeditation"].time < 5)) then
 		CastSpellByName("Premeditation");
-	elseif (usevampire and CD("Vampire Arrows") and not tbuffs["Vampire Arrows"]) then
+	elseif (usevampire and CD("Vampire Arrows") and not tbuffs["Vampire Arrows"] and (pfocus >= .20)) then
 		CastSpellByName("Vampire Arrows");
 	elseif (useshadow and (penergy >= .20)) then
 		CastSpellByName("Shadowstab");

@@ -10,3 +10,4 @@ KurbishFunctions_Rogue.lua
 KurbishFunctions_Priest.lua
 KurbishFunctions_Warden.lua
 KurbishFunctions_Warrior.lua
+KurbishFunctions_Scout.lua
