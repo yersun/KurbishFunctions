@@ -69,7 +69,7 @@ end
 function BuffAllScoutRogue(usefrost)
   local pbuffs = BuffList("player")
   if ((usefrost == true ) and (not pbuffs["Frost Arrow"] or pbuffs["Frost Arrow"].time < 300)) then
-	CastSpellByName("Savage Blessing");
+	CastSpellByName("Frost Arrow");
   end
 end
 
