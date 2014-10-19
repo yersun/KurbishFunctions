@@ -1,7 +1,7 @@
 function BossAttackScoutMainDps()
 	local mainclass, secondclass = UnitClass("player")
 	if (secondclass == "Rogue") then
-		BossAttackScoutRogue(true, false, false, false, false, true, false, true, true);
+		BossAttackScoutRogue(true, false, false, false, true, true, false, true, true);
 	elseif(secondclass == "Druid") then
 		BossAttackScoutRogue(attackslot, .5, false, true, true, true,  true)
 	else
@@ -9,7 +9,7 @@ function BossAttackScoutMainDps()
 	end
 end
 
-function BossAttackScoutRogue(usefrost, usesnipe, usesapping, useweak, usecombo, usevampire, usedeadly, usewindarroow, useshot)
+function BossAttackScoutRogue(usefrost, usesnipe, usesapping, useweak, usevampire, usecombo, usedeadly, usewindarroow, useshot)
 local phealth = PctH("player");
 local pfocus = PctM("player"); -- this is focus(greenbar)
 local penergy = PctS("player");
@@ -27,10 +27,10 @@ local combatstate = GetPlayerCombatState();
 		CastSpellByName("Sapping Arrow");
 	elseif (useweak and CD("Weak Spot") and (pfocus >= .20)) then
 		CastSpellByName("Weak Spot");
+	elseif (usevampire and CD("Vampire Arrows") and not tbuffs["Vampire Arrows"] and (pfocus >= .20)) then
+	CastSpellByName("Vampire Arrows");
 	elseif (usecombo and CD("Combo Shot")) then
 		CastSpellByName("Combo Shot");
-	elseif (usevampire and CD("Vampire Arrows") and not tbuffs["Vampire Arrows"] and (pfocus >= .20)) then
-		CastSpellByName("Vampire Arrows");
 	elseif (usedeadly and CD("Deadly Poison Bite") and tbuffs["Vampire Arrows"] and (penergy >= .20)) then
 		CastSpellByName("Deadly Poison Bite");
 	elseif (usewindarroow and CD("Wind Arrows") and (pfocus >= .20)) then
