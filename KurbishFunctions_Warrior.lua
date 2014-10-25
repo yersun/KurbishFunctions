@@ -3,6 +3,8 @@ local manalavaweapon = 156;
 local manathundersword = 30;
 local manayildirimindokunusu = 30;
 
+-- PctM() == Rage for Warrior
+-- PctS() == Mana for Warrior
 -- local manasavagepower = 240;
 -- local manaatestopu = 180;
 -- local manacrosschop = 350;

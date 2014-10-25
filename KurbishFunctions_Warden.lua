@@ -71,7 +71,7 @@ local isdead = UnitIsDeadOrGhost("target");
 	elseif(usehiddet and pmana >= 35 and CD("Ire")) then
 		CastSpellByName("Ire");
 		PrintSkill("Ire");
-	elseif(usesinyal and tdebuffs["Beast Sigil"] and CD("Pulse Mastery") and prage >= 0.20 and (not pbuffs["Pulse Mastery"])) then -- Check and correct player buff here, actual buff is not Pulse Mastery
+	elseif(usesinyal and tdebuffs["Beast Sigil"] and CD("Pulse Mastery") and prage >= 0.20 and (not pbuffs["Power of Pulse Mastery"])) then -- Check and correct player buff here, actual buff is not Pulse Mastery
 		CastSpellByName("Pulse Mastery");
 		PrintSkill("Pulse Mastery");
 	elseif (usecross and CD("Cross Chop") and pmana >= manacrosschop) then
