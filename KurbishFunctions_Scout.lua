@@ -3,7 +3,7 @@ function BossAttackScoutMainDps()
 	if (secondclass == "Rogue") then
 		BossAttackScoutRogue(true, false, false, false, true, true, false, true, true);
 	elseif(secondclass == "Druid") then
-		BossAttackScoutRogue(attackslot, .5, false, true, true, true,  true)
+		BossAttackScoutRogue(false, false, false, false, true, true, false, true, true);
 	else
 		SendSystemMsg("Side class undefined??");
 	end
