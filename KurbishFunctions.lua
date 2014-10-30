@@ -116,6 +116,12 @@ function KurbishFunctions_OnEvent(this, event, arg1, arg2, arg3, arg4, arg5, arg
 	
 end
 
+function PrintDailyCount()
+	local dailyQuestCount, dailyQuestsPerDay= Daily_count();
+	DEFAULT_CHAT_FRAME:AddMessage("You've completed "..dailyQuestCount.." out of " .. dailyQuestsPerDay ..
+    " daily quests, leaving " .. dailyQuestsPerDay - dailyQuestCount .. " quests.");
+end
+
 function KurbishFunctions_OnLoad(this)
 	-- this:RegisterEvent("COMBATMETER_DAMAGE");
 	this:RegisterEvent("CASTING_START");
