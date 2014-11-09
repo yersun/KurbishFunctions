@@ -16,7 +16,7 @@ local manayildirimindokunusu = 30;
 -- local manaelfduasi = 140;
 -- local manadoublechop = 60;
 
-function BossAttackWarriorMageLite(manaslot, manapct, useelektrik, uselavsilahi, usefireball, usegurleyen, useBerserk, useintensification, useenraged, useBerserk, elektrikliofkecount, useyildirimdokunusu, atakslot, elecktricbufftimer)
+function BossAttackWarriorMageLite(manaslot, manapct, useelektrik, uselavsilahi, usefireball, usegurleyen, useBerserk, useintensification, useenraged, elektrikliofkecount, useyildirimdokunusu, atakslot, elecktricbufftimer)
 local phealth = PctH("player")
 local pmana = UnitSkill("player")
 local prage = PctM("player");
@@ -55,9 +55,6 @@ local maxelectricbuffname = "High Voltage III";
 	elseif(useenraged and CD("Enraged") and prage < 0.80) then
 		CastSpellByName("Enraged");
 		PrintSkill("Enraged");
-	elseif(useBerserk and CD("Berserk")) then
-		CastSpellByName("Berserk");
-		PrintSkill("Berserk");
 	elseif(prage >= .15 and (pelectriccount < elektrikliofkecount or (pbuffs[maxelectricbuffname] and pbuffs[maxelectricbuffname].time < elecktricbufftimer)))then
 		CastSpellByName("Electrical Rage");
 		PrintSkill("Electrical Rage");
